@@ -1,0 +1,126 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.22.0.0
+Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Andrei Mihai Man, Hewlett-Packard Company, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.22
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 4 (build 422)
+Assembler:       Armasm.exe V5.06 update 4 (build 422)
+Linker/Locator:  ArmLink.exe V5.06 update 4 (build 422)
+Library Manager: ArmAr.exe V5.06 update 4 (build 422)
+Hex Converter:   FromElf.exe V5.06 update 4 (build 422)
+CPU DLL:         SARMCM3.DLL V5.22
+Dialog DLL:      DCM.DLL V1.13.9.0
+Target DLL:      lmidk-agdi.dll V???
+Dialog DLL:      TCM.DLL V1.21.0.0
+ 
+<h2>Project:</h2>
+C:\Users\Andrei.Man\Google Drive\Projects\citire_pin2\citire_pin2.uvprojx
+Project File Date:  04/07/2017
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'Target 1'
+compiling display.c...
+compiling gpio_handler.c...
+gpio_handler.c(37): warning:  #177-D: variable "prefix"  was declared but never referenced
+  	char litera,prefix, offset=0;
+gpio_handler.c(64): warning:  #940-D: missing return statement at end of non-void function "getINTAdrress" 
+  }
+gpio_handler.c(54): warning:  #177-D: variable "litera"  was declared but never referenced
+  char litera,prefix, offset=0;
+gpio_handler.c(54): warning:  #177-D: variable "prefix"  was declared but never referenced
+  char litera,prefix, offset=0;
+gpio_handler.c(54): warning:  #177-D: variable "offset"  was declared but never referenced
+  char litera,prefix, offset=0;
+gpio_handler.c: 5 warnings, 0 errors
+compiling main.c...
+adc_handler.h(7): warning:  #1-D: last line of file ends without a newline
+  #include "timer.h"
+main.c(32): warning:  #177-D: variable "switch_value"  was declared but never referenced
+  		int switch_value;
+main.c(83): warning:  #223-D: function "Add_ADC_Channel" declared implicitly
+  	Add_ADC_Channel(ADC_CTL_CH1);
+main.c(86): warning:  #223-D: function "ADC_Init" declared implicitly
+     ADC_Init();	
+main.c(109): warning:  #223-D: function "Get_ADC_Value" declared implicitly
+  			 Display_Decimal(Get_ADC_Value(0));
+main.c(125): warning:  #111-D: statement is unreachable
+  return 0;	
+main.c(63): warning:  #550-D: variable "ui32SysClock"  was set but never used
+  	unsigned long ui32SysClock;
+main.c(64): warning:  #177-D: variable "a"  was declared but never referenced
+  	int a=1;
+main.c(65): warning:  #177-D: variable "b"  was declared but never referenced
+  	unsigned long b=0x132;
+main.c: 9 warnings, 0 errors
+compiling timer.c...
+timer.c(132): warning:  #550-D: variable "timer_value"  was set but never used
+  	unsigned long timer_value=0;
+timer.c: 1 warning, 0 errors
+compiling adc_handler.c...
+adc_handler.h(7): warning:  #1-D: last line of file ends without a newline
+  #include "timer.h"
+adc_handler.c(34): warning:  #177-D: variable "step"  was declared but never referenced
+  	unsigned char step=0;
+adc_handler.c(89): warning:  #167-D: argument of type "unsigned long *" is incompatible with parameter of type "uint32_t *"
+  		ADCSequenceDataGet(
+DC1_BASE,var,  adcValues);
+adc_handler.c(128): warning:  #9-D: nested comment is not allowed
+  			/*
+adc_handler.c(159): warning:  #223-D: function "Display_NewLine" declared implicitly
+  			Display_NewLine();
+adc_handler.c(160): warning:  #223-D: function "Display_String" declared implicitly
+  		Display_String("PE2 ");			
+adc_handler.c(161): warning:  #223-D: function "Display_Decimal" declared implicitly
+  		Display_Decimal(digital_value);
+adc_handler.c: 7 warnings, 0 errors
+compiling pwm_handler.c...
+assembling startup_TM4C123.s...
+compiling system_TM4C123.c...
+linking...
+Program Size: Code=6940 RO-data=1372 RW-data=24 ZI-data=656  
+".\Objects\citire_pin2.axf" - 0 Error(s), 22 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.0.0.pack
+                ARM::CMSIS:CORE:5.0.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.0.0
+   * Component: DSP Version: 1.4.6
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.TM4C_DFP.1.1.0.pack
+                Keil::Device:Startup:1.0.1
+                Texas Instruments Tiva C Series Device Support and Examples
+   * Component: Startup Version: 1.0.1
+
+<h2>Collection of Component include folders:</h2>
+  C:\Users\Andrei.Man\Google Drive\Projects\citire_pin2\RTE\_Target_1
+  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include
+  C:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.0.0
+
+   * Component: ARM::CMSIS:DSP:1.4.6
+      Include file:  CMSIS\Include\arm_math.h
+      Library file:  CMSIS\Lib\ARM\arm_cortexM4lf_math.lib
+
+   * Component: Keil::Device:Startup:1.0.1
+      Include file:  Device\Include\TM4C123\TM4C123.h
+      Source file:   Device\Source\ARM\startup_TM4C123.s
+      Source file:   Device\Source\system_TM4C123.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
