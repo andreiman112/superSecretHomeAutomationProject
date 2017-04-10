@@ -51,9 +51,8 @@ void TIMER2A_Handler(void)  //Timer 1 A ISR used to debounce SW2
 
 }
 void GPIOF_Handler(void) 	//GPIO port F ISR
-{	 GPIOIntClear(GPIO_PORTF_BASE,  GPIO_INT_PIN_4);
-	  
-
+{	 
+	  GPIOIntClear(GPIO_PORTF_BASE,  GPIO_INT_PIN_4);
     TimerEnable(TIMER2_BASE, TIMER_A);
 	  GPIOIntDisable(GPIO_PORTF_BASE,GPIO_PIN_4); 
 }
