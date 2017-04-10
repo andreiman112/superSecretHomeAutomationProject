@@ -28,9 +28,7 @@
 
 void TIMER2A_Handler(void)  //Timer 1 A ISR used to debounce SW2
 { 	
-		static int intCounter=0;
-		int switch_value;
-	
+		static int intCounter=0;	
  if(TimerIntStatus(TIMER2_BASE,false))
 	{
 		TimerDisable(TIMER2_BASE, TIMER_A);
@@ -50,6 +48,34 @@ void TIMER2A_Handler(void)  //Timer 1 A ISR used to debounce SW2
 }
 
 }
+void TIMER1A_Handler(void)  //Timer 1 A ISR used to debounce SW2
+{
+//	TimerDisable(TIMER1_BASE, TIMER_A);
+		TimerIntClear(TIMER1_BASE, TIMER_A);
+	Display_NewLine();
+	  Display_String("timer 1");
+	
+	   TimerEnable(TIMER1_BASE, TIMER_A);
+}
+
+void TIMER4A_Handler(void)  //Timer 1 A ISR used to debounce SW2
+{
+//	TimerDisable(TIMER1_BASE, TIMER_A);
+		TimerIntClear(TIMER4_BASE, TIMER_A);
+	Display_NewLine();
+	   Display_String("timer 4");
+	   TimerEnable(TIMER4_BASE, TIMER_A);
+}
+
+void WTIMER1A_Handler(void)		//Wide Timer 0 A ISR
+{ 
+		TimerIntClear(WTIMER1_BASE, TIMER_A);
+	Display_NewLine();
+	  Display_String("WTIMER1A_Handler.... super");
+	
+	   TimerEnable(WTIMER1_BASE, TIMER_A);
+	 
+}
 void GPIOF_Handler(void) 	//GPIO port F ISR
 {	 
 	  GPIOIntClear(GPIO_PORTF_BASE,  GPIO_INT_PIN_4);
@@ -59,32 +85,36 @@ void GPIOF_Handler(void) 	//GPIO port F ISR
 int main(void)
 {
 	
-	unsigned long ui32SysClock;
-	int a=1;
-	unsigned long b=0x132;
-	int ayjty=(0x40032000&((0xf)<<12))>>12;
+	unsigned long ui32SysClock; 
 	SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN); //80 Mhz
 	ui32SysClock = SysCtlClockGet();
 	
 	
 	 
 	Display_Init();
-	Display_NewLine();
-	Display_Decimal( getINTGPIO_Adrress(GPIO_PORTF_BASE));
+	Display_NewLine(); 
   Display_String("Hello!");	
-
-    InitDebouncingTimer(TIMER2_BASE, TIMER_A);
+  Init_Timer(WTIMER0_BASE, TIMER_A,500);
+	//	Init_Timer(WTIMER1_BASE, TIMER_A,250);
+   
+    Init_Timer(TIMER2_BASE, TIMER_A,300);
+ Init_Timer(TIMER4_BASE, TIMER_A,3000);
+   	
+	Init_Timer(TIMER1_BASE, TIMER_A,3000);
 	 
-    SetGPIOInterrupt(GPIO_PORTF_BASE,GPIO_PIN_4);
-	 SetGPIOInput(GPIO_PORTF_BASE,GPIO_PIN_0);
+	  TimerEnable(TIMER4_BASE, TIMER_A);
+	 TimerEnable(TIMER1_BASE, TIMER_A);
+		 TimerEnable(WTIMER0_BASE, TIMER_A);
 	
+	SetGPIOInterrupt(GPIO_PORTF_BASE,GPIO_PIN_4);
+	  SetGPIOInput(GPIO_PORTF_BASE,GPIO_PIN_0);	
 	  SetGPIOInput(GPIO_PORTC_BASE,GPIO_PIN_7);
- TIMER_Wide_0_Init();
+  
 	
-	Add_ADC_Channel(ADC_CTL_CH1);
-	Add_ADC_Channel(ADC_CTL_CH4);
-	Add_ADC_Channel(ADC_CTL_CH7);
-   ADC_Init();	
+  	Add_ADC_Channel(ADC_CTL_CH1);
+	  Add_ADC_Channel(ADC_CTL_CH4);
+	  Add_ADC_Channel(ADC_CTL_CH7);
+    ADC_Init();	
 	 
 	 // Sensor2_Init();
 	 IntMasterEnable();	//Global interrupt enable
@@ -100,7 +130,7 @@ int main(void)
 			 Display_NewLine(); 
 			 Display_Decimal(INT_TIMER0B);
 			 
-	while(1)  //Clock working
+	while(ui32SysClock)  //Clock working
 	{
 		 
 		if(!ReadPinState(GPIO_PORTF_BASE,GPIO_PIN_0))
@@ -122,6 +152,5 @@ int main(void)
 			 
 		 
 		  
-	}
-return 0;	
+	} 
 }

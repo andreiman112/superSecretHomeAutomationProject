@@ -19,8 +19,8 @@
 #define TIMER1_PRIO (0x00)
 #define TIMER2_PRIO (0x00)
 
-extern unsigned long Sensor_Temperature;
-extern unsigned long Sensor_AnalogVoltage;
+char prioTimerArray[12] = { /*T0=*/1, /*T1=*/ 6, /*T2=*/ 4, /*T3=*/1, /*T4=*/1, /*T5=*/ 4,/*WT0=*/1,/*WT1=*/ 3,/*WT2=*/ 4, /*WT3=*/1, /*WT4=*/ 3 , /*WT1=*/ };
+
 signed char PWM_DutyCycle = 50;
 
 unsigned long TIMER_reload_calculator(unsigned long delay_time_ms)
@@ -33,23 +33,18 @@ unsigned long TIMER_reload_calculator(unsigned long delay_time_ms)
 	return clock_cycle_required;
 }
 
-void TIMER_Wide_0_Init(void)	//cyclic wide timer configuration
+unsigned long getPeriphTimerAddress(unsigned long port)
 {
-	SysCtlPeripheralEnable(SYSCTL_PERIPH_WTIMER0);		//Wide Timer 0 enable 
-	IntDisable(INT_WTIMER0A);													//Wide Timer 0A disable of interrupts
-	TimerIntDisable(WTIMER0_BASE,TIMER_TIMA_TIMEOUT);
+  
+	 char	index=(port&(0xf)<<12)>>12 ;
+	unsigned long retAdr=SYSCTL_PERIPH_TIMER0;
+if(index<=(0x5)) retAdr=SYSCTL_PERIPH_TIMER0+index; //T0,T1,T2,T3,T4,T5
+else if(index==6 || index==7) retAdr=SYSCTL_PERIPH_WTIMER0+(index-6);//WIDET0, 	WIDET1
+ else if(index>=(0xC)&&index<=(0xF))retAdr=SYSCTL_PERIPH_WTIMER2+(index-0xc);//WIDET2,WIDET3,WIDET4,WIDET5
 	
-	TimerDisable(WTIMER0_BASE, TIMER_A);
-	TimerClockSourceSet(WTIMER0_BASE, TIMER_CLOCK_SYSTEM);
-	TimerConfigure(WTIMER0_BASE, TIMER_CFG_A_PERIODIC);
-
-	TimerLoadSet(WTIMER0_BASE, TIMER_A, TIMER_reload_calculator(500));	//Set cycle nr for 1000 ms	
-	TimerEnable(WTIMER0_BASE, TIMER_A);
+	 return retAdr;
 	
-	TimerIntEnable(WTIMER0_BASE,TIMER_TIMA_TIMEOUT);
-	IntPrioritySet(INT_WTIMER0A,(WTIMER0_PRIO)<<5); 			//Priority 1 = "001"0.0000
-	IntEnable(INT_WTIMER0A);	//Wide Timer 0A enable of interrupts
-}
+} 
 char getINTTIMER_Address(unsigned long base, unsigned long timer)
 {
 	unsigned long timerNumber=0xf;
@@ -58,21 +53,28 @@ char getINTTIMER_Address(unsigned long base, unsigned long timer)
 	
 	char intRet=0;
 	
-	int debug=0;
+ 
 	timerNumber=timerNumber<<12;
 	timerNumber=base&timerNumber;
 	timerNumber=timerNumber>>12;
-	if(timerNumber>=0 && timerNumber<=2) intRet=35+timerNumber*2+timerType;
+	if(timerNumber<=2) intRet=35+timerNumber*2+timerType;
 	else if(timerNumber==3) intRet=51+timerType;
 	else if(timerNumber==4) intRet=86+timerType;
-	else if(timerNumber==5) intRet=108+(timerNumber-5)*2+timerType;
+	else if(timerNumber>=5) intRet=108+(timerNumber-5)*2+timerType;
 	return intRet;
 }
-void InitDebouncingTimer(unsigned long base, unsigned long timer)
+char getPrioIndex(unsigned long base)
+{
+	char	index=(base&(0xf)<<12)>>12 ;
+	if(index<=7)return index;
+	else return index-4;
+		
+}
+void Init_Timer(unsigned long base, unsigned long timer, unsigned long period)
 {
 	char intTimer=getINTTIMER_Address(base, timer);
-	unsigned long offset=+(base&(0xf)<<12)>>12;
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0+offset);  //Wide Timer 0 enable 
+	unsigned long periphAdr=getPeriphTimerAddress(base);
+  SysCtlPeripheralEnable(periphAdr);  //Wide Timer 0 enable 
  
 	
 	IntDisable(intTimer);  //Wide Timer 0A disable of interrupts
@@ -82,15 +84,16 @@ void InitDebouncingTimer(unsigned long base, unsigned long timer)
 	TimerClockSourceSet(base, TIMER_CLOCK_SYSTEM);
 	TimerConfigure(base, TIMER_CFG_A_PERIODIC);
 
-	TimerLoadSet(base, timer, TIMER_reload_calculator(500));	//Set cycle nr for 300 ms	
-	//TimerEnable(TIMER2_BASE, TIMER_A);  //Timer will be enabled by GPIO switch ISR
-	
+	TimerLoadSet(base, timer, TIMER_reload_calculator(period));	//Set cycle nr for 300 ms	
+	  
 	TimerIntEnable(base,TIMER_TIMA_TIMEOUT);
-	IntPrioritySet(intTimer,(TIMER2_PRIO)<<5);  //Priority 1 = "001"0.0000
+	IntPrioritySet(intTimer,(prioTimerArray[getPrioIndex(base)])<<5);  //Priority 1 = "001"0.0000
 	IntEnable(intTimer);	//Wide Timer 0A enable of interrupts
 }
 
   
+
+
 
 void TIMER_delay(unsigned long delay_time_ms)
 {
@@ -115,51 +118,16 @@ void TIMER_delay_No_Int(unsigned long delay_time_ms)
 
 void WTIMER0A_Handler(void)		//Wide Timer 0 A ISR
 {unsigned long var=2;
-	unsigned long timer_value=0;
+	unsigned long timer_value;
 	if(TimerIntStatus(WTIMER0_BASE,false))
 	{
 		TimerIntClear(WTIMER0_BASE, TIMER_A);
 		timer_value = TimerValueGet(WTIMER0_BASE, TIMER_A);
 
-	 ADCProcessorTrigger(ADC1_BASE, var);  //Trigger Temperature sensor ADC
+	   ADCProcessorTrigger(ADC1_BASE, var);  //Trigger Temperature sensor ADC
 	// ADCProcessorTrigger(ADC0_BASE, 3);  //Trigger Temperature sensor ADC
 		
 
 	}
 }
-/*void DebouncingTimerHandler(unsigned long  base, unsigned long  timer,unsigned long base, unsigned long port)  //Timer 1 A ISR used to debounce SW2
-{
-	unsigned long switch_value = 0;
-	//Display_String("Timer 1 ISR launched -> ");
-	if(TimerIntStatus(base,false))
-	{
-		TimerDisable(base, timer);
-		TimerIntClear(base, timer);
-		switch_value = GPIOPinRead(GPIO_PORTF_BASE,GPIO_PIN_0);
-		if(!(switch_value & GPIO_PIN_0)) {
-			if (PWM_DutyCycle >= 99)
-			{
-				Display_String("HOT enough!");
-				Display_NewLine();
-			}
-			else
-			{
-				Display_String("Getting hotter...");	
-				Display_String(" Simulated temperature: ");
-				Display_Decimal(PWM_DutyCycle);
-				Display_String(" % of 100%");
-				Display_NewLine();
-			}
-			PWM_DutyCycle += 2;
-			if (PWM_DutyCycle > 100) {
-				PWM_DutyCycle = 100;
-			}
-		//	RED_PWM_DutyCycle(PWM_DutyCycle);
-		//	BLUE_PWM_DutyCycle(100-PWM_DutyCycle);			
-		}
-	GPIOIntEnable(GPIO_PORTF_BASE, GPIO_INT_PIN_0);  //Enable GPIO pin interrupt		
-	}
-}
-*/
- 
 //EOF

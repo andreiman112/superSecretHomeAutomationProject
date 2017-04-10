@@ -142,37 +142,3 @@ unsigned char var=2;
 		TEMP = 147.5 - ((75 * (VREFP - VREFN) × ADCCODE) / 4096)
 		*/
 	}
-
-void ADC0SS3_Handler(void) {  //ADC0 Seq3 ISR
-
-	uint32_t digital_value;
-	if(ADCIntStatus(ADC0_BASE, 3, false))
-	{  
-		ADCIntClear(ADC0_BASE, 3);  //Clear interrupt flag
-		ADCSequenceDataGet(ADC0_BASE, 3, &digital_value);		
-		
-	 	IntMasterDisable();	//Global interrupt disable
-		Sensor_Temperature = (147.5 - ((75 * (ADC_Ref_Voltage) * digital_value) / 4095));
-		Sensor_AnalogVoltage = ((digital_value * ADC_Ref_Voltage)/4096)*1000;
-		IntMasterEnable();	//Global interrupt enable
-		
-			Display_NewLine();
-		Display_String("PE2 ");			
-		Display_Decimal(digital_value);
-		/*
-		The internal temperature sensor converts a temperature measurement into a voltage. This voltage
-		value, VTSENS, is given by the following equation (where TEMP is the temperature in °C):
-		VTSENS = 2.7 - ((TEMP + 55) / 75)
-		
-		The temperature sensor reading can be sampled in a sample sequence by setting the TSn bit in
-		the ADCSSCTLn register. The temperature reading from the temperature sensor can also be given
-		as a function of the ADC value. The following formula calculates temperature (TEMP in ?) based
-		on the ADC reading (ADCCODE, given as an unsigned decimal number from 0 to 4095) and the
-		maximum ADC voltage range (VREFP - VREFN):
-		TEMP = 147.5 - ((75 * (VREFP - VREFN) × ADCCODE) / 4096)
-		*/
-	}
-}
-
- 
-
