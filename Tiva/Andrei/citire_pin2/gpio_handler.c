@@ -44,27 +44,22 @@ unsigned long getPeriphAddress(unsigned long port)
 	
 	 return SYSCTL_PERIPH_GPIOA+offset;
 	
-}
-unsigned long getPortAddress(unsigned long port)
+} 
+char getINTGPIO_Adrress(unsigned long port)
 {
-		return port;
-}
-char getINTAdrress(unsigned long port)
-{
-char litera,prefix, offset=0;
-	 
+ 
 		char id=(port&(0xff)<<12)>>12;
-	  
-	
+	 char intRet=0;
 	if(id>=4 && id<=7)
-	 return id+12;//A,B,C,D
-	else if(id==24) return 20; //E
-	else if(id>=25 && id<=27) return id+21;//F,G,H
+	 intRet= id+(0xC);//A,B,C,D
+	else if(id==(0x24)) intRet= 20; //E
+	else if(id>=(0x25) && id<=(0x27)) intRet= id+(0x9);//F,G,H
 
+	return intRet;
 }
 void SetGPIOInput(unsigned long port, unsigned long pin){
 	
-	unsigned long portAddr=getPortAddress(port); 
+	unsigned long portAddr=port; 
   
 	SysCtlPeripheralEnable(getPeriphAddress(port));  //Enable clock on port  
 		
@@ -82,16 +77,14 @@ void SetGPIOInput(unsigned long port, unsigned long pin){
 }
 int ReadPinState(unsigned long port, unsigned long pin ){
 
-	port=getPortAddress(port);
-	
 	if(GPIOPinRead(port,pin)!=pin) return 0;
 	else return 1;
 
 }
 void SetGPIOInterrupt(unsigned long port , unsigned long pin)
 {
-	 unsigned long portAddr=getPortAddress(port);
-	 char int_addr=getINTAdrress(port);
+	 unsigned long portAddr=port;
+	 char int_addr=getINTGPIO_Adrress(port);
 	 IntDisable(int_addr);  //GPIO Port   disable of interrupts
 	
    SetGPIOInput(portAddr,pin);

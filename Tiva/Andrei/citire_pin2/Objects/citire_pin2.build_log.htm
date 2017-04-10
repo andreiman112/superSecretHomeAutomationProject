@@ -21,37 +21,27 @@ Target DLL:      lmidk-agdi.dll V???
 Dialog DLL:      TCM.DLL V1.21.0.0
  
 <h2>Project:</h2>
-C:\Users\Andrei.Man\Google Drive\Projects\citire_pin2\citire_pin2.uvprojx
+C:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Andrei\citire_pin2\citire_pin2.uvprojx
 Project File Date:  04/07/2017
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
 compiling display.c...
-compiling gpio_handler.c...
-gpio_handler.c(37): warning:  #177-D: variable "prefix"  was declared but never referenced
-  	char litera,prefix, offset=0;
-gpio_handler.c(64): warning:  #940-D: missing return statement at end of non-void function "getINTAdrress" 
-  }
-gpio_handler.c(54): warning:  #177-D: variable "litera"  was declared but never referenced
-  char litera,prefix, offset=0;
-gpio_handler.c(54): warning:  #177-D: variable "prefix"  was declared but never referenced
-  char litera,prefix, offset=0;
-gpio_handler.c(54): warning:  #177-D: variable "offset"  was declared but never referenced
-  char litera,prefix, offset=0;
-gpio_handler.c: 5 warnings, 0 errors
 compiling main.c...
 adc_handler.h(7): warning:  #1-D: last line of file ends without a newline
   #include "timer.h"
 main.c(32): warning:  #177-D: variable "switch_value"  was declared but never referenced
   		int switch_value;
-main.c(83): warning:  #223-D: function "Add_ADC_Channel" declared implicitly
+main.c(74): warning:  #223-D: function "getINTGPIO_Adrress" declared implicitly
+  	Display_Decimal( getINTGPIO_Adrress(GPIO_PORTF_BASE));
+main.c(85): warning:  #223-D: function "Add_ADC_Channel" declared implicitly
   	Add_ADC_Channel(ADC_CTL_CH1);
-main.c(86): warning:  #223-D: function "ADC_Init" declared implicitly
+main.c(88): warning:  #223-D: function "ADC_Init" declared implicitly
      ADC_Init();	
-main.c(109): warning:  #223-D: function "Get_ADC_Value" declared implicitly
-  			 Display_Decimal(Get_ADC_Value(0));
-main.c(125): warning:  #111-D: statement is unreachable
+main.c(111): warning:  #223-D: function "Get_ADC_Value" declared implicitly
+  		  Display_Decimal(Get_ADC_Value(0));
+main.c(127): warning:  #111-D: statement is unreachable
   return 0;	
 main.c(63): warning:  #550-D: variable "ui32SysClock"  was set but never used
   	unsigned long ui32SysClock;
@@ -59,11 +49,22 @@ main.c(64): warning:  #177-D: variable "a"  was declared but never referenced
   	int a=1;
 main.c(65): warning:  #177-D: variable "b"  was declared but never referenced
   	unsigned long b=0x132;
-main.c: 9 warnings, 0 errors
+main.c(66): warning:  #177-D: variable "ayjty"  was declared but never referenced
+  	int ayjty=(0x40032000&((0xf)<<12))>>12;
+main.c: 11 warnings, 0 errors
+compiling gpio_handler.c...
+gpio_handler.c(37): warning:  #177-D: variable "prefix"  was declared but never referenced
+  	char litera,prefix, offset=0;
+gpio_handler.c: 1 warning, 0 errors
 compiling timer.c...
-timer.c(132): warning:  #550-D: variable "timer_value"  was set but never used
+timer.c(65): warning:  #186-D: pointless comparison of unsigned integer with zero
+  	if(timerNumber>=0 && timerNumber<=2) intRet=35+timerNumber*timerNumber+timerType;
+timer.c(61): warning:  #177-D: variable "debug"  was declared but never referenced
+  	int debug=0;
+timer.c(152): warning:  #550-D: variable "timer_value"  was set but never used
   	unsigned long timer_value=0;
-timer.c: 1 warning, 0 errors
+timer.c: 3 warnings, 0 errors
+compiling pwm_handler.c...
 compiling adc_handler.c...
 adc_handler.h(7): warning:  #1-D: last line of file ends without a newline
   #include "timer.h"
@@ -81,11 +82,10 @@ adc_handler.c(160): warning:  #223-D: function "Display_String" declared implici
 adc_handler.c(161): warning:  #223-D: function "Display_Decimal" declared implicitly
   		Display_Decimal(digital_value);
 adc_handler.c: 7 warnings, 0 errors
-compiling pwm_handler.c...
 assembling startup_TM4C123.s...
 compiling system_TM4C123.c...
 linking...
-Program Size: Code=6940 RO-data=1372 RW-data=24 ZI-data=656  
+Program Size: Code=7016 RO-data=1372 RW-data=24 ZI-data=656  
 ".\Objects\citire_pin2.axf" - 0 Error(s), 22 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -104,7 +104,7 @@ Package Vendor: Keil
    * Component: Startup Version: 1.0.1
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\Andrei.Man\Google Drive\Projects\citire_pin2\RTE\_Target_1
+  C:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Andrei\citire_pin2\RTE\_Target_1
   C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include
   C:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123
 
@@ -120,7 +120,7 @@ Package Vendor: Keil
       Include file:  Device\Include\TM4C123\TM4C123.h
       Source file:   Device\Source\ARM\startup_TM4C123.s
       Source file:   Device\Source\system_TM4C123.c
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

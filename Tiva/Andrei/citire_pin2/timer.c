@@ -50,12 +50,32 @@ void TIMER_Wide_0_Init(void)	//cyclic wide timer configuration
 	IntPrioritySet(INT_WTIMER0A,(WTIMER0_PRIO)<<5); 			//Priority 1 = "001"0.0000
 	IntEnable(INT_WTIMER0A);	//Wide Timer 0A enable of interrupts
 }
+char getINTTIMER_Address(unsigned long base, unsigned long timer)
+{
+	unsigned long timerNumber=0xf;
+	
+	char timerType=((0xff00)&timer)>>8;
+	
+	char intRet=0;
+	
+	int debug=0;
+	timerNumber=timerNumber<<12;
+	timerNumber=base&timerNumber;
+	timerNumber=timerNumber>>12;
+	if(timerNumber>=0 && timerNumber<=2) intRet=35+timerNumber*timerNumber+timerType;
+	else if(timerNumber==3) intRet=51+timerType;
+	else if(timerNumber==4) intRet=86+timerType;
+	else if(timerNumber==5) intRet=108+timerType;
+	return intRet;
+}
 void InitDebouncingTimer(unsigned long base, unsigned long timer)
 {
+	char intTimer=getINTTIMER_Address(base, timer);
 	unsigned long offset=+(base&(0xf)<<12)>>12;
   SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0+offset);  //Wide Timer 0 enable 
  
-	IntDisable(INT_TIMER2A);  //Wide Timer 0A disable of interrupts
+	
+	IntDisable(intTimer);  //Wide Timer 0A disable of interrupts
 	TimerIntDisable(base,TIMER_TIMA_TIMEOUT);
 	
 	TimerDisable(base, timer);
@@ -66,8 +86,8 @@ void InitDebouncingTimer(unsigned long base, unsigned long timer)
 	//TimerEnable(TIMER2_BASE, TIMER_A);  //Timer will be enabled by GPIO switch ISR
 	
 	TimerIntEnable(base,TIMER_TIMA_TIMEOUT);
-	IntPrioritySet(INT_TIMER2A,(TIMER2_PRIO)<<5);  //Priority 1 = "001"0.0000
-	IntEnable(INT_TIMER2A);	//Wide Timer 0A enable of interrupts
+	IntPrioritySet(intTimer,(TIMER2_PRIO)<<5);  //Priority 1 = "001"0.0000
+	IntEnable(intTimer);	//Wide Timer 0A enable of interrupts
 }
 
 void TIMER_1_Init(void)	//cyclic timer configuration for PF0 / SW2 debounce
