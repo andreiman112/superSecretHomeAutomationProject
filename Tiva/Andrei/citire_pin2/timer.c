@@ -62,10 +62,10 @@ char getINTTIMER_Address(unsigned long base, unsigned long timer)
 	timerNumber=timerNumber<<12;
 	timerNumber=base&timerNumber;
 	timerNumber=timerNumber>>12;
-	if(timerNumber>=0 && timerNumber<=2) intRet=35+timerNumber*timerNumber+timerType;
+	if(timerNumber>=0 && timerNumber<=2) intRet=35+timerNumber*2+timerType;
 	else if(timerNumber==3) intRet=51+timerType;
 	else if(timerNumber==4) intRet=86+timerType;
-	else if(timerNumber==5) intRet=108+timerType;
+	else if(timerNumber==5) intRet=108+(timerNumber-5)*2+timerType;
 	return intRet;
 }
 void InitDebouncingTimer(unsigned long base, unsigned long timer)

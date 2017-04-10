@@ -33,23 +33,23 @@ adc_handler.h(7): warning:  #1-D: last line of file ends without a newline
   #include "timer.h"
 main.c(32): warning:  #177-D: variable "switch_value"  was declared but never referenced
   		int switch_value;
-main.c(74): warning:  #223-D: function "getINTGPIO_Adrress" declared implicitly
+main.c(73): warning:  #223-D: function "getINTGPIO_Adrress" declared implicitly
   	Display_Decimal( getINTGPIO_Adrress(GPIO_PORTF_BASE));
-main.c(85): warning:  #223-D: function "Add_ADC_Channel" declared implicitly
+main.c(84): warning:  #223-D: function "Add_ADC_Channel" declared implicitly
   	Add_ADC_Channel(ADC_CTL_CH1);
-main.c(88): warning:  #223-D: function "ADC_Init" declared implicitly
+main.c(87): warning:  #223-D: function "ADC_Init" declared implicitly
      ADC_Init();	
-main.c(111): warning:  #223-D: function "Get_ADC_Value" declared implicitly
+main.c(110): warning:  #223-D: function "Get_ADC_Value" declared implicitly
   		  Display_Decimal(Get_ADC_Value(0));
-main.c(127): warning:  #111-D: statement is unreachable
+main.c(126): warning:  #111-D: statement is unreachable
   return 0;	
-main.c(63): warning:  #550-D: variable "ui32SysClock"  was set but never used
+main.c(62): warning:  #550-D: variable "ui32SysClock"  was set but never used
   	unsigned long ui32SysClock;
-main.c(64): warning:  #177-D: variable "a"  was declared but never referenced
+main.c(63): warning:  #177-D: variable "a"  was declared but never referenced
   	int a=1;
-main.c(65): warning:  #177-D: variable "b"  was declared but never referenced
+main.c(64): warning:  #177-D: variable "b"  was declared but never referenced
   	unsigned long b=0x132;
-main.c(66): warning:  #177-D: variable "ayjty"  was declared but never referenced
+main.c(65): warning:  #177-D: variable "ayjty"  was declared but never referenced
   	int ayjty=(0x40032000&((0xf)<<12))>>12;
 main.c: 11 warnings, 0 errors
 compiling gpio_handler.c...
@@ -58,13 +58,12 @@ gpio_handler.c(37): warning:  #177-D: variable "prefix"  was declared but never 
 gpio_handler.c: 1 warning, 0 errors
 compiling timer.c...
 timer.c(65): warning:  #186-D: pointless comparison of unsigned integer with zero
-  	if(timerNumber>=0 && timerNumber<=2) intRet=35+timerNumber*timerNumber+timerType;
+  	if(timerNumber>=0 && timerNumber<=2) intRet=35+timerNumber*2+timerType;
 timer.c(61): warning:  #177-D: variable "debug"  was declared but never referenced
   	int debug=0;
-timer.c(152): warning:  #550-D: variable "timer_value"  was set but never used
+timer.c(118): warning:  #550-D: variable "timer_value"  was set but never used
   	unsigned long timer_value=0;
 timer.c: 3 warnings, 0 errors
-compiling pwm_handler.c...
 compiling adc_handler.c...
 adc_handler.h(7): warning:  #1-D: last line of file ends without a newline
   #include "timer.h"
@@ -82,10 +81,11 @@ adc_handler.c(160): warning:  #223-D: function "Display_String" declared implici
 adc_handler.c(161): warning:  #223-D: function "Display_Decimal" declared implicitly
   		Display_Decimal(digital_value);
 adc_handler.c: 7 warnings, 0 errors
+compiling pwm_handler.c...
 assembling startup_TM4C123.s...
 compiling system_TM4C123.c...
 linking...
-Program Size: Code=7016 RO-data=1372 RW-data=24 ZI-data=656  
+Program Size: Code=7020 RO-data=1372 RW-data=24 ZI-data=656  
 ".\Objects\citire_pin2.axf" - 0 Error(s), 22 Warning(s).
 
 <h2>Software Packages used:</h2>
