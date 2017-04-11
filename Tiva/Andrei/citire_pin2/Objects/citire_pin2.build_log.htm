@@ -29,40 +29,15 @@ Project File Date:  04/07/2017
 Rebuild target 'Target 1'
 compiling display.c...
 compiling main.c...
-adc_handler.h(6): warning:  #1-D: last line of file ends without a newline
-  #include "timer.h"
-main.c(114): warning:  #223-D: function "Add_ADC_Channel" declared implicitly
-    	Add_ADC_Channel(ADC_CTL_CH1);
-main.c(117): warning:  #223-D: function "ADC_Init" declared implicitly
-      ADC_Init();	
-main.c(140): warning:  #223-D: function "Get_ADC_Value" declared implicitly
-  		  Display_Decimal(Get_ADC_Value(0));
-main.c: 4 warnings, 0 errors
 compiling gpio_handler.c...
-gpio_handler.c(37): warning:  #177-D: variable "prefix"  was declared but never referenced
-  	char litera,prefix, offset=0;
-gpio_handler.c: 1 warning, 0 errors
 compiling timer.c...
-timer.c(121): warning:  #550-D: variable "timer_value"  was set but never used
-  	unsigned long timer_value;
-timer.c: 1 warning, 0 errors
 compiling pwm_handler.c...
-assembling startup_TM4C123.s...
 compiling adc_handler.c...
-adc_handler.h(6): warning:  #1-D: last line of file ends without a newline
-  #include "timer.h"
-adc_handler.c(34): warning:  #177-D: variable "step"  was declared but never referenced
-  	unsigned char step=0;
-adc_handler.c(89): warning:  #167-D: argument of type "unsigned long *" is incompatible with parameter of type "uint32_t *"
-  		ADCSequenceDataGet(
-DC1_BASE,var,  adcValues);
-adc_handler.c(128): warning:  #9-D: nested comment is not allowed
-  			/*
-adc_handler.c: 4 warnings, 0 errors
+assembling startup_TM4C123.s...
 compiling system_TM4C123.c...
 linking...
-Program Size: Code=4788 RO-data=1372 RW-data=40 ZI-data=656  
-".\Objects\citire_pin2.axf" - 0 Error(s), 10 Warning(s).
+Program Size: Code=4880 RO-data=1372 RW-data=40 ZI-data=664  
+".\Objects\citire_pin2.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
