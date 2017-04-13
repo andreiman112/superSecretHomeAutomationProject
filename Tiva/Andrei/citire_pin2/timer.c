@@ -85,8 +85,7 @@ void Init_Timer(unsigned long base, unsigned long timer, unsigned long period)
 	TimerConfigure(base, TIMER_CFG_A_PERIODIC);
 
 	TimerLoadSet(base, timer, TIMER_reload_calculator(period));	//Set cycle nr for 300 ms	
- 
-	
+	  
 	TimerIntEnable(base,TIMER_TIMA_TIMEOUT);
 	IntPrioritySet(intTimer,(prioTimerArray[getPrioIndex(base)])<<5);  //Priority 1 = "001"0.0000
 	IntEnable(intTimer);	//Wide Timer 0A enable of interrupts
@@ -116,19 +115,19 @@ void TIMER_delay_No_Int(unsigned long delay_time_ms)
 	}
 	IntMasterEnable();	//Global interrupt enable
 }
- 
+
 void WTIMER0A_Handler(void)		//Wide Timer 0 A ISR
 {unsigned long var=2;
-//	unsigned long timer_value;
+	unsigned long timer_value;
 	if(TimerIntStatus(WTIMER0_BASE,false))
 	{
 		TimerIntClear(WTIMER0_BASE, TIMER_A);
-		///timer_value = TimerValueGet(WTIMER0_BASE, TIMER_A);
+		timer_value = TimerValueGet(WTIMER0_BASE, TIMER_A);
 
 	   ADCProcessorTrigger(ADC1_BASE, var);  //Trigger Temperature sensor ADC
- 
-		 TimerEnable(WTIMER0_BASE, TIMER_A);
+	// ADCProcessorTrigger(ADC0_BASE, 3);  //Trigger Temperature sensor ADC
+		
 
 	}
-} 
+}
 //EOF

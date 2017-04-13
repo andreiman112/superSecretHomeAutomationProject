@@ -1,5 +1,5 @@
 Dependencies for Project 'citire_pin2', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x58EC89F4)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk-IC:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Andrei\citire_pin2\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x58EB8671)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk-IC:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Andrei\citire_pin2\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/sysctl.h)(0x56485AD8)
@@ -13,14 +13,14 @@ I (..\TivaWare_C_Series-2.1.1.71\driverlib/pwm.h)(0x56485AD8)
 I (..\TivaWare_C_Series-2.1.1.71\inc/hw_memmap.h)(0x57104DAC)
 I (..\TivaWare_C_Series-2.1.1.71\inc/hw_ints.h)(0x58EB6A66)
 I (display.h)(0x58E4F466)
-I (gpio_handler.h)(0x58EC632C)
-I (adc_handler.h)(0x58EC5912)
-I (timer.h)(0x58EC61C2)
-F (.\gpio_handler.h)(0x58EC632C)()
-F (.\gpio_handler.c)(0x58EC6E4D)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk-IC:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Andrei\citire_pin2\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\gpio_handler.o --omf_browse .\objects\gpio_handler.crf --depend .\objects\gpio_handler.d)
+I (gpio_handler.h)(0x58E5EDB7)
+I (adc_handler.h)(0x58EB85B0)
+I (timer.h)(0x58EB856E)
+F (.\gpio_handler.h)(0x58E5EDB7)()
+F (.\gpio_handler.c)(0x58EB5D9A)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk-IC:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Andrei\citire_pin2\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\gpio_handler.o --omf_browse .\objects\gpio_handler.crf --depend .\objects\gpio_handler.d)
 I (..\TivaWare_C_Series-2.1.1.71\inc/hw_memmap.h)(0x57104DAC)
 I (..\TivaWare_C_Series-2.1.1.71\inc/hw_ints.h)(0x58EB6A66)
-I (gpio_handler.h)(0x58EC632C)
+I (gpio_handler.h)(0x58E5EDB7)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/sysctl.h)(0x56485AD8)
@@ -38,8 +38,8 @@ I (..\TivaWare_C_Series-2.1.1.71\driverlib/pin_map.h)(0x566A1F38)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/gpio.h)(0x56485AD8)
 I (..\TivaWare_C_Series-2.1.1.71\inc/hw_memmap.h)(0x57104DAC)
 F (.\display.h)(0x58E4F466)()
-F (.\timer.c)(0x58EC683D)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk-IC:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Andrei\citire_pin2\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
-I (timer.h)(0x58EC61C2)
+F (.\timer.c)(0x58EB8689)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk-IC:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Andrei\citire_pin2\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
+I (timer.h)(0x58EB856E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
 I (display.h)(0x58E4F466)
@@ -51,22 +51,22 @@ I (..\TivaWare_C_Series-2.1.1.71\driverlib/pin_map.h)(0x566A1F38)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/gpio.h)(0x56485AD8)
 I (..\TivaWare_C_Series-2.1.1.71\inc/hw_memmap.h)(0x57104DAC)
 I (..\TivaWare_C_Series-2.1.1.71\inc/hw_ints.h)(0x58EB6A66)
-F (.\timer.h)(0x58EC61C2)()
-F (.\adc_handler.c)(0x58EC689B)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk-IC:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Andrei\citire_pin2\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\adc_handler.o --omf_browse .\objects\adc_handler.crf --depend .\objects\adc_handler.d)
-I (adc_handler.h)(0x58EC5912)
+F (.\timer.h)(0x58EB856E)()
+F (.\adc_handler.c)(0x58EB8477)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk-IC:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Andrei\citire_pin2\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\adc_handler.o --omf_browse .\objects\adc_handler.crf --depend .\objects\adc_handler.d)
+I (adc_handler.h)(0x58EB85B0)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/interrupt.h)(0x56485AD8)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/timer.h)(0x56485AD8)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/adc.h)(0x5653C9BA)
-I (timer.h)(0x58EC61C2)
+I (timer.h)(0x58EB856E)
 I (..\TivaWare_C_Series-2.1.1.71\inc/hw_memmap.h)(0x57104DAC)
 I (..\TivaWare_C_Series-2.1.1.71\inc/hw_ints.h)(0x58EB6A66)
-I (gpio_handler.h)(0x58EC632C)
+I (gpio_handler.h)(0x58E5EDB7)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/sysctl.h)(0x56485AD8)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/gpio.h)(0x56485AD8)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/pin_map.h)(0x566A1F38)
-F (.\adc_handler.h)(0x58EC5912)()
+F (.\adc_handler.h)(0x58EB85B0)()
 F (.\pwm_handler.c)(0x58E79DCA)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk-IC:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Andrei\citire_pin2\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\pwm_handler.o --omf_browse .\objects\pwm_handler.crf --depend .\objects\pwm_handler.d)
 I (pwm_handler.h)(0x58E79D64)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)

@@ -33,7 +33,7 @@ void TIMER2A_Handler(void)  //Timer 1 A ISR used to debounce SW2
 	{
 		TimerDisable(TIMER2_BASE, TIMER_A);
 		TimerIntClear(TIMER2_BASE, TIMER_A);
-     //switch_value = ReadPinState(GPIO_PORTF_BASE,GPIO_PIN_4);
+//switch_value = ReadPinState(GPIO_PORTF_BASE,GPIO_PIN_4);
 	
 		///if(switch_value)
 		{
@@ -50,12 +50,12 @@ void TIMER2A_Handler(void)  //Timer 1 A ISR used to debounce SW2
 }
 void TIMER1A_Handler(void)  //Timer 1 A ISR used to debounce SW2
 {
-	TimerDisable(TIMER1_BASE, TIMER_A);
+//	TimerDisable(TIMER1_BASE, TIMER_A);
 		TimerIntClear(TIMER1_BASE, TIMER_A);
-    Display_NewLine();
-	  Display_String("MISCARE...");
-	 
-	  GPIOIntEnable(GPIO_PORTD_BASE, GPIO_INT_PIN_6);
+	Display_NewLine();
+	  Display_String("timer 1");
+	
+	   TimerEnable(TIMER1_BASE, TIMER_A);
 }
 
 void TIMER4A_Handler(void)  //Timer 1 A ISR used to debounce SW2
@@ -81,14 +81,7 @@ void GPIOF_Handler(void) 	//GPIO port F ISR
 	  GPIOIntClear(GPIO_PORTF_BASE,  GPIO_INT_PIN_4);
     TimerEnable(TIMER2_BASE, TIMER_A);
 	  GPIOIntDisable(GPIO_PORTF_BASE,GPIO_PIN_4); 
-} 
-
-void GPIOD_Handler(void) 	//GPIO port D ISR
-{	 
-	  GPIOIntClear(GPIO_PORTD_BASE,  GPIO_INT_PIN_6);
-    TimerEnable(TIMER1_BASE, TIMER_A);
-	  GPIOIntDisable(GPIO_PORTD_BASE,GPIO_PIN_6); 
-} 
+}
 int main(void)
 {
 	
@@ -102,26 +95,27 @@ int main(void)
 	Display_NewLine(); 
   Display_String("Hello!");	
   Init_Timer(WTIMER0_BASE, TIMER_A,500);
-  Init_Timer(TIMER4_BASE, TIMER_A,1500);   	
-	Init_Timer(TIMER1_BASE, TIMER_A,500);	  	
-	Init_Timer(TIMER2_BASE, TIMER_A,500);
+	//	Init_Timer(WTIMER1_BASE, TIMER_A,250);
+   
+    Init_Timer(TIMER2_BASE, TIMER_A,300);
+ Init_Timer(TIMER4_BASE, TIMER_A,3000);
+   	
+	Init_Timer(TIMER1_BASE, TIMER_A,3000);
+	 
+	  TimerEnable(TIMER4_BASE, TIMER_A);
+	 TimerEnable(TIMER1_BASE, TIMER_A);
+		 TimerEnable(WTIMER0_BASE, TIMER_A);
 	
-	
-	// TimerEnable(TIMER4_BASE, TIMER_A);
-	 //TimerEnable(TIMER1_BASE, TIMER_A); 
-   TimerEnable(WTIMER0_BASE, TIMER_A);
-	
-	 SetGPIOInterrupt(GPIO_PORTF_BASE,GPIO_PIN_4,GPIO_RISING_EDGE);
-	 SetGPIOInterrupt(GPIO_PORTD_BASE,GPIO_PIN_6,GPIO_RISING_EDGE);
-	 SetGPIOInput(GPIO_PORTF_BASE,GPIO_PIN_0,1);	
-	 SetGPIOInput(GPIO_PORTC_BASE,GPIO_PIN_7,1);
+	SetGPIOInterrupt(GPIO_PORTF_BASE,GPIO_PIN_4);
+	  SetGPIOInput(GPIO_PORTF_BASE,GPIO_PIN_0);	
+	  SetGPIOInput(GPIO_PORTC_BASE,GPIO_PIN_7);
   
 	
   	Add_ADC_Channel(ADC_CTL_CH1);
 	  Add_ADC_Channel(ADC_CTL_CH4);
 	  Add_ADC_Channel(ADC_CTL_CH7);
     ADC_Init();	
- 
+	 
 	 // Sensor2_Init();
 	 IntMasterEnable();	//Global interrupt enable
 	 Display_NewLine();
@@ -142,17 +136,17 @@ int main(void)
 		if(!ReadPinState(GPIO_PORTF_BASE,GPIO_PIN_0))
 		 {
 	 Display_NewLine();
-			 Display_String("poetentionemtru:  ");	 
+	   Display_String("pe2= ");	 
 		  Display_Decimal(Get_ADC_Value(0));
 		 
 			 }
 		if(!ReadPinState(GPIO_PORTC_BASE,GPIO_PIN_7))
 		 {
 		  Display_NewLine();
-			 Display_String("senzor lumina ambientala: ");	 
-		 Display_Decimal(Get_ADC_Value(1));
+		  Display_String("PC7 pressed");	 
+		 
 			 }
-		  
+		 
       
 			 
 			 
