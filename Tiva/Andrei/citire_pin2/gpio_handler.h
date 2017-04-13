@@ -27,8 +27,8 @@
 /*-----------External function definisions-----------*/
 void RGB_Led_Blink(unsigned long, unsigned long);
 void delay(int);
-void SetGPIOInput(unsigned long , unsigned long );
-void SetGPIOInterrupt(unsigned long , unsigned long );
+void SetGPIOInput(unsigned long , unsigned long , bool );
+void SetGPIOInterrupt(unsigned long , unsigned long ,unsigned long);
  
 int ReadPinState(unsigned long , unsigned long );
 void SavePinState(char, unsigned long , unsigned long )	;													
