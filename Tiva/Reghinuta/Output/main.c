@@ -105,6 +105,14 @@ int main(void)
  
 	SetGPIOInterrupt(GPIO_PORTF_BASE,GPIO_PIN_0,GPIO_FALLING_EDGE);
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	while(ui32SysClock)  //Clock working
 	{
 		//run forever
