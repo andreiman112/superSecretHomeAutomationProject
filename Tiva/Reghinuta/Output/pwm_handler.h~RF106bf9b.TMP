@@ -1,0 +1,24 @@
+#ifndef PWM_HANDLER_H
+#define PWM_HANDLER_H
+/*--------------------Type Includes------------------*/
+#include "stdbool.h"
+#include "stdint.h"
+/*-------------------Driver Includes-----------------*/
+#include "driverlib/sysctl.h"
+#include "driverlib/gpio.h"
+#include "driverlib/pin_map.h"
+#include "driverlib/pwm.h"
+#include "inc/hw_memmap.h"
+
+
+void GPIO_Configure_PWM(unsigned long,unsigned long);
+void Init_PWM(unsigned long, unsigned long, unsigned long);
+void DutyCycle(unsigned long, unsigned long, unsigned long);
+void StatePWM(unsigned long, unsigned long, bool);
+unsigned long PWMBase(unsigned long,unsigned long);
+unsigned long BitIdPWM(unsigned long,unsigned long);
+unsigned long EncodedOffsetPWM(unsigned long,unsigned long);
+unsigned long GenPWM(unsigned long,unsigned long);
+unsigned long SysCtlEnable(unsigned long);
+void FunctionRGBPWM(unsigned long, unsigned long, int);
+#endif
