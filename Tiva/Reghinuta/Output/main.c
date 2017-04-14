@@ -5,6 +5,8 @@
 
 #include "gpio_handler.h"
 #include "pwm_handler.h"
+#include "ssi_handler.h"
+#include "rgb_st.h"
 
 /*-------------------Driver Includes-----------------*/
 #include "driverlib/sysctl.h"
@@ -20,6 +22,24 @@
 #define BLUE (0x04)	//PF2
 #define GREEN (0x08)  //PF3
 #define Servo_DutyCycle_Step (1)
+
+#ifdef __TI_COMPILER_VERSION__
+	//Code Composer Studio Code
+	void Delay(uint32_t ulCount){
+	__asm (	"loop    subs    r0, #1\n"
+			"    bne     loop\n");
+}
+
+#else
+	//Keil uVision Code
+	__asm void
+	Delay(uint32_t ulCount)
+	{
+    subs    r0, #1
+    bne     Delay
+    bx      lr
+	}
+#endif
 
 void TIMER1A_Handler(void)  //Timer 1 A ISR used to debounce SW2
 {
@@ -83,9 +103,11 @@ void GPIOF_Handler(void) 	//GPIO port F ISR
 }
 int main(void)
 {
-	//unsigned long duty_cycle = 3;
+
 	unsigned long ui32SysClock;
+	tstRGB LedColor = {0x00,0x00,0x00};
 	
+	//unsigned long duty_cycle = 3;
 	//unsigned long duty_cycle_rgb=0;
 	
 	SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN); //80 Mhz
@@ -95,6 +117,7 @@ int main(void)
 	Display_NewLine();
 	Display_String("heeloo "); 
 	
+	/*
 	Init_PWM(GPIO_PORTF_BASE,GPIO_PIN_2, Clock_Ticks(20));
 	Duty_Cycle(GPIO_PORTF_BASE,GPIO_PIN_2, 925);
 	
@@ -105,27 +128,23 @@ int main(void)
  
 	SetGPIOInterrupt(GPIO_PORTF_BASE,GPIO_PIN_0,GPIO_FALLING_EDGE);
 	
-	
-	
-	
-	
-	
-	
-	
+*/
+
+
+	SSI0_Init();
+	SET_GREEN
 	
 	while(ui32SysClock)  //Clock working
 	{
-		//run forever
+		Set_Point_Color(LedColor, 0, LedColor, 4);
+		//Set_Moving_Point(LedColor);
+		Send_RGB_Data();
+	  Delay(10000000); 
 
 		//duty_cycle_rgb = (duty_cycle_rgb+1) % 99; //rgb brightness
 		//Duty_Cycle(GPIO_PORTF_BASE,GPIO_PIN_2, duty_cycle_rgb );
 		
-		if(!ReadPinState(PORT_C,GPIO_PIN_7))
-   {
-    Display_NewLine();
-   //  Display_String("PC7 pressed");  
-   
-    }
+		//if(!ReadPinState(PORT_C,GPIO_PIN_7)){ Display_NewLine();}
 		
 		//example rgb blink
 			/*RGB_Led_Blink(GPIO_PORTF_BASE,GPIO_PIN_1);

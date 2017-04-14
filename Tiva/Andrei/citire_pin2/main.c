@@ -85,9 +85,9 @@ void GPIOF_Handler(void) 	//GPIO port F ISR
 
 void GPIOD_Handler(void) 	//GPIO port D ISR
 {	 
-	  GPIOIntClear(GPIO_PORTD_BASE,  GPIO_INT_PIN_6);
-    TimerEnable(TIMER1_BASE, TIMER_A);
-	  GPIOIntDisable(GPIO_PORTD_BASE,GPIO_PIN_6); 
+	  //GPIOIntClear(GPIO_PORTD_BASE,  GPIO_INT_PIN_6);
+    //TimerEnable(TIMER1_BASE, TIMER_A);
+	  //GPIOIntDisable(GPIO_PORTD_BASE,GPIO_PIN_6); 
 } 
 int main(void)
 {
@@ -107,12 +107,12 @@ int main(void)
 	Init_Timer(TIMER2_BASE, TIMER_A,500);
 	
 	
-	// TimerEnable(TIMER4_BASE, TIMER_A);
-	 //TimerEnable(TIMER1_BASE, TIMER_A); 
+	 TimerEnable(TIMER4_BASE, TIMER_A);
+	 TimerEnable(TIMER1_BASE, TIMER_A); 
    TimerEnable(WTIMER0_BASE, TIMER_A);
 	
 	 SetGPIOInterrupt(GPIO_PORTF_BASE,GPIO_PIN_4,GPIO_RISING_EDGE);
-	 SetGPIOInterrupt(GPIO_PORTD_BASE,GPIO_PIN_6,GPIO_RISING_EDGE);
+	// SetGPIOInterrupt(GPIO_PORTD_BASE,GPIO_PIN_6,GPIO_RISING_EDGE);
 	 SetGPIOInput(GPIO_PORTF_BASE,GPIO_PIN_0,1);	
 	 SetGPIOInput(GPIO_PORTC_BASE,GPIO_PIN_7,1);
   

@@ -542,6 +542,26 @@
               <FileType>5</FileType>
               <FilePath>.\timer.h</FilePath>
             </File>
+            <File>
+              <FileName>ssi_handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ssi_handler.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssi_handler.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ssi_handler.h</FilePath>
+            </File>
+            <File>
+              <FileName>rgb_st.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\rgb_st.c</FilePath>
+            </File>
+            <File>
+              <FileName>rgb_st.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\rgb_st.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

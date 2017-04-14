@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\citire_pin2.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\citire_pin2.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Apr 11 10:47:01 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Thu Apr 13 10:57:23 2017
 <BR><P>
-<H3>Maximum Stack Usage =        104 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        100 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
 <P>
@@ -374,7 +374,7 @@ Global Symbols
 <P><STRONG><a name="[ed]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[87]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 100 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
 </UL>
 <BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1329,7 +1329,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a2]"></a>Display_Init</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, display.o(i.Display_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Display_Init &rArr; GPIOPinTypeUART &rArr; GPIOPadConfigSet
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = Display_Init &rArr; GPIOPinTypeUART &rArr; GPIOPadConfigSet
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTFIFOEnable
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTEnable
@@ -1368,13 +1368,7 @@ Global Symbols
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER1A_Handler
 </UL>
 
-<P><STRONG><a name="[f]"></a>GPIOD_Handler</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, main.o(i.GPIOD_Handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GPIOD_Handler
-</UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntDisable
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntClear
-</UL>
+<P><STRONG><a name="[f]"></a>GPIOD_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, main.o(i.GPIOD_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
 <P><STRONG><a name="[b1]"></a>GPIODirModeSet</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, gpio.o(i.GPIODirModeSet))
@@ -1394,16 +1388,14 @@ Global Symbols
 </UL>
 <P><STRONG><a name="[ad]"></a>GPIOIntClear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntClear))
 <BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOF_Handler
-<LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOD_Handler
 </UL>
 
 <P><STRONG><a name="[af]"></a>GPIOIntDisable</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntDisable))
 <BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOF_Handler
-<LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOD_Handler
 </UL>
 
-<P><STRONG><a name="[c7]"></a>GPIOIntEnable</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntEnable))
+<P><STRONG><a name="[c7]"></a>GPIOIntEnable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntEnable))
 <BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER2A_Handler
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER1A_Handler
@@ -1413,8 +1405,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
 </UL>
 
-<P><STRONG><a name="[b2]"></a>GPIOPadConfigSet</STRONG> (Thumb, 314 bytes, Stack size 28 bytes, gpio.o(i.GPIOPadConfigSet))
-<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = GPIOPadConfigSet
+<P><STRONG><a name="[b2]"></a>GPIOPadConfigSet</STRONG> (Thumb, 312 bytes, Stack size 24 bytes, gpio.o(i.GPIOPadConfigSet))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GPIOPadConfigSet
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeUART
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOInput
@@ -1426,7 +1418,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b0]"></a>GPIOPinTypeGPIOInput</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeGPIOInput))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
@@ -1435,7 +1427,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a4]"></a>GPIOPinTypeUART</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeUART))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = GPIOPinTypeUART &rArr; GPIOPadConfigSet
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = GPIOPinTypeUART &rArr; GPIOPadConfigSet
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
@@ -1503,7 +1495,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[c2]"></a>SetGPIOInput</STRONG> (Thumb, 76 bytes, Stack size 24 bytes, gpio_handler.o(i.SetGPIOInput))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
 </UL>
 <BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOInput
@@ -1516,7 +1508,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[c4]"></a>SetGPIOInterrupt</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, gpio_handler.o(i.SetGPIOInterrupt))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
+<BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntPrioritySet
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntEnable
@@ -1620,7 +1612,6 @@ Global Symbols
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WTIMER1A_Handler
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER4A_Handler
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOF_Handler
-<LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOD_Handler
 </UL>
 
 <P><STRONG><a name="[c9]"></a>TimerIntClear</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, timer.o(i.TimerIntClear))
@@ -1731,8 +1722,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[88]"></a>main</STRONG> (Thumb, 254 bytes, Stack size 16 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = main &rArr; SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
+<P><STRONG><a name="[88]"></a>main</STRONG> (Thumb, 260 bytes, Stack size 16 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = main &rArr; SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockSet
