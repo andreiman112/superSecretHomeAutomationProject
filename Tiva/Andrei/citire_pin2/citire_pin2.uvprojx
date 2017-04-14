@@ -434,6 +434,16 @@
               <FileType>5</FileType>
               <FilePath>.\pwm_handler.h</FilePath>
             </File>
+            <File>
+              <FileName>i2c_handler.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\i2c_handler.h</FilePath>
+            </File>
+            <File>
+              <FileName>i2c_handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\i2c_handler.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

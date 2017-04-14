@@ -10,7 +10,7 @@
 #include "driverlib/pin_map.h"
 #include "driverlib/gpio.h"
 #include "pwm_handler.h"
-
+#include "i2c_handler.h"
 /*-------------------HW define Includes--------------*/
 #include "inc/hw_memmap.h"
 #include "inc/hw_ints.h"
@@ -91,6 +91,12 @@ void GPIOD_Handler(void) 	//GPIO port D ISR
 } 
 int main(void)
 {
+	Display_Init();
+	Display_NewLine(); 
+  Display_String("Hello!");	
+	INIT_I2C();
+	
+	/*
 	
 	unsigned long ui32SysClock; 
 	SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN); //80 Mhz
@@ -162,4 +168,5 @@ int main(void)
 		 
 		  
 	} 
+	*/
 }

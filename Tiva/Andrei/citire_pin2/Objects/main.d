@@ -10,6 +10,7 @@
 .\objects\main.o: pwm_handler.h
 .\objects\main.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/pwm.h
 .\objects\main.o: ..\TivaWare_C_Series-2.1.1.71\inc/hw_memmap.h
+.\objects\main.o: i2c_handler.h
 .\objects\main.o: ..\TivaWare_C_Series-2.1.1.71\inc/hw_ints.h
 .\objects\main.o: display.h
 .\objects\main.o: gpio_handler.h
