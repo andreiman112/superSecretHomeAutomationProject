@@ -33,7 +33,7 @@ static uint8_t Set_RGB(uint8_t led_nr, tstRGB color);
 static uint8_t Set_Bargraph(uint8_t percentage, tstRGB color);
 void Send_RGB_Data(void);
 void Set_Moving_Point(tstRGB color);
-void Set_Point_Color(tstRGB color, uint8_t ix, tstRGB color2, uint8_t ix2);
-
+void Set_Point_Color(tstRGB color, uint8_t ix);
+void Change_Color(uint8_t ix, tstRGB LedColor);
 
 #endif

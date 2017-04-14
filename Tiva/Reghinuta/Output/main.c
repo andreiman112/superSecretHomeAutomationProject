@@ -5,7 +5,8 @@
 
 #include "gpio_handler.h"
 #include "pwm_handler.h"
-#include "ssi_handler.h"
+//#include "ssi_handler.h"
+#include "ssi_handler_tw.h"
 #include "rgb_st.h"
 
 /*-------------------Driver Includes-----------------*/
@@ -106,6 +107,7 @@ int main(void)
 
 	unsigned long ui32SysClock;
 	tstRGB LedColor = {0x00,0x00,0x00};
+
 	
 	//unsigned long duty_cycle = 3;
 	//unsigned long duty_cycle_rgb=0;
@@ -132,12 +134,11 @@ int main(void)
 
 
 	SSI0_Init();
-	SET_GREEN
-	
+	//SET_GREEN
 	while(ui32SysClock)  //Clock working
 	{
-		Set_Point_Color(LedColor, 0, LedColor, 4);
-		//Set_Moving_Point(LedColor);
+		//Set_Point_Color(LedColor, 4);
+		Set_Moving_Point(LedColor);
 		Send_RGB_Data();
 	  Delay(10000000); 
 

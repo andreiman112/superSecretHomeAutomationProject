@@ -1,4 +1,4 @@
-#include <stdint.h>
+/*#include <stdint.h>
 #include "ssi_handler.h"
 
 #define DIVISOR 12 //doar pt rgb
@@ -33,7 +33,7 @@ void SSI0_Init(void){
   SSI0_CR1_R |= SSI_CR1_SSE;  // enable SSI
 
   for(delay=0; delay<10; delay=delay+1);// delay minimum 100 ns
-}
+}*/
 
 
 

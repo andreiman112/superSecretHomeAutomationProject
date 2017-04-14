@@ -2,7 +2,8 @@
 #include "stdbool.h"
 #include "stdint.h"
 #include "driverlib/sysctl.h"
-#include "ssi_handler.h"
+//#include "ssi_handler.h"
+#include "ssi_handler_tw.h"
 #include "rgb_st.h"
 
 tstRGB data[NR_OF_LEDS];
@@ -35,17 +36,29 @@ static uint8_t Set_RGB(uint8_t led_nr, tstRGB color) {
 void Set_Moving_Point(tstRGB color){
 	static uint8_t ix = 0;
 	Clear_Data();
-	Set_RGB(ix,color);
+	Change_Color(ix, color);
+	//Set_RGB(ix,color);
 	ix = ((ix + 1) % NR_OF_LEDS);
 }
 
+void Change_Color(uint8_t ix, tstRGB LedColor)
+{
+	switch(ix){
+		case 0: SET_RED; break;
+		case 1: SET_BLUE; break;
+		case 2: SET_GREEN; break;
+		case 3: SET_YELLOW; break;
+		case 4: SET_WHITE; break;
+		default: break;
+	}
+	Set_RGB(ix,LedColor);
+}
 
 
-void Set_Point_Color(tstRGB color, uint8_t ix, tstRGB color2, uint8_t ix2){	
+void Set_Point_Color(tstRGB color, uint8_t ix){	
 	//al ix-lea led on
 	Clear_Data();
 	Set_RGB(ix,color);
-	Set_RGB(ix2,color2);
 }
 
 static uint8_t Set_Bargraph(uint8_t percentage, tstRGB color) {

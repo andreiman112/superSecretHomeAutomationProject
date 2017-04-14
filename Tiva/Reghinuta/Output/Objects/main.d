@@ -9,7 +9,7 @@
 .\objects\main.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/gpio.h
 .\objects\main.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/pin_map.h
 .\objects\main.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/pwm.h
-.\objects\main.o: ssi_handler.h
+.\objects\main.o: ssi_handler_tw.h
 .\objects\main.o: ..\TivaWare_C_Series-2.1.1.71\inc/tm4c123gh6pm.h
 .\objects\main.o: rgb_st.h
 .\objects\main.o: timer.h

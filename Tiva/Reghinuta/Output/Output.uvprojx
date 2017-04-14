@@ -562,6 +562,16 @@
               <FileType>5</FileType>
               <FilePath>.\rgb_st.h</FilePath>
             </File>
+            <File>
+              <FileName>ssi_handler_tw.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ssi_handler_tw.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssi_handler_tw.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ssi_handler_tw.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
