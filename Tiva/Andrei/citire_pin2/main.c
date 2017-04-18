@@ -10,7 +10,7 @@
 #include "driverlib/pin_map.h"
 #include "driverlib/gpio.h"
 #include "pwm_handler.h"
-
+#include "i2c_handler.h"
 /*-------------------HW define Includes--------------*/
 #include "inc/hw_memmap.h"
 #include "inc/hw_ints.h"
@@ -86,11 +86,22 @@ void GPIOF_Handler(void) 	//GPIO port F ISR
 void GPIOD_Handler(void) 	//GPIO port D ISR
 {	 
 	  //GPIOIntClear(GPIO_PORTD_BASE,  GPIO_INT_PIN_6);
+<<<<<<< HEAD
     //TimerEnable(TIMER1_BASE, TIMER_A);
 	  //GPIOIntDisable(GPIO_PORTD_BASE,GPIO_PIN_6); 
+=======
+   // TimerEnable(TIMER1_BASE, TIMER_A);
+	 // GPIOIntDisable(GPIO_PORTD_BASE,GPIO_PIN_6); 
+>>>>>>> 3516f35680d1d40932898ff74b35f4598383400b
 } 
 int main(void)
 {
+	Display_Init();
+	Display_NewLine(); 
+  Display_String("Hello!");	
+	INIT_I2C();
+	
+	/*
 	
 	unsigned long ui32SysClock; 
 	SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN); //80 Mhz
@@ -151,6 +162,9 @@ int main(void)
 		  Display_NewLine();
 			 Display_String("senzor lumina ambientala: ");	 
 		 Display_Decimal(Get_ADC_Value(1));
+			  Display_NewLine();
+	 	 Display_String("temperatura: ");	 
+	  Display_Decimal(Get_ADC_Value(2));
 			 }
 		  
       
@@ -159,4 +173,5 @@ int main(void)
 		 
 		  
 	} 
+	*/
 }

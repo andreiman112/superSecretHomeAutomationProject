@@ -93,26 +93,26 @@ void Send_RGB_Data(void) {
 	for (i=0;i<NR_OF_LEDS;i++){
 			for (j=0;j<8;j++){ //Process Green
 				if (((data[i].Green) & (BitMask>>j)) != 0){
-					SSI0_DataOut(HighBit);
+					SSI1_DataOut(HighBit);
 				}
 				else{ 
-					SSI0_DataOut(LowBit);
+					SSI1_DataOut(LowBit);
 				}
 			}
 			for (j=0;j<8;j++){ //Process Red
 				if (((data[i].Red) & (BitMask>>j)) != 0){
-					SSI0_DataOut(HighBit);
+					SSI1_DataOut(HighBit);
 				}
 				else{
-					SSI0_DataOut(LowBit);
+					SSI1_DataOut(LowBit);
 				}
 			}
 			for (j=0;j<8;j++){ //Process Blue
 				if (((data[i].Blue) & (BitMask>>j)) != 0){
-					SSI0_DataOut(HighBit);
+					SSI1_DataOut(HighBit);
 				}
 				else{
-					SSI0_DataOut(LowBit);
+					SSI1_DataOut(LowBit);
 				}
 			}
 		}

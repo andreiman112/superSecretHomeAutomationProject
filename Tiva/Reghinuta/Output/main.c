@@ -22,7 +22,7 @@
 #define RED (0x02)	//PF1
 #define BLUE (0x04)	//PF2
 #define GREEN (0x08)  //PF3
-#define Servo_DutyCycle_Step (1)
+//#define Servo_DutyCycle_Step (1)
 
 #ifdef __TI_COMPILER_VERSION__
 	//Code Composer Studio Code
@@ -102,15 +102,18 @@ void GPIOF_Handler(void) 	//GPIO port F ISR
 		GPIOIntDisable(GPIO_PORTF_BASE,GPIO_PIN_0);  //Disable GPIO pin interrupt
 	}
 }
+
+
+
 int main(void)
 {
 
 	unsigned long ui32SysClock;
 	tstRGB LedColor = {0x00,0x00,0x00};
-
-	
-	//unsigned long duty_cycle = 3;
+	uint8_t number = 0x01;
 	//unsigned long duty_cycle_rgb=0;
+	//unsigned long duty_cycle = 3;
+	
 	
 	SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN); //80 Mhz
 	ui32SysClock = SysCtlClockGet();
@@ -118,29 +121,49 @@ int main(void)
 	Display_Init();
 	Display_NewLine();
 	Display_String("heeloo "); 
-	
 	/*
+	
 	Init_PWM(GPIO_PORTF_BASE,GPIO_PIN_2, Clock_Ticks(20));
 	Duty_Cycle(GPIO_PORTF_BASE,GPIO_PIN_2, 925);
 	
 	SetGPIOInput(GPIO_PORTC_BASE,GPIO_PIN_7);
-	 SetGPIOInterrupt(GPIO_PORTF_BASE,GPIO_PIN_4,GPIO_FALLING_EDGE);
+	SetGPIOInterrupt(GPIO_PORTF_BASE,GPIO_PIN_4,GPIO_FALLING_EDGE);
+	
 	TIMER_2_Init();
 	TIMER_1_Init();
  
 	SetGPIOInterrupt(GPIO_PORTF_BASE,GPIO_PIN_0,GPIO_FALLING_EDGE);
+	*/
+
+	SetGPIOOutput(GPIO_PORTF_BASE,GPIO_PIN_2); //pin for latch shift rg (rclk)
+	SetGPIOOutput(GPIO_PORTF_BASE,GPIO_PIN_3); //pint for enable shift rg (oe)
+	ClearGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_2);
 	
-*/
-
-
-	SSI0_Init();
+	SSI0_Init(); //shift rg
+	//SSI1_Init(); //rgb 
 	//SET_GREEN
+	
 	while(ui32SysClock)  //Clock working
 	{
-		//Set_Point_Color(LedColor, 4);
-		Set_Moving_Point(LedColor);
-		Send_RGB_Data();
-	  Delay(10000000); 
+		
+		SetGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_2); //latch rclk
+		if(number <= 0x80)
+		{
+			SSI0_DataOut(number);
+			number = number << 1;
+		}
+		else
+			number = 0x01;
+		
+		ClearGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_2); //latch rclk
+		
+		Delay(1000000);
+		
+		
+		//Set_Moving_Point(LedColor);
+		//Send_RGB_Data();
+	 
+		 
 
 		//duty_cycle_rgb = (duty_cycle_rgb+1) % 99; //rgb brightness
 		//Duty_Cycle(GPIO_PORTF_BASE,GPIO_PIN_2, duty_cycle_rgb );

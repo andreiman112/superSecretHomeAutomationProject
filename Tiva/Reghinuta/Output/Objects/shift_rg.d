@@ -1,0 +1,11 @@
+.\objects\shift_rg.o: shift_rg.c
+.\objects\shift_rg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\shift_rg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\shift_rg.o: ssi_handler_tw.h
+.\objects\shift_rg.o: ..\TivaWare_C_Series-2.1.1.71\inc/tm4c123gh6pm.h
+.\objects\shift_rg.o: shift_rg.h
+.\objects\shift_rg.o: gpio_handler.h
+.\objects\shift_rg.o: ..\TivaWare_C_Series-2.1.1.71\inc/hw_memmap.h
+.\objects\shift_rg.o: ..\TivaWare_C_Series-2.1.1.71\inc/hw_ints.h
+.\objects\shift_rg.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/sysctl.h
+.\objects\shift_rg.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/gpio.h
