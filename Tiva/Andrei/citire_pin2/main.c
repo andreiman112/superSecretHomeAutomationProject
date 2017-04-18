@@ -99,8 +99,12 @@ int main(void)
 	Display_Init();
 	Display_NewLine(); 
   Display_String("Hello!");	
-	INIT_I2C();
-	
+	I2C_Init();
+//	I2C_Read(0x4D,0x00);
+	while(1)
+	{
+	I2C_Write(0x4d,1,0x80);
+	}
 	/*
 	
 	unsigned long ui32SysClock; 
