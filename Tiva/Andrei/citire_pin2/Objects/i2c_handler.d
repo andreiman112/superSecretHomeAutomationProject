@@ -10,3 +10,5 @@
 .\objects\i2c_handler.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/interrupt.h
 .\objects\i2c_handler.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/pin_map.h
 .\objects\i2c_handler.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/i2c.h
+.\objects\i2c_handler.o: ..\TivaWare_C_Series-2.1.1.71\inc/hw_i2c.h
+.\objects\i2c_handler.o: display.h
