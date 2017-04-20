@@ -95,10 +95,12 @@ int main(void)
 	Display_NewLine(); 
   Display_String("Hello!");	
 	I2C_Init();
-//	I2C_Read(0x4D,0x00);
+ 	//I2C_ReadTemp(0x48,0x00);
+	I2C_Read2(0x44,0x00);
+	
 	while(1)
 	{
-	I2C_Write(0x4d,1,0x80);
+	//I2C_Write(0x4d,1,0x80);
 	}
 	/*
 	

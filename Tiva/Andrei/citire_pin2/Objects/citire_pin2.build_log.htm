@@ -27,26 +27,34 @@ Project File Date:  04/14/2017
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
-compiling gpio_handler.c...
 compiling display.c...
 compiling main.c...
-main.c(101): warning:  #223-D: function "I2C_Write" declared implicitly
-  	I2C_Write(0x4d,1,0x80);
+main.c(99): warning:  #223-D: function "I2C_Read2" declared implicitly
+  	I2C_Read2(0x44,0x00);
 main.c: 1 warning, 0 errors
-compiling adc_handler.c...
+compiling gpio_handler.c...
 compiling timer.c...
+compiling adc_handler.c...
 compiling pwm_handler.c...
 assembling startup_TM4C123.s...
 compiling i2c_handler.c...
 i2c_handler.c(65): warning:  #9-D: nested comment is not allowed
   /*if(g_ui8MasterBytes == g_ui8MasterBytesLength)
-i2c_handler.c(238): warning:  #1-D: last line of file ends without a newline
+i2c_handler.c(137): warning:  #111-D: statement is unreachable
+  		 Display_NewLine();	
+i2c_handler.c(170): warning:  #940-D: missing return statement at end of non-void function "I2C_ReadTemp" 
   }
-i2c_handler.c: 2 warnings, 0 errors
+i2c_handler.c(193): warning:  #940-D: missing return statement at end of non-void function "I2C_Read2" 
+  }
+i2c_handler.c(175): warning:  #177-D: variable "Register_Read_Value"  was declared but never referenced
+  	unsigned long Register_Read_Value = 0;
+i2c_handler.c(293): warning:  #1-D: last line of file ends without a newline
+  }
+i2c_handler.c: 6 warnings, 0 errors
 compiling system_TM4C123.c...
 linking...
-Program Size: Code=3092 RO-data=1632 RW-data=24 ZI-data=608  
-".\Objects\citire_pin2.axf" - 0 Error(s), 3 Warning(s).
+Program Size: Code=3124 RO-data=1632 RW-data=28 ZI-data=612  
+".\Objects\citire_pin2.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 

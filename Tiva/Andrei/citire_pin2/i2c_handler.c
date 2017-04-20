@@ -134,8 +134,63 @@ unsigned char I2C_Write(unsigned char Slave_Address, unsigned char Register_Addr
 			return 1;
 		}
 	}
+		 Display_NewLine();	
+	Display_String("1 mcs: ");
+	Display_Decimal(I2C0_MCS);
+}
+unsigned long I2C_ReadTemp(unsigned char Slave_Address, unsigned char Register_Address)
+{
+	unsigned char error_nr = 0;
+	unsigned long Register_Read_Value = 0;
+	
+	//Step 1.1. Set Slave adress and Write mode (R/W bit = 0)
+	I2CMasterSlaveAddrSet(I2C0_BASE,Slave_Address,1);	//Set slave address and send mode
+
+	//Step 1.2. Send the 8bit register adress to read from
+	//I2CMasterDataPut(I2C0_BASE, Register_Address); //Send the register adress to the Slave device
+ 
+    while(I2CMasterBusBusy(I2C0_BASE)){}
+		  
+	 I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_SINGLE_SEND);
+	 I2C_Master_Wait();
+	  error_nr = I2CMasterErr(I2C0_BASE);
+		if(error_nr==0){
+			Register_Read_Value = I2CMasterDataGet(I2C0_BASE);
+	
+    Display_NewLine();	
+		Display_String("temp: ");
+		Display_Decimal(Register_Read_Value); 
+		}
+		else
+		{
+		 Display_NewLine();	
+		Display_String("err: ");
+		Display_Decimal(error_nr); 
+		}
 }
 
+unsigned long I2C_Read2(unsigned char Slave_Address, unsigned char Register_Address)
+{
+	unsigned char error_nr = 0;
+	unsigned long Register_Read_Value = 0;
+	
+	//Step 1.1. Set Slave adress and Write mode (R/W bit = 0)
+	I2CMasterSlaveAddrSet(I2C0_BASE,Slave_Address,0);	//Set slave address and send mode
+
+	//Step 1.2. Send the 8bit register adress to read from
+	I2CMasterDataPut(I2C0_BASE, Register_Address); //Send the register adress to the Slave device
+ 
+    while(I2CMasterBusBusy(I2C0_BASE)){}
+		  
+	 I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_SINGLE_SEND);
+	 I2C_Master_Wait();
+	  error_nr = I2CMasterErr(I2C0_BASE);
+		
+    Display_NewLine();	
+		Display_String("2: ");
+		Display_Decimal(error_nr); 
+		
+}
 unsigned long I2C_Read(unsigned char Slave_Address, unsigned char Register_Address)
 {
 	unsigned char error_nr = 0;
@@ -147,7 +202,7 @@ unsigned long I2C_Read(unsigned char Slave_Address, unsigned char Register_Addre
 	//Step 1.2. Send the 8bit register adress to read from
 	I2CMasterDataPut(I2C0_BASE, Register_Address); //Send the register adress to the Slave device
  
-while(I2CMasterBusBusy(I2C0_BASE)){}
+    while(I2CMasterBusBusy(I2C0_BASE)){}
 		
 	//I2C0_MCS = I2C_MASTER_CMD_SINGLE_SEND;
 	//HWREG(I2C0_BASE + I2C_O_MCS) = I2C_MASTER_CMD_SINGLE_SEND;
