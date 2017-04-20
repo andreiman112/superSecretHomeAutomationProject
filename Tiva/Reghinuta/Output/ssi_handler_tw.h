@@ -6,6 +6,7 @@
 
 void SSI0_DataOut(uint8_t data);
 void SSI1_DataOut(uint8_t data);
+void SSI0_DataIn(uint32_t);
 void SSI0_Init(void);
 void SSI1_Init(void);
 

@@ -13,6 +13,7 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/pin_map.h"
 #include "driverlib/gpio.h"
+#include "driverlib/ssi.h"
 #include "inc/hw_memmap.h"
 
 #include "timer.h"
@@ -110,7 +111,10 @@ int main(void)
 
 	unsigned long ui32SysClock;
 	tstRGB LedColor = {0x00,0x00,0x00};
-	uint8_t number = 0x01;
+	uint32_t number = 0x01;
+	uint32_t ulDataTx[3];
+  uint32_t ulDataRx[3];
+  uint32_t ulindex;
 	//unsigned long duty_cycle_rgb=0;
 	//unsigned long duty_cycle = 3;
 	
@@ -145,6 +149,23 @@ int main(void)
 	
 	while(ui32SysClock)  //Clock working
 	{
+		/*
+			while(SSIDataGetNonBlocking(SSI0_BASE, &ulDataRx[0])){} // Gets data element from the SSI receive FIFO,  Rx
+				
+			//data to send
+			ulDataTx[0] = 's';
+			ulDataTx[1] = 'p';
+			ulDataTx[2] = 'i';
+			 
+			ulindex = 0;
+		  while(ulindex) 
+			{	 
+				SSI0_DataOut(ulDataTx[ulindex]); 
+				ulindex++;
+			}
+			
+			while(SSIBusy(SSI0_BASE)){}
+				*/
 		
 		SetGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_2); //latch rclk
 		if(number <= 0x80)
@@ -156,7 +177,7 @@ int main(void)
 			number = 0x01;
 		
 		ClearGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_2); //latch rclk
-		
+	
 		Delay(1000000);
 		
 		

@@ -8,15 +8,28 @@
 #include "driverlib/ssi.h"
 #include "driverlib/sysctl.h"
 #include "inc/hw_memmap.h"
+#include "display.h"
 
 #define DIVISOR_rgb 12
 #define FREQ_SHIFT_RG 25000000 
 
 void SSI0_DataOut(uint8_t data){ //for shift register
 	SSIDataPut(SSI0_BASE,data); //Puts a data element into the SSI transmit FIFO.
+	Display_Decimal(data);
+	Display_NewLine();
 }
 void SSI1_DataOut(uint8_t data){ //for rgb
 	SSIDataPut(SSI1_BASE,data); //Puts a data element into the SSI transmit FIFO.
+}
+
+void SSI0_DataIn(uint32_t data)
+{
+	SSIDataGet(SSI0_BASE, &data);
+	Display_String("Data: ");
+	//Display_String(data[]);
+	//Display_NewLine();
+	//while(SSIDataGetNonBlocking(SSI0_BASE, &data)){}
+	
 }
 
 void SSI0_Init(void){//for shift register
@@ -29,7 +42,8 @@ void SSI0_Init(void){//for shift register
 
 	GPIOPinConfigure(GPIO_PA2_SSI0CLK);		//PA2 - Clock
 	GPIOPinConfigure(GPIO_PA5_SSI0TX);		//PA5 - TX
-	GPIOPinTypeSSI(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_5);	// Configure PA2 and PA5 as SSI
+	GPIOPinConfigure(GPIO_PA4_SSI0RX);		//PA4 - RX
+	GPIOPinTypeSSI(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_5 | GPIO_PIN_4);	// Configure PA2, PA5, PA4 as SSI
 	
 	SSIClockSourceSet(SSI0_BASE, SSI_CLOCK_SYSTEM);	// Set the SSI clock source
 

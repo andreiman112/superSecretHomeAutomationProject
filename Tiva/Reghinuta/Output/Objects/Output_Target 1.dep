@@ -1,5 +1,5 @@
 Dependencies for Project 'Output', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x58F61EC1)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71-IC:\Users\reghinuta.catarig\Desktop\superSecretHomeAutomationProject\Tiva\Reghinuta\Output\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x58F89879)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71-IC:\Users\reghinuta.catarig\Desktop\superSecretHomeAutomationProject\Tiva\Reghinuta\Output\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
 I (gpio_handler.h)(0x58E79C63)
@@ -10,9 +10,10 @@ I (pwm_handler.h)(0x58E788C4)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/gpio.h)(0x58E3A112)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/pin_map.h)(0x566AABD8)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/pwm.h)(0x5648E778)
-I (ssi_handler_tw.h)(0x58F60EF9)
+I (ssi_handler_tw.h)(0x58F8754B)
 I (..\TivaWare_C_Series-2.1.1.71\inc/tm4c123gh6pm.h)(0x58EF41E7)
 I (rgb_st.h)(0x58F0886D)
+I (..\TivaWare_C_Series-2.1.1.71\driverlib/ssi.h)(0x5648E778)
 I (timer.h)(0x58E7B272)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/timer.h)(0x5648E778)
 I (display.h)(0x58E7969C)
@@ -64,21 +65,22 @@ F (.\rgb_st.c)(0x58F61123)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwor
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/sysctl.h)(0x58E3A19E)
-I (ssi_handler_tw.h)(0x58F60EF9)
+I (ssi_handler_tw.h)(0x58F8754B)
 I (..\TivaWare_C_Series-2.1.1.71\inc/tm4c123gh6pm.h)(0x58EF41E7)
 I (rgb_st.h)(0x58F0886D)
 F (.\rgb_st.h)(0x58F0886D)()
-F (.\ssi_handler_tw.c)(0x58F61341)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71-IC:\Users\reghinuta.catarig\Desktop\superSecretHomeAutomationProject\Tiva\Reghinuta\Output\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\ssi_handler_tw.o --omf_browse .\objects\ssi_handler_tw.crf --depend .\objects\ssi_handler_tw.d)
+F (.\ssi_handler_tw.c)(0x58F89890)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71-IC:\Users\reghinuta.catarig\Desktop\superSecretHomeAutomationProject\Tiva\Reghinuta\Output\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\ssi_handler_tw.o --omf_browse .\objects\ssi_handler_tw.crf --depend .\objects\ssi_handler_tw.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
-I (ssi_handler_tw.h)(0x58F60EF9)
+I (ssi_handler_tw.h)(0x58F8754B)
 I (..\TivaWare_C_Series-2.1.1.71\inc/tm4c123gh6pm.h)(0x58EF41E7)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/gpio.h)(0x58E3A112)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/pin_map.h)(0x566AABD8)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/ssi.h)(0x5648E778)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/sysctl.h)(0x58E3A19E)
 I (..\TivaWare_C_Series-2.1.1.71\inc/hw_memmap.h)(0x5710DA4C)
-F (.\ssi_handler_tw.h)(0x58F60EF9)()
+I (display.h)(0x58E7969C)
+F (.\ssi_handler_tw.h)(0x58F8754B)()
 F (..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk\driverlib.lib)(0x58E7497A)()
 F (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Lib\ARM\arm_cortexM4lf_math.lib)(0x58258030)()
 F (RTE\Device\TM4C123GH6PM\startup_TM4C123.s)(0x51B6D5F6)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork -IC:\Users\reghinuta.catarig\Desktop\superSecretHomeAutomationProject\Tiva\Reghinuta\Output\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123--pd "__UVISION_VERSION SETA 522" --pd "_RTE_ SETA 1" --pd "TM4C123GH6PM SETA 1"--list .\listings\startup_tm4c123.lst --xref -o .\objects\startup_tm4c123.o --depend .\objects\startup_tm4c123.d)
