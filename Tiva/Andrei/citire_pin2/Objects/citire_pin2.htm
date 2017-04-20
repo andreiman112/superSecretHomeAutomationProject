@@ -3,9 +3,25 @@
 <title>Static Call Graph - [.\Objects\citire_pin2.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\citire_pin2.axf</H1><HR>
+<<<<<<< HEAD
 <BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Thu Apr 20 10:50:59 2017
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Thu Apr 13 10:57:23 2017
+<BR><P>
+<H3>Maximum Stack Usage =        100 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+=======
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Fri Apr 14 13:00:32 2017
+<BR><P>
+<H3>Maximum Stack Usage =         64 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+>>>>>>> 3516f35680d1d40932898ff74b35f4598383400b
+=======
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Apr 18 17:07:50 2017
+>>>>>>> 30b572012147006595cb88ce9609f00470ceef46
 <BR><P>
 <H3>Maximum Stack Usage =         56 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+>>>>>>> 832f97eba4b15b1801881c45dfc07728a855de03
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; I2C_Read2 &rArr; I2C_Master_Wait &rArr; Display_Decimal &rArr;  Display_Decimal (Cycle)
 <P>
@@ -373,8 +389,21 @@ Global Symbols
 <P><STRONG><a name="[d8]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[87]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
+<<<<<<< HEAD
+<<<<<<< HEAD
+<BR><BR>[Stack]<UL><LI>Max Depth = 100 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
+=======
+<BR><BR>[Stack]<UL><LI>Max Depth = 64 + Unknown Stack Size
+=======
 <BR><BR>[Stack]<UL><LI>Max Depth = 56 + Unknown Stack Size
+<<<<<<< HEAD
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; I2C_Read2 &rArr; I2C_Master_Wait &rArr; Display_Decimal &rArr;  Display_Decimal (Cycle)
+=======
+>>>>>>> 832f97eba4b15b1801881c45dfc07728a855de03
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; Display_Init &rArr; GPIOPinTypeUART &rArr; GPIOPadConfigSet
+>>>>>>> 3516f35680d1d40932898ff74b35f4598383400b
+>>>>>>> 30b572012147006595cb88ce9609f00470ceef46
 </UL>
 <BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -1256,8 +1285,13 @@ Global Symbols
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER2A_Handler
 </UL>
 
+<<<<<<< HEAD
+<P><STRONG><a name="[a2]"></a>Display_Init</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, display.o(i.Display_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = Display_Init &rArr; GPIOPinTypeUART &rArr; GPIOPadConfigSet
+=======
 <P><STRONG><a name="[96]"></a>Display_Init</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, display.o(i.Display_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Display_Init &rArr; GPIOPinTypeUART &rArr; GPIOPadConfigSet
+>>>>>>> 3516f35680d1d40932898ff74b35f4598383400b
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTFIFOEnable
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTEnable
@@ -1322,6 +1356,46 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOF_Handler
 </UL>
 
+<<<<<<< HEAD
+<P><STRONG><a name="[af]"></a>GPIOIntDisable</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntDisable))
+<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
+<LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOF_Handler
+</UL>
+
+<P><STRONG><a name="[c7]"></a>GPIOIntEnable</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
+<LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER2A_Handler
+<LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER1A_Handler
+</UL>
+
+<P><STRONG><a name="[c6]"></a>GPIOIntTypeSet</STRONG> (Thumb, 80 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntTypeSet))
+<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
+</UL>
+
+<P><STRONG><a name="[b2]"></a>GPIOPadConfigSet</STRONG> (Thumb, 312 bytes, Stack size 24 bytes, gpio.o(i.GPIOPadConfigSet))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GPIOPadConfigSet
+</UL>
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeUART
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOInput
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInput
+</UL>
+
+<P><STRONG><a name="[c1]"></a>GPIOPinRead</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinRead))
+<BR><BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadPinState
+</UL>
+
+<P><STRONG><a name="[b0]"></a>GPIOPinTypeGPIOInput</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeGPIOInput))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInput
+</UL>
+
+<P><STRONG><a name="[a4]"></a>GPIOPinTypeUART</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeUART))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = GPIOPinTypeUART &rArr; GPIOPadConfigSet
+=======
 <P><STRONG><a name="[a4]"></a>GPIOIntDisable</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntDisable))
 <BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOF_Handler
 </UL>
@@ -1364,6 +1438,7 @@ Global Symbols
 
 <P><STRONG><a name="[99]"></a>GPIOPinTypeUART</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeUART))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = GPIOPinTypeUART &rArr; GPIOPadConfigSet
+>>>>>>> 3516f35680d1d40932898ff74b35f4598383400b
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
@@ -1395,12 +1470,44 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Init
 </UL>
 
+<<<<<<< HEAD
 <P><STRONG><a name="[af]"></a>I2CMasterSlaveAddrSet</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, i2c.o(i.I2CMasterSlaveAddrSet))
 <BR><BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Read2
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<P><STRONG><a name="[c2]"></a>SetGPIOInput</STRONG> (Thumb, 76 bytes, Stack size 24 bytes, gpio_handler.o(i.SetGPIOInput))
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
+</UL>
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOInput
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getPeriphAddress
+</UL>
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[c4]"></a>SetGPIOInterrupt</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, gpio_handler.o(i.SetGPIOInterrupt))
+<BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
+=======
+<P><STRONG><a name="[a9]"></a>I2CMasterSlaveAddrSet</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, i2c.o(i.I2CMasterSlaveAddrSet))
+<BR><BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;INIT_I2C
+</UL>
+
+<P><STRONG><a name="[a7]"></a>INIT_I2C</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, i2c_handler.o(i.INIT_I2C))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = INIT_I2C &rArr; SysCtlClockGet
+>>>>>>> 3516f35680d1d40932898ff74b35f4598383400b
+=======
+<P><STRONG><a name="[ae]"></a>I2CMasterSlaveAddrSet</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, i2c.o(i.I2CMasterSlaveAddrSet))
+<BR><BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Write
+>>>>>>> 30b572012147006595cb88ce9609f00470ceef46
 </UL>
 
 <P><STRONG><a name="[a9]"></a>I2C_Init</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, i2c_handler.o(i.I2C_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = I2C_Init &rArr; GPIOPinTypeI2CSCL &rArr; GPIOPadConfigSet
+>>>>>>> 832f97eba4b15b1801881c45dfc07728a855de03
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2CMasterInitExpClk
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeI2CSCL
@@ -1573,8 +1680,47 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
+<<<<<<< HEAD
 <P><STRONG><a name="[88]"></a>main</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = main &rArr; I2C_Read2 &rArr; I2C_Master_Wait &rArr; Display_Decimal &rArr;  Display_Decimal (Cycle)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<P><STRONG><a name="[c5]"></a>getINTGPIO_Adrress</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, gpio_handler.o(i.getINTGPIO_Adrress))
+<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
+</UL>
+
+<P><STRONG><a name="[b4]"></a>getINTTIMER_Address</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, timer.o(i.getINTTIMER_Address))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = getINTTIMER_Address
+</UL>
+<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+</UL>
+
+<P><STRONG><a name="[c3]"></a>getPeriphAddress</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, gpio_handler.o(i.getPeriphAddress))
+<BR><BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInput
+</UL>
+
+<P><STRONG><a name="[b5]"></a>getPeriphTimerAddress</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, timer.o(i.getPeriphTimerAddress))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = getPeriphTimerAddress
+</UL>
+<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+</UL>
+
+<P><STRONG><a name="[bd]"></a>getPrioIndex</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, timer.o(i.getPrioIndex))
+<BR><BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+</UL>
+
+<P><STRONG><a name="[88]"></a>main</STRONG> (Thumb, 260 bytes, Stack size 16 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = main &rArr; SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
+=======
+<P><STRONG><a name="[88]"></a>main</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = main &rArr; Display_Init &rArr; GPIOPinTypeUART &rArr; GPIOPadConfigSet
+>>>>>>> 3516f35680d1d40932898ff74b35f4598383400b
+=======
+<P><STRONG><a name="[88]"></a>main</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = main &rArr; Display_Init &rArr; GPIOPinTypeUART &rArr; GPIOPadConfigSet
+>>>>>>> 832f97eba4b15b1801881c45dfc07728a855de03
+>>>>>>> 30b572012147006595cb88ce9609f00470ceef46
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Read2
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Init
