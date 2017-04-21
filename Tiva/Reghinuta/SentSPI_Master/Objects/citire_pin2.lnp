@@ -1,0 +1,16 @@
+--cpu=Cortex-M4.fp
+".\objects\main.o"
+".\objects\gpio_handler.o"
+".\objects\display.o"
+".\objects\timer.o"
+".\objects\adc_handler.o"
+".\objects\pwm_handler.o"
+".\objects\i2c_handler.o"
+".\objects\ssi_handler_tw.o"
+"..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk\driverlib.lib"
+"C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Lib\ARM\arm_cortexM4lf_math.lib"
+".\objects\startup_tm4c123.o"
+".\objects\system_tm4c123.o"
+--ro-base 0x00000000 --entry 0x00000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\citire_pin2.map" -o .\Objects\citire_pin2.axf

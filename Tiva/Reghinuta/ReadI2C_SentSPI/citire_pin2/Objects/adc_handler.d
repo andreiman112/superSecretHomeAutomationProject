@@ -2,13 +2,3 @@
 .\objects\adc_handler.o: adc_handler.h
 .\objects\adc_handler.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\adc_handler.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\adc_handler.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/interrupt.h
-.\objects\adc_handler.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/timer.h
-.\objects\adc_handler.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/adc.h
-.\objects\adc_handler.o: timer.h
-.\objects\adc_handler.o: ..\TivaWare_C_Series-2.1.1.71\inc/hw_memmap.h
-.\objects\adc_handler.o: ..\TivaWare_C_Series-2.1.1.71\inc/hw_ints.h
-.\objects\adc_handler.o: gpio_handler.h
-.\objects\adc_handler.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/sysctl.h
-.\objects\adc_handler.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/gpio.h
-.\objects\adc_handler.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/pin_map.h

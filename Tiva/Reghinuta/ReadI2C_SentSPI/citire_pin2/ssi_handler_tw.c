@@ -41,9 +41,11 @@ void SSI0_Init(void){//for shift register
 	SSIDisable(SSI0_BASE);												 //Disable SSI0
 
 	GPIOPinConfigure(GPIO_PA2_SSI0CLK);		//PA2 - Clock
-	GPIOPinConfigure(GPIO_PA5_SSI0TX);		//PA5 - TX
+	GPIOPinConfigure(GPIO_PA2_SSI0FSS);		//PA3 -frame signal
 	GPIOPinConfigure(GPIO_PA4_SSI0RX);		//PA4 - RX
-	GPIOPinTypeSSI(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_5 | GPIO_PIN_4);	// Configure PA2, PA5, PA4 as SSI
+	GPIOPinConfigure(GPIO_PA5_SSI0TX);		//PA5 - TX
+	
+	GPIOPinTypeSSI(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_5 | GPIO_PIN_4 | GPIO_PIN_3);	// Configure PA2, PA5, PA4, PA3 as SSI
 	
 	SSIClockSourceSet(SSI0_BASE, SSI_CLOCK_SYSTEM);	// Set the SSI clock source
 
