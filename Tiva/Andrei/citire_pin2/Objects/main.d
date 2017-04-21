@@ -16,3 +16,4 @@
 .\objects\main.o: gpio_handler.h
 .\objects\main.o: adc_handler.h
 .\objects\main.o: timer.h
+.\objects\main.o: i2c_handler.h

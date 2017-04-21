@@ -21,6 +21,7 @@
 /*------------------Project Includes-----------------*/
 #include "gpio_handler.h"
 #include "adc_handler.h"
+#include "i2c_handler.h"
 /*-------------------Macro Definitions----------------*/
 #define WTIMER0_PRIO (0x01)
 #define TIMER1_PRIO (0x00)
@@ -95,9 +96,11 @@ int main(void)
 	Display_NewLine(); 
   Display_String("Hello!");	
 	I2C_Init();
- 	//I2C_ReadTemp(0x48,0x00);
-	I2C_Read2(0x44,0x00);
-	
+ //I2C_ReadTemp(0x48,0x00);
+ I2C_ConfTemp(0x48,0x01);
+	//I2C_RealLum(0x39);
+	//I2C_ReadLum2(0x39);
+	I2C_ReadTEMPCONF2(0x48);
 	while(1)
 	{
 	//I2C_Write(0x4d,1,0x80);
