@@ -101,19 +101,7 @@ void WTIMER1A_Handler(void)		//Wide Timer 0 A ISR
 	   TimerEnable(WTIMER1_BASE, TIMER_A);
 	 
 }
-void GPIOF_Handler(void) 	//GPIO port F ISR
-{	 
-	  GPIOIntClear(GPIO_PORTF_BASE,  GPIO_INT_PIN_4);
-    TimerEnable(TIMER2_BASE, TIMER_A);
-	  GPIOIntDisable(GPIO_PORTF_BASE,GPIO_PIN_4); 
-} 
 
-void GPIOD_Handler(void) 	//GPIO port D ISR
-{	 
-	  //GPIOIntClear(GPIO_PORTD_BASE,  GPIO_INT_PIN_6);
-   // TimerEnable(TIMER1_BASE, TIMER_A);
-	 // GPIOIntDisable(GPIO_PORTD_BASE,GPIO_PIN_6); 
-} 
 
 
 
@@ -123,9 +111,13 @@ int main(void)
 {
 	
 	unsigned long ui32SysClock; 
-	
+	 unsigned long g_ulSSI2RXFF = 0, g_ulSSI2TXFF = 0;
+	uint32_t ulDataRx0[NUM_SSI_DATA];
 	uint32_t ulDataTx0[NUM_SSI_DATA];
-  uint32_t ulDataRx0[NUM_SSI_DATA];
+	uint32_t ulDataRx1[NUM_SSI_DATA];
+	uint32_t ulDataTx1[NUM_SSI_DATA];
+
+
   uint32_t ulindex;
 	
 	SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN); //80 Mhz
@@ -134,29 +126,30 @@ int main(void)
 	Display_Init();
 	Display_String("SPI:");
 	
+	IntMasterEnable();
 	SSI0_InitMaster(); 
-	while(SSIDataGetNonBlocking(SSI0_BASE, &ulDataRx0[0])){} //makes sure the receive FIFOs are empty
-		
-	//SSI1_InitSlave();
-	//SSIIntEnable(SSI1_BASE, SSI_RXTO); // interrupt RX timeout
-	//while(SSIDataGetNonBlocking(SSI1_BASE, &g_ulDataRx1[0])){}	
-	//SSIIntClear(SSI1_BASE, SSI_RXTO); 
+	while(SSIDataGetNonBlocking(SSI0_BASE, &ulDataRx0[0]))
+	{
+	} //makes sure the receive FIFOs are empty
 
-   // Initialize the data to send.
-   ulDataTx0[0] = 's';
-   ulDataTx0[1] = 'p';
-   ulDataTx0[2] = 'i';
-		
 	
 		
 		
-		Display_NewLine();
-		Display_String("Sent:");
-		Display_NewLine();
+   // Initialize the data to send.
+   ulDataTx0[0] = 115;
+   ulDataTx0[1] = 112;
+   ulDataTx0[2] = 105;
+		
+	
+		
 		SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
-   
+		
+		//SSIIntEnable(SSI0_BASE, SSI_TXFF | SSI_RXFF );
+		//IntEnable(INT_SSI0);   
 	while(1)
 	{
+		//SSIIntClear(SSI0_BASE, SSI_TXFF | SSI_RXFF);
+
 		 for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
     {
         SSI0_DataOut(ulDataTx0[ulindex]);
@@ -165,5 +158,17 @@ int main(void)
 		SetGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
 			Delay(50000);
 		ClearGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
+		ulDataTx1[0] = 'o';
+		ulDataTx1[1] = 'o';
+		ulDataTx1[2] = 'k';
+		//SSIIntClear(SSI2_BASE, SSI_RXFF | SSI_TXFF);
+			for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
+		{
+			SSIDataGet(SSI0_BASE, &ulDataRx0[ulindex]);
+		}
+
+		while(SSIBusy(SSI0_BASE)){}
+		//SSI_Receive_FromSlave();
 	}
+	
 }

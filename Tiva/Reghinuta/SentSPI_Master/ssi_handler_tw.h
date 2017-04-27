@@ -8,8 +8,9 @@
 #define NUM_SSI_DATA 3
 
 // Global variables used in interrupt handler and the main loop.
-extern uint32_t g_ulSSI1RXTO;
-extern uint32_t g_ulDataRx1[NUM_SSI_DATA];
+
+
+
 
 
 void SSI0_DataOut(uint8_t data);
@@ -17,8 +18,9 @@ void SSI1_DataOut(uint8_t data);
 
 void SSI0_InitMaster(void);
 void SSI1_InitSlave(void);
-void SSI1_IntHandler(void);
+//void SSI0_IntHandler(void);
+void SSI_Receive_FromSlave (void);
 
-void SSI1_Init(void);
+//void SSI1_Init(void);
 
 #endif

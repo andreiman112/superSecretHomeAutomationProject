@@ -14,7 +14,11 @@
 #define FREQ_SHIFT_RG 25000000 
 
 
-
+ unsigned long g_ulSSI2RXFF = 0, g_ulSSI2TXFF = 0;
+uint32_t ulDataRx0[NUM_SSI_DATA];
+uint32_t ulDataTx0[NUM_SSI_DATA];
+uint32_t ulDataRx1[NUM_SSI_DATA];
+uint32_t ulDataTx1[NUM_SSI_DATA];
 void SSI0_DataOut(uint8_t data){ 
 	SSIDataPut(SSI0_BASE,data); //Puts a data element into the SSI transmit FIFO.
 	Display_NewLine();	
@@ -37,7 +41,7 @@ void SSI0_InitMaster(void){//for shift register
 	GPIOPinConfigure(GPIO_PA2_SSI0CLK);		//PA2 - Clock
 	GPIOPinConfigure(GPIO_PA5_SSI0TX);		//PA5 - TX
 	GPIOPinConfigure(GPIO_PA4_SSI0RX);		//PA4 - RX
-		GPIOPinConfigure(GPIO_PA3_SSI0FSS);		//PA3 - FSS
+	GPIOPinConfigure(GPIO_PA3_SSI0FSS);		//PA3 - FSS
 	
 	GPIOPinTypeSSI(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_5 | GPIO_PIN_4);	// Configure PA2, PA5, PA4 as SSI
 	
@@ -81,40 +85,82 @@ void SSI1_InitSlave(void)
 // status and if the interrupt is fired by a RX time out interrupt it reads the
 // SSI1 RX FIFO and increments a counter to tell the main loop that RX timeout
 // interrupt was fired.
-/*
-void SSI1_IntHandler() //interrupt for slave
+
+void SSI0_IntHandler(void)
 {
 	unsigned long ulStatus, ulIndex;
+
 	//
 	// Read interrupt status.
 	//
-	ulStatus = SSIIntStatus(SSI1_BASE, 1);
+	ulStatus = SSIIntStatus(SSI0_BASE, 1);
 	//
 	// Check the reason for the interrupt.
 	//
-	if(ulStatus & SSI_RXTO)
+	if(ulStatus & SSI_TXFF)
 	{
 		//
-		// Interrupt is because of RX time out.  So increment counter to tell
-		// main loop that RX timeout interrupt occurred.
+		// increment counter to tell
+		// main loop that TX full interrupt occurred.
 		//
-		g_ulSSI1RXTO++;
+		g_ulSSI2TXFF++;
+
 		//
-		// Read NUM_SSI_DATA bytes of data from SSI1 RX FIFO.
+		// Read NUM_SSI_DATA bytes of data from SSI0 RX FIFO.
 		//
 		for(ulIndex = 0; ulIndex < NUM_SSI_DATA; ulIndex++)
 		{
-			SSIDataGet(SSI1_BASE, &g_ulDataRx1[ulIndex]); // Read NUM_SSI_DATA bytes of data from SSI1 RX FIFO.
+
+			SSIDataPut(SSI0_BASE, ulDataTx0[ulIndex]);
+
 		}
+		SSIIntClear(SSI0_BASE, SSI_TXFF | SSI_RXFF);
+		//SSIIntDisable(SSI2_BASE, SSI_TXFF);
 	}
 
+
+	if((ulStatus & SSI_RXFF) | (ulStatus & SSI_RXTO))
+	{
+
+		g_ulSSI2RXFF++;
+
+		//
+		// Read NUM_SSI_DATA bytes of data from SSI2 RX FIFO.
+		//
+		for(ulIndex = 0; ulIndex < NUM_SSI_DATA; ulIndex++)
+		{
+			SSIDataGet(SSI2_BASE, &ulDataRx0[ulIndex]);
+
+		}
+		SSIIntClear(SSI2_BASE,  SSI_TXFF | SSI_RXFF);
+		//SSIIntDisable(SSI2_BASE, SSI_RXFF);
+	}
 	//
 	// Clear interrupts.
 	//
-	SSIIntClear(SSI1_BASE, ulStatus);
+	//SSIIntClear(SSI2_BASE, ulStatus);
+
+
 }
 
-*/
+
+void SSI_Receive_FromSlave (void){
+
+	unsigned long ulindex;
+	uint32_t ulDataRx0[NUM_SSI_DATA];
+
+	//SSIIntClear(SSI0_BASE, SSI_RXFF | SSI_TXFF);
+	for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
+	{
+		SSIDataGet(SSI0_BASE, &ulDataRx0[ulindex]);
+	}
+
+	while(SSIBusy(SSI0_BASE))
+	{
+	}
+}
+
+
 
 
 
