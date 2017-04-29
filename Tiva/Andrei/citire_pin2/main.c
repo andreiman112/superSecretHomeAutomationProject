@@ -92,30 +92,22 @@ void GPIOD_Handler(void) 	//GPIO port D ISR
 } 
 int main(void)
 {
-	Display_Init();
-	Display_NewLine(); 
-  Display_String("Hello!");	
-	I2C_Init();
- //I2C_ReadTemp(0x48,0x00);
- I2C_ConfTemp(0x48,0x01);
-	//I2C_RealLum(0x39);
-	//I2C_ReadLum2(0x39);
-	I2C_ReadTEMPCONF2(0x48);
-	while(1)
-	{
-	//I2C_Write(0x4d,1,0x80);
-	}
-	/*
-	
 	unsigned long ui32SysClock; 
 	SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN); //80 Mhz
 	ui32SysClock = SysCtlClockGet();
 	
-	
-	 
 	Display_Init();
 	Display_NewLine(); 
   Display_String("Hello!");	
+//	I2C_Init();
+ //I2C_ReadTemp(0x48,0x00);
+// I2C_ConfTemp(0x48,0x01);
+	//I2C_RealLum(0x39);
+	////I2C_ReadLum2(0x39);
+	//I2C_ReadTEMPCONF2(0x48);
+	 
+	
+	 
   Init_Timer(WTIMER0_BASE, TIMER_A,500);
   Init_Timer(TIMER4_BASE, TIMER_A,1500);   	
 	Init_Timer(TIMER1_BASE, TIMER_A,500);	  	
@@ -124,19 +116,18 @@ int main(void)
 	
 	// TimerEnable(TIMER4_BASE, TIMER_A);
 	 //TimerEnable(TIMER1_BASE, TIMER_A); 
-   TimerEnable(WTIMER0_BASE, TIMER_A);
-	
+  
 	 SetGPIOInterrupt(GPIO_PORTF_BASE,GPIO_PIN_4,GPIO_RISING_EDGE);
 	 SetGPIOInterrupt(GPIO_PORTD_BASE,GPIO_PIN_6,GPIO_RISING_EDGE);
 	 SetGPIOInput(GPIO_PORTF_BASE,GPIO_PIN_0,1);	
 	 SetGPIOInput(GPIO_PORTC_BASE,GPIO_PIN_7,1);
   
+  	 Add_ADC_Channel(ADC_CTL_CH1);
+	   Add_ADC_Channel(ADC_CTL_CH4);
+	   Add_ADC_Channel(ADC_CTL_CH7);
+  ADC_Init();	
+  TimerEnable(WTIMER0_BASE, TIMER_A);
 	
-  	Add_ADC_Channel(ADC_CTL_CH1);
-	  Add_ADC_Channel(ADC_CTL_CH4);
-	  Add_ADC_Channel(ADC_CTL_CH7);
-    ADC_Init();	
- 
 	 // Sensor2_Init();
 	 IntMasterEnable();	//Global interrupt enable
 	 Display_NewLine();
@@ -176,6 +167,5 @@ int main(void)
 			 
 		 
 		  
-	} 
-	*/
+	}  
 }

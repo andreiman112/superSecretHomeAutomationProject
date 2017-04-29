@@ -118,14 +118,14 @@ void TIMER_delay_No_Int(unsigned long delay_time_ms)
 }
  
 void WTIMER0A_Handler(void)		//Wide Timer 0 A ISR
-{unsigned long var=2;
+{unsigned long sampleSeq=0;
 //	unsigned long timer_value;
 	if(TimerIntStatus(WTIMER0_BASE,false))
 	{
 		TimerIntClear(WTIMER0_BASE, TIMER_A);
 		///timer_value = TimerValueGet(WTIMER0_BASE, TIMER_A);
 
-	   ADCProcessorTrigger(ADC1_BASE, var);  //Trigger Temperature sensor ADC
+	   ADCProcessorTrigger(ADC1_BASE, sampleSeq);  //Trigger Temperature sensor ADC
  
 		 TimerEnable(WTIMER0_BASE, TIMER_A);
 

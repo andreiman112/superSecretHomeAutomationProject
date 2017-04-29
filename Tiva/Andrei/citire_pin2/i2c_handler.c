@@ -35,7 +35,7 @@ void I2C_Master_Wait(void)
 void I2C_ConfTemp(unsigned char Slave_Address, unsigned char Register_Address)
  {
 	 	unsigned char error_nr = 0;
-	unsigned long Register_Value=128+64;
+	unsigned long Register_Value=128;
  	//Step 1.1. Set Slave adress and Write mode (R/W bit = 0)
 	I2CMasterSlaveAddrSet(I2C0_BASE,Slave_Address,0);	//Set slave address and send mode
 

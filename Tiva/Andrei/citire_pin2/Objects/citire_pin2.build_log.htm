@@ -27,23 +27,30 @@ Project File Date:  04/14/2017
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
-compiling main.c...
 compiling gpio_handler.c...
 compiling display.c...
-compiling pwm_handler.c...
+compiling main.c...
 compiling adc_handler.c...
+adc_handler.c(79): warning:  #223-D: function "Display_NewLine" declared implicitly
+  	    Display_NewLine(); 
+adc_handler.c(80): warning:  #223-D: function "Display_String" declared implicitly
+  			Display_String("counter=");
+adc_handler.c(81): warning:  #223-D: function "Display_Decimal" declared implicitly
+  		  Display_Decimal(adcChannels[0]);
+adc_handler.c: 3 warnings, 0 errors
 compiling timer.c...
+compiling pwm_handler.c...
 assembling startup_TM4C123.s...
-compiling system_TM4C123.c...
 compiling i2c_handler.c...
 i2c_handler.c(137): warning:  #68-D: integer conversion resulted in a change of sign
   	unsigned long Register_Read_Value = -1;
 i2c_handler.c(136): warning:  #177-D: variable "error_nr"  was declared but never referenced
   	unsigned char error_nr = 0;
 i2c_handler.c: 2 warnings, 0 errors
+compiling system_TM4C123.c...
 linking...
-Program Size: Code=3252 RO-data=1632 RW-data=28 ZI-data=612  
-".\Objects\citire_pin2.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=4908 RO-data=1372 RW-data=24 ZI-data=712  
+".\Objects\citire_pin2.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -77,7 +84,7 @@ Package Vendor: Keil
       Include file:  Device\Include\TM4C123\TM4C123.h
       Source file:   Device\Source\ARM\startup_TM4C123.s
       Source file:   Device\Source\system_TM4C123.c
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:25
 </pre>
 </body>
 </html>
