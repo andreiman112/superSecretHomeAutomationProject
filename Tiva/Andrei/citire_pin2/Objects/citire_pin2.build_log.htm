@@ -5,7 +5,7 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.22.0.0
 Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Andrei Mihai Man, Hewlett-Packard Company, LIC=----
+License Information: Andrei Man, SefDeSef, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.22
@@ -21,36 +21,46 @@ Target DLL:      lmidk-agdi.dll V???
 Dialog DLL:      TCM.DLL V1.21.0.0
  
 <h2>Project:</h2>
-C:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Andrei\citire_pin2\citire_pin2.uvprojx
-Project File Date:  04/14/2017
+D:\Projects\HomeAutomation\Tiva\Andrei\citire_pin2\citire_pin2.uvprojx
+Project File Date:  05/01/2017
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
-compiling gpio_handler.c...
 compiling display.c...
 compiling main.c...
+i2c_handler.h(9): warning:  #1-D: last line of file ends without a newline
+  unsigned long I2C_RealLum2(unsigned char Slave_Address, unsigned long Reg);
+i2c_handler.h(9): warning:  #1-D: last line of file ends without a newline
+  unsigned long I2C_RealLum2(unsigned char Slave_Address, unsigned long Reg);
+main.c(95): warning:  #550-D: variable "ui32SysClock"  was set but never used
+  	unsigned long ui32SysClock; 
+main.c: 3 warnings, 0 errors
+compiling gpio_handler.c...
 compiling adc_handler.c...
-adc_handler.c(79): warning:  #223-D: function "Display_NewLine" declared implicitly
-  	    Display_NewLine(); 
-adc_handler.c(80): warning:  #223-D: function "Display_String" declared implicitly
-  			Display_String("counter=");
-adc_handler.c(81): warning:  #223-D: function "Display_Decimal" declared implicitly
-  		  Display_Decimal(adcChannels[0]);
-adc_handler.c: 3 warnings, 0 errors
-compiling timer.c...
 compiling pwm_handler.c...
+compiling timer.c...
 assembling startup_TM4C123.s...
-compiling i2c_handler.c...
-i2c_handler.c(137): warning:  #68-D: integer conversion resulted in a change of sign
-  	unsigned long Register_Read_Value = -1;
-i2c_handler.c(136): warning:  #177-D: variable "error_nr"  was declared but never referenced
-  	unsigned char error_nr = 0;
-i2c_handler.c: 2 warnings, 0 errors
 compiling system_TM4C123.c...
+compiling i2c_handler.c...
+i2c_handler.h(9): warning:  #1-D: last line of file ends without a newline
+  unsigned long I2C_RealLum2(unsigned char Slave_Address, unsigned long Reg);
+i2c_handler.c(26): warning:  #177-D: variable "cnt"  was declared but never referenced
+  	static unsigned long cnt=0;
+i2c_handler.c(168): warning:  #550-D: variable "error_nr"  was set but never used
+  	unsigned char error_nr = 0;
+i2c_handler.c(170): warning:  #177-D: variable "Register_Address"  was declared but never referenced
+  	unsigned long Register_Address=0xAC;
+i2c_handler.c(171): warning:  #177-D: variable "Register_Value"  was declared but never referenced
+  	unsigned long Register_Value=0x3;
+i2c_handler.c(201): warning:  #68-D: integer conversion resulted in a change of sign
+  	unsigned long Register_Read_Value = -1;
+i2c_handler.c(200): warning:  #177-D: variable "error_nr"  was declared but never referenced
+  	unsigned char error_nr = 0;
+i2c_handler.c: 7 warnings, 0 errors
 linking...
-Program Size: Code=4908 RO-data=1372 RW-data=24 ZI-data=712  
-".\Objects\citire_pin2.axf" - 0 Error(s), 5 Warning(s).
+Program Size: Code=3468 RO-data=1632 RW-data=8 ZI-data=712  
+".\Objects\citire_pin2.axf" - 0 Error(s), 10 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -68,7 +78,7 @@ Package Vendor: Keil
    * Component: Startup Version: 1.0.1
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Andrei\citire_pin2\RTE\_Target_1
+  D:\Projects\HomeAutomation\Tiva\Andrei\citire_pin2\RTE\_Target_1
   C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include
   C:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123
 
@@ -84,7 +94,7 @@ Package Vendor: Keil
       Include file:  Device\Include\TM4C123\TM4C123.h
       Source file:   Device\Source\ARM\startup_TM4C123.s
       Source file:   Device\Source\system_TM4C123.c
-Build Time Elapsed:  00:00:25
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

@@ -24,12 +24,12 @@
 void I2C_Master_Wait(void)
 {
 	static unsigned long cnt=0;
-	 Display_NewLine();	
+//	 Display_NewLine();	
 	
-	Display_String("cnt ");
-	Display_Decimal(++cnt);
-	Display_String("mcs: ");
-	Display_Decimal(I2C0_MCS);
+	//Display_String("cnt ");
+///	Display_Decimal(++cnt);
+//	Display_String("mcs: ");
+//	Display_Decimal(I2C0_MCS);
 	while(I2CMasterBusy(I2C0_BASE));
 }
 void I2C_ConfTemp(unsigned char Slave_Address, unsigned char Register_Address)
@@ -63,6 +63,38 @@ void I2C_ConfTemp(unsigned char Slave_Address, unsigned char Register_Address)
 		Display_Decimal(error_nr); 
 	
  }
+ unsigned long I2C_ReadLumSimp(unsigned char Slave_Address, unsigned long Reg)
+{
+	//!!!!!!!!!! dara R/W==R nu face nimic la DataPut
+	unsigned char error_nr = 0;
+	unsigned long Register_Read_Value = 0;
+	
+	//Step 1.1. Set Slave adress and Write mode (R/W bit = 0)
+	I2CMasterSlaveAddrSet(I2C0_BASE,Slave_Address,1);	//Set slave address and send mode
+
+	//Step 1.2. Send the 8bit register adress to read from
+	I2CMasterDataPut(I2C0_BASE, Reg); //Send the register adress to the Slave device
+ 
+    while(I2CMasterBusBusy(I2C0_BASE)){}
+		  
+	 I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_SINGLE_RECEIVE);
+	 I2C_Master_Wait();
+	  error_nr = I2CMasterErr(I2C0_BASE);
+		if(error_nr==0){
+			Register_Read_Value = I2CMasterDataGet(I2C0_BASE);
+	
+    Display_NewLine();	
+		Display_String("lumi: ");
+		Display_Decimal(Register_Read_Value); 
+		}
+		else
+		{
+		 Display_NewLine();	
+		Display_String("err: ");
+		Display_Decimal(error_nr); 
+		}
+			return Register_Read_Value;
+}
 unsigned long I2C_ReadTemp(unsigned char Slave_Address, unsigned char Register_Address)
 {
 	//!!!!!!!!!! dara R/W==R nu face nimic la DataPut
@@ -100,7 +132,7 @@ unsigned long I2C_RealLum(unsigned char Slave_Address)
 {
 	unsigned char error_nr = 0;
 	unsigned long Register_Read_Value = 0;
-	unsigned long Register_Address=0x0;
+	unsigned long Register_Address=0x80;
 	unsigned long Register_Value=0x3;
 	//Step 1.1. Set Slave adress and Write mode (R/W bit = 0)
 	I2CMasterSlaveAddrSet(I2C0_BASE,Slave_Address,0);	//Set slave address and send mode
@@ -108,9 +140,9 @@ unsigned long I2C_RealLum(unsigned char Slave_Address)
 	//Step 1.2. Send the 8bit register adress to read from
 	I2CMasterDataPut(I2C0_BASE,Register_Address ); //Send the register adress to the Slave device
  
-    while(I2CMasterBusBusy(I2C0_BASE)){}
-		  
-	    I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_START);  I2C_Master_Wait();
+   while(I2CMasterBusBusy(I2C0_BASE)){}
+		 
+			I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_START);  I2C_Master_Wait();
 	
 	
 			I2CMasterDataPut(I2C0_BASE,Register_Value); //Send the register adress to the Slave device
@@ -128,6 +160,38 @@ unsigned long I2C_RealLum(unsigned char Slave_Address)
 		Display_String("2: ");
 		Display_Decimal(error_nr); 
 			
+	
+		return Register_Read_Value;
+}
+unsigned long I2C_RealLum2(unsigned char Slave_Address, unsigned long Reg)
+{
+	unsigned char error_nr = 0;
+	unsigned long Register_Read_Value = 0;
+	unsigned long Register_Address=0xAC;
+	unsigned long Register_Value=0x3;
+	//Step 1.1. Set Slave adress and Write mode (R/W bit = 0)
+	I2CMasterSlaveAddrSet(I2C0_BASE,Slave_Address,0);	//Set slave address and send mode
+
+	//Step 1.2. Send the 8bit register adress to read from
+	I2CMasterDataPut(I2C0_BASE,Reg ); //Send the register adress to the Slave device
+ 
+   while(I2CMasterBusBusy(I2C0_BASE)){}
+		 
+			I2CMasterControl(I2C0_BASE, 7);  I2C_Master_Wait();
+	
+	 
+	 	 //Step 1.1. Set Slave adress and Write mode (R/W bit = 0)
+	  I2CMasterSlaveAddrSet(I2C0_BASE,Slave_Address,1);	//Set slave address and send mode
+    while(I2CMasterBusBusy(I2C0_BASE)){}
+		error_nr = I2CMasterErr(I2C0_BASE);
+    I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_SINGLE_RECEIVE);  I2C_Master_Wait();
+			
+		Register_Read_Value = I2CMasterDataGet(I2C0_BASE);
+	
+    Display_NewLine();	
+		Display_String("lumi: ");
+		Display_Decimal(Register_Read_Value); 
+	
 	
 		return Register_Read_Value;
 }
@@ -170,5 +234,5 @@ void I2C_Init(void)
 	GPIOPadConfigSet(GPIO_PORTB_BASE, GPIO_PIN_3, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_OD); //Configure OD for PB3
 	//GPIODirModeSet(GPIO_PORTB_BASE, GPIO_PIN_2|GPIO_PIN_3, GPIO_DIR_MODE_HW);	//Set direction by HW for PB2 and PB3
 
-	I2CMasterInitExpClk(I2C0_BASE,SysCtlClockGet(),0);		//Set System clock and normal (100 kbps) transfer rate for I2C_0
+	I2CMasterInitExpClk(I2C0_BASE,SysCtlClockGet(),1);		//Set System clock and normal (100 kbps) transfer rate for I2C_0
 }

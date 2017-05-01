@@ -99,13 +99,24 @@ int main(void)
 	Display_Init();
 	Display_NewLine(); 
   Display_String("Hello!");	
-//	I2C_Init();
+  I2C_Init(); Display_String("Hello!");	
  //I2C_ReadTemp(0x48,0x00);
-// I2C_ConfTemp(0x48,0x01);
-	//I2C_RealLum(0x39);
-	////I2C_ReadLum2(0x39);
-	//I2C_ReadTEMPCONF2(0x48);
+/// I2C_ConfTemp(0x48,0x01);
+ // I2C_RealLum(0x39);
+ // TIMER_delay(100);
+ // return 0;
+	I2C_RealLum2(0x39, 0xAC);
+		I2C_RealLum2(0x39, 0xAD);
+		I2C_RealLum2(0x39, 0xAE);
+		I2C_RealLum2(0x39, 0xAF);
+	 //I2C_ReadLumSimp(0x39,0xAD);
+	
+	 //I2C_ReadLumSimp(0x39,0xAE);
+	
+	 //I2C_ReadLumSimp(0x39,0xAF);
 	 
+	//I2C_ReadTEMPCONF2(0x48);
+	 /*
 	
 	 
   Init_Timer(WTIMER0_BASE, TIMER_A,500);
@@ -163,9 +174,9 @@ int main(void)
 			 }
 		  
       
-			 
-			 
+			
 		 
 		  
-	}  
+	}   */
+			 
 }
