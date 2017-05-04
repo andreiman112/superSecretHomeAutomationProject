@@ -30,32 +30,32 @@ void I2C_Master_Wait(void)
      while (I2CMasterBusy(I2C0_BASE))
         ;
 }
-unsigned long I2C_Read(unsigned char Slave_Address, unsigned long Register)
+unsigned long I2C_Read(unsigned long I2C_Base, unsigned char Slave_Address, unsigned long Register)
 {
     unsigned char error_nr = 0;
     unsigned long Register_Read_Value = 0;  
     //Step 1.1. Set Slave adress and Write mode (R/W bit = 0)
-    I2CMasterSlaveAddrSet(I2C0_BASE, Slave_Address, 0); //Set slave address and send mode
+    I2CMasterSlaveAddrSet(I2C_Base, Slave_Address, 0); //Set slave address and send mode
 
     //Step 1.2. Send the 8bit register adress to read from
-    I2CMasterDataPut(I2C0_BASE, Register); //Send the register adress to the Slave device
+    I2CMasterDataPut(I2C_Base, Register); //Send the register adress to the Slave device
 
-    while (I2CMasterBusBusy(I2C0_BASE)) {
+    while (I2CMasterBusBusy(I2C_Base)) {
     }
 
-    I2CMasterControl(I2C0_BASE, 7);
+    I2CMasterControl(I2C_Base, 7);
     I2C_Master_Wait();
 
     //Step 1.1. Set Slave adress and Write mode (R/W bit = 0)
-    I2CMasterSlaveAddrSet(I2C0_BASE, Slave_Address, 1); //Set slave address and send mode
-    while (I2CMasterBusBusy(I2C0_BASE)) {
+    I2CMasterSlaveAddrSet(I2C_Base, Slave_Address, 1); //Set slave address and send mode
+    while (I2CMasterBusBusy(I2C_Base)) {
     }
-    error_nr = I2CMasterErr(I2C0_BASE);
+    error_nr = I2CMasterErr(I2C_Base);
 		if(error_nr){}
-    I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_SINGLE_RECEIVE);
+    I2CMasterControl(I2C_Base, I2C_MASTER_CMD_SINGLE_RECEIVE);
     I2C_Master_Wait();
     
-    Register_Read_Value = I2CMasterDataGet(I2C0_BASE);
+    Register_Read_Value = I2CMasterDataGet(I2C_Base);
 
     return Register_Read_Value;
 }
@@ -171,7 +171,7 @@ void I2C_Init_LuminositySensor(unsigned char Slave_Address)
 		}
     
 }
-void I2C_Init(unsigned long I2C_BASE)
+void I2C_Init(unsigned long I2C_BASE, char FastMode)
 {
     //Init PB2 as I2C_0 SCL
     //Init PB3 as I2C_0 SDA
@@ -198,7 +198,7 @@ void I2C_Init(unsigned long I2C_BASE)
     GPIOPadConfigSet(port_base, SDA_pin, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_OD); //Configure OD for PB3
     //GPIODirModeSet(GPIO_PORTB_BASE, GPIO_PIN_2|GPIO_PIN_3, GPIO_DIR_MODE_HW);	//Set direction by HW for PB2 and PB3
 
-    I2CMasterInitExpClk(I2C_BASE, SysCtlClockGet(), 1); //Set System clock and normal (100 kbps) transfer rate for I2C_0
+    I2CMasterInitExpClk(I2C_BASE, SysCtlClockGet(), FastMode); //Set System clock and normal (100 kbps) transfer rate for I2C_0
 }
 void I2C0_Init(void)
 {

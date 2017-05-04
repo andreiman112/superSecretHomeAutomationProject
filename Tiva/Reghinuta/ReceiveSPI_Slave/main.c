@@ -106,8 +106,7 @@ void WTIMER1A_Handler(void)		//Wide Timer 0 A ISR
 }
 void GPIOC_Handler(void) 	//GPIO port pC3 ISR for slave fss
 {	 
-	/*
-	
+	 /*
 	uint32_t ulIndex;
 	uint32_t val;
 	uint32_t ulDataRx1[NUM_SSI_DATA];
@@ -120,17 +119,17 @@ void GPIOC_Handler(void) 	//GPIO port pC3 ISR for slave fss
 	Display_String("gpioC");
 	//while(SSIBusy(SSI1_BASE));
 
-	for(ulIndex = 0; ulIndex < NUM_SSI_DATA; ulIndex++)
+	//for(ulIndex = 0; ulIndex < NUM_SSI_DATA; ulIndex++)
 	{	
-		SSIDataGetNonBlocking(SSI1_BASE, &ulDataRx1[ulIndex]);	
+	//	SSIDataGetNonBlocking(SSI1_BASE, &ulDataRx1[ulIndex]);	
 	}
- //	SSIDataGetNonBlocking(SSI1_BASE, &val);
+ 	SSIDataGetNonBlocking(SSI1_BASE, &val);
 		Display_String("get");
-	Display_Decimal(ulDataRx1[0]);
+	Display_Decimal(val);
 	//SSI1_DataOut('ok');
 	// 
 	GPIOIntEnable(GPIO_PORTC_BASE, GPIO_INT_PIN_7); 
-	*/
+	 */
 } 
 
 
@@ -150,7 +149,7 @@ int main(void)
 	
 	
 	SSI0_InitSlave();
-	//SetGPIOInterrupt(GPIO_PORTC_BASE, GPIO_INT_PIN_7, GPIO_RISING_EDGE); //enable interrupt for ssi PC7
+  SetGPIOInterrupt(GPIO_PORTC_BASE, GPIO_INT_PIN_7, GPIO_RISING_EDGE); //enable interrupt for ssi PC7
 
    // Initialize the data to send.
    //ulDataTx0[0] = 's';
@@ -159,8 +158,9 @@ int main(void)
 		//Display_NewLine();
 		//Display_String("Receive:");
 		//Display_NewLine();
-		//SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
+		 SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
    
+
 	 
 		ulDataTx0[0] = 'o'; //TX for SLAVE
 		ulDataTx0[1] = 'o';
@@ -168,11 +168,11 @@ int main(void)
 		
 	while(1)
 	{
-		
+			Send_ok();
 		 
-		//Delay(10000000);
-		//SetGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
-		//	Delay(50000);
-		//ClearGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
+		Delay(10000000);
+		SetGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
+		Delay(50000);
+		ClearGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
 	}
 }

@@ -100,7 +100,7 @@ int main(void)
 	Display_NewLine(); 
   Display_String("Hello!");	
   I2C_Init(); Display_String("Hello!");	
- //I2C_ReadTemp(0x48,0x00);
+ I2C_ReadTemp(0x48,0x00);
 /// I2C_ConfTemp(0x48,0x01);
  // I2C_RealLum(0x39);
  // TIMER_delay(100);

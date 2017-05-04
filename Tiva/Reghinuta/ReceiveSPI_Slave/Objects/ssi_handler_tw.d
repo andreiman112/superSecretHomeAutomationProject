@@ -11,3 +11,4 @@
 .\objects\ssi_handler_tw.o: ..\TivaWare_C_Series-2.1.1.71\inc/hw_ints.h
 .\objects\ssi_handler_tw.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/interrupt.h
 .\objects\ssi_handler_tw.o: display.h
+.\objects\ssi_handler_tw.o: timer.h

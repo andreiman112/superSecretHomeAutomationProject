@@ -111,6 +111,7 @@ int main(void)
 {
 	
 	unsigned long ui32SysClock; 
+  uint32_t val[2]; 
 
 	uint32_t ulDataRx0[NUM_SSI_DATA];
 	uint32_t ulDataTx0[NUM_SSI_DATA];
@@ -135,15 +136,25 @@ int main(void)
    ulDataTx0[2] = 105;
 		
 		SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
+		
+		SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3);
 		//SSI0_IntInit(); //initializare intrerupere pe  SSI_TXFF | SSI_RXFF
 		 
 	while(1)
 	{
-			 for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
+		 /* for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
 			{
 					SSI0_DataOut(ulDataTx0[ulindex]);
 			}
-			
+			SSIDataGet(SSI0_BASE, &val[0]);
+		  SSIDataGet(SSI0_BASE, &val[1]); 
+			if ( (val[0]=='o')&&(val[1]=='k'))
+			{
+			SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_3);
+		  TIMER_delay(500);
+			ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_3);
+			}*/
+	   	SSIDataGetNonBlocking(SSI0_BASE, &val[0]);
 			Delay(20000000);
 			SetGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
 			Delay(500000);

@@ -19,5 +19,5 @@ void SSI0_InitSlave(void);
 void SSI1_InitSlave(void);
 
 void SSI1_Init(void);
-
+void Send_ok(void);
 #endif

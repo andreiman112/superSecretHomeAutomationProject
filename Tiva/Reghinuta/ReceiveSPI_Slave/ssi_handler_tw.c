@@ -12,6 +12,7 @@
 #include "inc/hw_ints.h"
 #include "driverlib/interrupt.h"
 #include "display.h"
+#include "timer.h"
 
 #define DIVISOR_rgb 12
 #define FREQ_SHIFT_RG 25000000 
@@ -62,21 +63,58 @@ void SSI0_InitSlave(void){ //
 	
   for(delay=0; delay<10; delay=delay+1);// delay minimum 100 ns
 }
+void SSI0_InitMaster(void){//for shift register
+	uint8_t delay = 0;
+	
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI0);		//SSI 0 enable 
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);	//Port A enable
+	
+	SSIDisable(SSI0_BASE);												 //Disable SSI0
 
+	GPIOPinConfigure(GPIO_PA2_SSI0CLK);		//PA2 - Clock
+	GPIOPinConfigure(GPIO_PA5_SSI0TX);		//PA5 - TX
+	GPIOPinConfigure(GPIO_PA4_SSI0RX);		//PA4 - RX
+	GPIOPinConfigure(GPIO_PA3_SSI0FSS);		//PA3 - FSS
+	
+	GPIOPinTypeSSI(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_5 | GPIO_PIN_4);	// Configure PA2, PA5, PA4 as SSI
+	
+	SSIClockSourceSet(SSI0_BASE, SSI_CLOCK_SYSTEM);	// Set the SSI clock source
+
+	
+	//Peripherial base, Input clock, Frame format(freescale format), Mode, Bit Data Rate,	Data Width	
+	SSIConfigSetExpClk(SSI0_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 4000000 /*SysCtlClockGet()/8*/, 8);
+	SSIEnable(SSI0_BASE);				//Enable SSI
+
+  for(delay=0; delay<10; delay=delay+1);// delay minimum 100 ns
+}
+void Send_ok(void)
+{
+	//SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+		 //	TIMER_delay(500);
+     	SSI0_DataOut('o');
+			SSI0_DataOut('k'); 
+  //ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+}
 void SSI0_Handler(void){
-	uint8_t val=0;
+	uint32_t val[3];
 	static uint8_t state = 1;
 	if (SSIIntStatus(SSI0_BASE,true)==SSI_RXTO) {
 		//Time-out interrupt
 		//Read SPI
-		SSIDataGet(SSI0_BASE, (uint32_t*)&val);
-		if ((val=='s')||(val=='p')||(val=='i')){
-			if(state) {
-				SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
-			}
-			else {
-				ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
-			}
+		SSIDataGet(SSI0_BASE, &val[0]);
+		SSIDataGet(SSI0_BASE, &val[1]);
+		SSIDataGet(SSI0_BASE,  &val[2]);
+		if ( (val[0]=='s')&&(val[1]=='p')&&(val[2]=='i')){
+		
+			SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+		 //	TIMER_delay(500);
+     	SSI0_DataOut('o');
+			SSI0_DataOut('k'); 
+			SSI0_DataOut('i');
+			SSI0_DataOut('j'); 
+  ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+			
+			 
 			state ^= 1;
 		}
 		SSIIntClear(SSI0_BASE,SSI_RXTO);

@@ -17,10 +17,12 @@
  
 void Init_Drivers(void)
 {
-	I2C_Init(I2C0_BASE);
+	I2C_Init(I2C0_BASE,1);
   I2C_Init_LuminositySensor(0x39);
+	I2C_Init(I2C1_BASE,0);
 	
 	Add_ADC_Channel(0);//channel 0
+	Add_ADC_Channel(1);//channel 0
 	ADC_Init();
 	
 	
