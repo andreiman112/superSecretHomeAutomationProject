@@ -7,4 +7,5 @@
 .\objects\ssi_handler_tw.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/ssi.h
 .\objects\ssi_handler_tw.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/sysctl.h
 .\objects\ssi_handler_tw.o: ..\TivaWare_C_Series-2.1.1.71\inc/hw_memmap.h
+.\objects\ssi_handler_tw.o: ..\TivaWare_C_Series-2.1.1.71\inc/hw_ints.h
 .\objects\ssi_handler_tw.o: display.h

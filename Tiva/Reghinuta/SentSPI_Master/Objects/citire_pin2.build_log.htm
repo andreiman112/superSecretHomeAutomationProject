@@ -26,40 +26,11 @@ Project File Date:  04/20/2017
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
-Rebuild target 'Target 1'
-compiling display.c...
-compiling gpio_handler.c...
-compiling main.c...
-main.c(113): warning:  #550-D: variable "ui32SysClock"  was set but never used
-  	unsigned long ui32SysClock; 
-main.c(114): warning:  #177-D: variable "g_ulSSI2RXFF"  was declared but never referenced
-  	 unsigned long g_ulSSI2RXFF = 0, g_ulSSI2TXFF = 0;
-main.c(114): warning:  #177-D: variable "g_ulSSI2TXFF"  was declared but never referenced
-  	 unsigned long g_ulSSI2RXFF = 0, g_ulSSI2TXFF = 0;
-main.c(117): warning:  #177-D: variable "ulDataRx1"  was declared but never referenced
-  	uint32_t ulDataRx1[NUM_SSI_DATA];
-main.c(118): warning:  #550-D: variable "ulDataTx1"  was set but never used
-  	uint32_t ulDataTx1[NUM_SSI_DATA];
-main.c: 5 warnings, 0 errors
-compiling timer.c...
-compiling adc_handler.c...
-compiling i2c_handler.c...
-i2c_handler.c(138): warning:  #111-D: statement is unreachable
-  	Display_NewLine();	
-i2c_handler.c(172): warning:  #940-D: missing return statement at end of non-void function "I2C_ReadTemp" 
-  }
-i2c_handler.c(195): warning:  #940-D: missing return statement at end of non-void function "I2C_Read2" 
-  }
-i2c_handler.c(177): warning:  #177-D: variable "Register_Read_Value"  was declared but never referenced
-  	unsigned long Register_Read_Value = 0;
-i2c_handler.c: 4 warnings, 0 errors
-compiling pwm_handler.c...
+Build target 'Target 1'
 compiling ssi_handler_tw.c...
-assembling startup_TM4C123.s...
-compiling system_TM4C123.c...
 linking...
-Program Size: Code=3508 RO-data=1632 RW-data=28 ZI-data=612  
-".\Objects\citire_pin2.axf" - 0 Error(s), 9 Warning(s).
+Program Size: Code=3344 RO-data=1632 RW-data=28 ZI-data=612  
+".\Objects\citire_pin2.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -93,7 +64,7 @@ Package Vendor: Keil
       Include file:  Device\Include\TM4C123\TM4C123.h
       Source file:   Device\Source\ARM\startup_TM4C123.s
       Source file:   Device\Source\system_TM4C123.c
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

@@ -13,9 +13,9 @@ extern uint32_t g_ulDataRx1[NUM_SSI_DATA];
 
 
 void SSI0_DataOut(uint8_t data);
-void SSI1_DataOut(uint8_t data);
+//void SSI1_DataOut(uint8_t data);
 
-void SSI0_InitMaster(void);
+void SSI0_InitSlave(void);
 void SSI1_InitSlave(void);
 
 void SSI1_Init(void);

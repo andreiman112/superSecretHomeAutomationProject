@@ -48,7 +48,10 @@
 #endif
 	
 uint32_t g_ulSSI1RXTO;
-uint32_t g_ulDataRx1[NUM_SSI_DATA];	
+uint32_t ulDataRx0[NUM_SSI_DATA];
+uint32_t ulDataTx0[NUM_SSI_DATA];
+uint32_t ulDataRx1[NUM_SSI_DATA];
+uint32_t ulDataTx1[NUM_SSI_DATA];
 	
 
 void TIMER2A_Handler(void)  //Timer 1 A ISR used to debounce SW2
@@ -101,33 +104,53 @@ void WTIMER1A_Handler(void)		//Wide Timer 0 A ISR
 	   TimerEnable(WTIMER1_BASE, TIMER_A);
 	 
 }
-void GPIOF_Handler(void) 	//GPIO port F ISR
+void GPIOC_Handler(void) 	//GPIO port pC3 ISR for slave fss
 {	 
+	/*
+	
 	uint32_t ulIndex;
+	uint32_t val;
 	uint32_t ulDataRx1[NUM_SSI_DATA];
-	GPIOIntClear(GPIO_PORTF_BASE,  GPIO_INT_PIN_4);
-	for(ulIndex = 0; ulIndex < NUM_SSI_DATA; ulIndex++)
-	{
-			SSIDataGet(SSI1_BASE, &ulDataRx1[ulIndex]);
-	}
-	  GPIOIntDisable(GPIO_PORTF_BASE,GPIO_PIN_4); 
-} 
+	uint32_t ulDataTx1[NUM_SSI_DATA];
+	 
+	 
+	Display_NewLine();
+	GPIOIntClear(GPIO_PORTC_BASE,  GPIO_INT_PIN_7);
+	 //GPIOIntDisable(GPIO_PORTF_BASE,GPIO_PIN_7); 
+	Display_String("gpioC");
+	//while(SSIBusy(SSI1_BASE));
 
+	for(ulIndex = 0; ulIndex < NUM_SSI_DATA; ulIndex++)
+	{	
+		SSIDataGetNonBlocking(SSI1_BASE, &ulDataRx1[ulIndex]);	
+	}
+ //	SSIDataGetNonBlocking(SSI1_BASE, &val);
+		Display_String("get");
+	Display_Decimal(ulDataRx1[0]);
+	//SSI1_DataOut('ok');
+	// 
+	GPIOIntEnable(GPIO_PORTC_BASE, GPIO_INT_PIN_7); 
+	*/
+} 
 
 
 int main(void)
 {
 	
 	unsigned long ui32SysClock; 
+	unsigned long ulindex;
+	IntMasterEnable();
 	SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN); //80 Mhz
 	ui32SysClock = SysCtlClockGet();
-
+	
+	SetGPIOOutput(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+	
 	Display_Init();
-	Display_String("SPI:");
+	Display_String("Slave:");
 	
 	
-	SSI1_InitSlave();
-	SetGPIOInterrupt(GPIO_PORTF_BASE, GPIO_INT_PIN_4, GPIO_RISING_EDGE); //enable interrupt
+	SSI0_InitSlave();
+	//SetGPIOInterrupt(GPIO_PORTC_BASE, GPIO_INT_PIN_7, GPIO_RISING_EDGE); //enable interrupt for ssi PC7
 
    // Initialize the data to send.
    //ulDataTx0[0] = 's';
@@ -136,18 +159,20 @@ int main(void)
 		//Display_NewLine();
 		//Display_String("Receive:");
 		//Display_NewLine();
-		SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
+		//SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
    
+	 
+		ulDataTx0[0] = 'o'; //TX for SLAVE
+		ulDataTx0[1] = 'o';
+		ulDataTx0[2] = 'k';
+		
 	while(1)
 	{
-		/*
-		 for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
-    {
-        SSI0_DataOut(ulDataTx0[ulindex]);
-    }*/
-		Delay(10000000);
-		SetGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
-			Delay(50000);
-		ClearGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
+		
+		 
+		//Delay(10000000);
+		//SetGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
+		//	Delay(50000);
+		//ClearGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
 	}
 }

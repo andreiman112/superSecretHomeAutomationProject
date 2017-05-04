@@ -8,6 +8,7 @@
 #include "driverlib/ssi.h"
 #include "driverlib/sysctl.h"
 #include "inc/hw_memmap.h"
+#include "inc/hw_ints.h"
 #include "display.h"
 
 #define DIVISOR_rgb 12
@@ -19,6 +20,7 @@ uint32_t ulDataRx0[NUM_SSI_DATA];
 uint32_t ulDataTx0[NUM_SSI_DATA];
 uint32_t ulDataRx1[NUM_SSI_DATA];
 uint32_t ulDataTx1[NUM_SSI_DATA];
+
 void SSI0_DataOut(uint8_t data){ 
 	SSIDataPut(SSI0_BASE,data); //Puts a data element into the SSI transmit FIFO.
 	Display_NewLine();	
@@ -28,8 +30,15 @@ void SSI0_DataOut(uint8_t data){
 void SSI1_DataOut(uint8_t data){ 
 	SSIDataPut(SSI1_BASE,data); //Puts a data element into the SSI transmit FIFO.
 }
-
-
+/*
+void SSI0_IntInit(void)
+{
+	IntMasterEnable();
+	SSIIntEnable(SSI0_BASE, SSI_TXFF | SSI_RXFF );
+	IntEnable(INT_SSI0);   
+	SSIIntClear(SSI0_BASE, SSI_TXFF | SSI_RXFF);
+}
+*/
 void SSI0_InitMaster(void){//for shift register
 	uint8_t delay = 0;
 	
@@ -49,7 +58,7 @@ void SSI0_InitMaster(void){//for shift register
 
 	
 	//Peripherial base, Input clock, Frame format(freescale format), Mode, Bit Data Rate,	Data Width	
-	SSIConfigSetExpClk(SSI0_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, SysCtlClockGet()/8, 8);
+	SSIConfigSetExpClk(SSI0_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 4000000 /*SysCtlClockGet()/8*/, 8);
 	SSIEnable(SSI0_BASE);				//Enable SSI
 
   for(delay=0; delay<10; delay=delay+1);// delay minimum 100 ns
@@ -85,54 +94,40 @@ void SSI1_InitSlave(void)
 // status and if the interrupt is fired by a RX time out interrupt it reads the
 // SSI1 RX FIFO and increments a counter to tell the main loop that RX timeout
 // interrupt was fired.
-
-void SSI0_IntHandler(void)
+/*
+void SSI1_IntHandler(void) //handle intrerupere pt TXFF RXFF
 {
-	unsigned long ulStatus, ulIndex;
+	unsigned long ulStatus, ulindex;
 
 	//
 	// Read interrupt status.
 	//
-	ulStatus = SSIIntStatus(SSI0_BASE, 1);
+	ulStatus = SSIIntStatus(SSI1_BASE, 1);
 	//
 	// Check the reason for the interrupt.
 	//
 	if(ulStatus & SSI_TXFF)
 	{
-		//
-		// increment counter to tell
-		// main loop that TX full interrupt occurred.
-		//
-		g_ulSSI2TXFF++;
-
-		//
+	
 		// Read NUM_SSI_DATA bytes of data from SSI0 RX FIFO.
 		//
-		for(ulIndex = 0; ulIndex < NUM_SSI_DATA; ulIndex++)
+		for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
 		{
-
-			SSIDataPut(SSI0_BASE, ulDataTx0[ulIndex]);
-
+			SSIDataGet(SSI1_BASE, &ulDataRx1[ulindex]);
 		}
-		SSIIntClear(SSI0_BASE, SSI_TXFF | SSI_RXFF);
-		//SSIIntDisable(SSI2_BASE, SSI_TXFF);
+		SSIIntClear(SSI1_BASE, SSI_TXFF | SSI_RXFF);
+		//SSIIntDisable(SSI1_BASE, SSI_TXFF);
 	}
 
 
 	if((ulStatus & SSI_RXFF) | (ulStatus & SSI_RXTO))
 	{
 
-		g_ulSSI2RXFF++;
-
-		//
-		// Read NUM_SSI_DATA bytes of data from SSI2 RX FIFO.
-		//
-		for(ulIndex = 0; ulIndex < NUM_SSI_DATA; ulIndex++)
+		for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
 		{
-			SSIDataGet(SSI2_BASE, &ulDataRx0[ulIndex]);
-
+			SSIDataGet(SSI1_BASE, &ulDataRx1[ulindex]);
 		}
-		SSIIntClear(SSI2_BASE,  SSI_TXFF | SSI_RXFF);
+		SSIIntClear(SSI1_BASE,  SSI_TXFF | SSI_RXFF);
 		//SSIIntDisable(SSI2_BASE, SSI_RXFF);
 	}
 	//
@@ -143,25 +138,7 @@ void SSI0_IntHandler(void)
 
 }
 
-
-void SSI_Receive_FromSlave (void){
-
-	unsigned long ulindex;
-	uint32_t ulDataRx0[NUM_SSI_DATA];
-
-	//SSIIntClear(SSI0_BASE, SSI_RXFF | SSI_TXFF);
-	for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
-	{
-		SSIDataGet(SSI0_BASE, &ulDataRx0[ulindex]);
-	}
-
-	while(SSIBusy(SSI0_BASE))
-	{
-	}
-}
-
-
-
+*/
 
 
 void SSI1_Init(void){ //for rgb strip

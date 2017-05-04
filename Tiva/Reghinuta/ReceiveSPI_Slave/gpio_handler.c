@@ -89,7 +89,7 @@ void SetGPIOInterrupt(unsigned long port , unsigned long pin, unsigned long egde
 	 char int_addr=getINTGPIO_Adrress(port);
 	 IntDisable(int_addr);  //GPIO Port   disable of interrupts
 	
-   SetGPIOInput(portAddr,pin,1);
+   SetGPIOInput(portAddr,pin,0);
 	
  	GPIOIntDisable(portAddr,pin);  //Disable GPIO pin interrupt
  	GPIOIntTypeSet(portAddr,pin, /*GPIO_FALLING_EDGE*/  egde);  //Set Low level interrupt type

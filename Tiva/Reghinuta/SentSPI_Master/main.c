@@ -111,7 +111,7 @@ int main(void)
 {
 	
 	unsigned long ui32SysClock; 
-	 unsigned long g_ulSSI2RXFF = 0, g_ulSSI2TXFF = 0;
+
 	uint32_t ulDataRx0[NUM_SSI_DATA];
 	uint32_t ulDataTx0[NUM_SSI_DATA];
 	uint32_t ulDataRx1[NUM_SSI_DATA];
@@ -126,49 +126,31 @@ int main(void)
 	Display_Init();
 	Display_String("SPI:");
 	
-	IntMasterEnable();
-	SSI0_InitMaster(); 
-	while(SSIDataGetNonBlocking(SSI0_BASE, &ulDataRx0[0]))
-	{
-	} //makes sure the receive FIFOs are empty
 
+	SSI0_InitMaster(); //initializare master
 	
-		
-		
-   // Initialize the data to send.
+   // Initialize the data to send from MASTER TO SLAVE
    ulDataTx0[0] = 115;
    ulDataTx0[1] = 112;
    ulDataTx0[2] = 105;
 		
-	
-		
 		SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
-		
-		//SSIIntEnable(SSI0_BASE, SSI_TXFF | SSI_RXFF );
-		//IntEnable(INT_SSI0);   
+		//SSI0_IntInit(); //initializare intrerupere pe  SSI_TXFF | SSI_RXFF
+		 
 	while(1)
 	{
-		//SSIIntClear(SSI0_BASE, SSI_TXFF | SSI_RXFF);
-
-		 for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
-    {
-        SSI0_DataOut(ulDataTx0[ulindex]);
-    }
-		Delay(10000000);
-		SetGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
-			Delay(50000);
-		ClearGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
-		ulDataTx1[0] = 'o';
-		ulDataTx1[1] = 'o';
-		ulDataTx1[2] = 'k';
-		//SSIIntClear(SSI2_BASE, SSI_RXFF | SSI_TXFF);
-			for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
-		{
-			SSIDataGet(SSI0_BASE, &ulDataRx0[ulindex]);
-		}
-
-		while(SSIBusy(SSI0_BASE)){}
-		//SSI_Receive_FromSlave();
+			 for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
+			{
+					SSI0_DataOut(ulDataTx0[ulindex]);
+			}
+			
+			Delay(20000000);
+			SetGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
+			Delay(500000);
+			ClearGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
+			
+		
+	
 	}
 	
 }

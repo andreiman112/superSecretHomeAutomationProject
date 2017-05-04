@@ -18,6 +18,8 @@ void SSI1_DataOut(uint8_t data);
 
 void SSI0_InitMaster(void);
 void SSI1_InitSlave(void);
+
+void SSI0_IntInit(void);
 //void SSI0_IntHandler(void);
 void SSI_Receive_FromSlave (void);
 
