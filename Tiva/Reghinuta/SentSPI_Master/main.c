@@ -131,9 +131,8 @@ int main(void)
 	SSI0_InitMaster(); //initializare master
 	
    // Initialize the data to send from MASTER TO SLAVE
-   ulDataTx0[0] = 115;
-   ulDataTx0[1] = 112;
-   ulDataTx0[2] = 105;
+   ulDataTx0[0] = 0xF3; //PF
+   ulDataTx0[1] = 0x01; //val
 		
 		SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
 		
@@ -142,10 +141,24 @@ int main(void)
 		 
 	while(1)
 	{
-		 /* for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
+		SSI0_DataOut(ulDataTx0[0]);
+		SSI0_DataOut(ulDataTx0[1]);
+		
+		SSIDataGetNonBlocking(SSI0_BASE, &val[0]);
+		SSIDataGetNonBlocking(SSI0_BASE, &val[1]); 
+		
+			Display_NewLine();
+			Display_String("rez:");
+			Display_Decimal(val[1]);
+			Display_NewLine();
+	
+		
+		/*
+		  for(ulindex = 0; ulindex < NUM_SSI_DATA; ulindex++)
 			{
 					SSI0_DataOut(ulDataTx0[ulindex]);
 			}
+			
 			SSIDataGet(SSI0_BASE, &val[0]);
 		  SSIDataGet(SSI0_BASE, &val[1]); 
 			if ( (val[0]=='o')&&(val[1]=='k'))
@@ -154,14 +167,13 @@ int main(void)
 		  TIMER_delay(500);
 			ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_3);
 			}*/
-	   	SSIDataGetNonBlocking(SSI0_BASE, &val[0]);
+	   	//SSIDataGetNonBlocking(SSI0_BASE, &val[0]);
 			Delay(20000000);
 			SetGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
 			Delay(500000);
 			ClearGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
 			
-		
-	
 	}
-	
 }
+	
+

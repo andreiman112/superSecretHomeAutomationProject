@@ -14,6 +14,8 @@
 #include "display.h"
 #include "timer.h"
 
+
+
 #define DIVISOR_rgb 12
 #define FREQ_SHIFT_RG 25000000 
 
@@ -87,13 +89,14 @@ void SSI0_InitMaster(void){//for shift register
 
   for(delay=0; delay<10; delay=delay+1);// delay minimum 100 ns
 }
+
 void Send_ok(void)
 {
-	//SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+	SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
 		 //	TIMER_delay(500);
      	SSI0_DataOut('o');
 			SSI0_DataOut('k'); 
-  //ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+	ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
 }
 void SSI0_Handler(void){
 	uint32_t val[3];
@@ -103,8 +106,10 @@ void SSI0_Handler(void){
 		//Read SPI
 		SSIDataGet(SSI0_BASE, &val[0]);
 		SSIDataGet(SSI0_BASE, &val[1]);
-		SSIDataGet(SSI0_BASE,  &val[2]);
-		if ( (val[0]=='s')&&(val[1]=='p')&&(val[2]=='i')){
+		
+		//SSIDataGet(SSI0_BASE, &val[1]);
+		//SSIDataGet(SSI0_BASE,  &val[2]);
+		/*if ( (val[0]=='s')&&(val[1]=='p')&&(val[2]=='i')){
 		
 			SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
 		 //	TIMER_delay(500);
@@ -112,14 +117,43 @@ void SSI0_Handler(void){
 			SSI0_DataOut('k'); 
 			SSI0_DataOut('i');
 			SSI0_DataOut('j'); 
-  ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+			ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
 			
-			 
+			state ^= 1;
+		}*/
+		
+		SSI0_DataOut(val[0]);
+		SSI0_DataOut(val[1]);
+		
+		if(val[0] == 0xF1 && val[1] == 0x01)
+		{
+			SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1);
+			SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+			Delay(50000);
+			ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+			state ^= 1;
+		}
+		if(val[0] == 0xF2 && val[1] == 0x01)
+		{
+			SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
+			SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_2);
+			Delay(50000);
+			ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_2);
+			state ^= 1;
+		}
+		if(val[0] == 0xF3 && val[1] == 0x01)
+		{
+			SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3);
+			SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_3);
+			Delay(50000);
+			ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_3);
 			state ^= 1;
 		}
 		SSIIntClear(SSI0_BASE,SSI_RXTO);
 	}
 }
+
+//void LedOn_Blink(unsigned long port,unsigned long pin);
 
 /*
 void SSIIntClear (uint32_t ui32Base, uint32
@@ -130,33 +164,6 @@ uint32_t SSIIntStatus (uint32_t ui32Base, b
 void SSIIntUnregister (uint32_t ui32Base)
 
 */
-
-void SSI1_InitSlave(void) //nefolosit
-{
-	uint8_t delay = 0;
-	uint32_t var;
-	SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI1);		//SSI 0 enable 
-	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);	//Port F enable
-	
-	SSIDisable(SSI1_BASE);												 //Disable SSI0
-
-	GPIOPinConfigure(GPIO_PF2_SSI1CLK);		//PF2 Clock
-	GPIOPinConfigure(GPIO_PF1_SSI1TX);		//PF1 TX
-	GPIOPinConfigure(GPIO_PF0_SSI1RX);		//PF0 RX
-	GPIOPinConfigure(GPIO_PF3_SSI1FSS); //PF3 FSS 
-	GPIOPinTypeSSI(GPIO_PORTF_BASE, GPIO_PIN_2 | GPIO_PIN_1 | GPIO_PIN_0| GPIO_PIN_3);	// Configure PF as SSI
-	
-	SSIClockSourceSet(SSI1_BASE, SSI_CLOCK_SYSTEM);	// Set the SSI clock source
-
-	
-	//Peripherial base, Input clock, Frame format(freescale format), Mode, Bit Data Rate,	Data Width	
-	SSIConfigSetExpClk(SSI1_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_SLAVE, SysCtlClockGet()/8, 8);	
-	//SSIEnable(SSI1_BASE);				//Enable SSI
-
-	
-	for(delay=0; delay<10; delay=delay+1);// delay minimum 100 ns
-}
-
 
 
 void SSI1_Init(void){ //for rgb strip

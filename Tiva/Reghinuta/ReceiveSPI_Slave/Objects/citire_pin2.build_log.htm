@@ -5,7 +5,7 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.22.0.0
 Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Andrei Mihai Man, Hewlett-Packard Company, LIC=----
+License Information: Mihai Microsoft, Microsoft, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.22
@@ -21,19 +21,46 @@ Target DLL:      lmidk-agdi.dll V???
 Dialog DLL:      TCM.DLL V1.21.0.0
  
 <h2>Project:</h2>
-C:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Reghinuta\ReceiveSPI_Slave\citire_pin2.uvprojx
-Project File Date:  04/28/2017
+C:\Users\reghinuta.catarig\Desktop\superSecretHomeAutomationProject\Tiva\Reghinuta\ReceiveSPI_Slave\citire_pin2.uvprojx
+Project File Date:  04/20/2017
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
-Build target 'Target 1'
+Rebuild target 'Target 1'
+compiling gpio_handler.c...
+compiling main.c...
+main.c(140): warning:  #550-D: variable "ui32SysClock"  was set but never used
+  	unsigned long ui32SysClock; 
+main.c(141): warning:  #177-D: variable "ulindex"  was declared but never referenced
+  	unsigned long ulindex;
+main.c: 2 warnings, 0 errors
+compiling display.c...
+compiling timer.c...
+compiling adc_handler.c...
+compiling pwm_handler.c...
+compiling i2c_handler.c...
+i2c_handler.c(138): warning:  #111-D: statement is unreachable
+  	Display_NewLine();	
+i2c_handler.c(172): warning:  #940-D: missing return statement at end of non-void function "I2C_ReadTemp" 
+  }
+i2c_handler.c(195): warning:  #940-D: missing return statement at end of non-void function "I2C_Read2" 
+  }
+i2c_handler.c(177): warning:  #177-D: variable "Register_Read_Value"  was declared but never referenced
+  	unsigned long Register_Read_Value = 0;
+i2c_handler.c: 4 warnings, 0 errors
+assembling startup_TM4C123.s...
 compiling ssi_handler_tw.c...
-ssi_handler_tw.c(137): warning:  #177-D: variable "var"  was declared but never referenced
-  	uint32_t var;
-ssi_handler_tw.c: 1 warning, 0 errors
+ssi_handler_tw.c(132): warning:  #223-D: function "Delay" declared implicitly
+  			Delay(50000);
+ssi_handler_tw.c(140): warning:  #223-D: function "Delay" declared implicitly
+  			Delay(50000);
+ssi_handler_tw.c(148): warning:  #223-D: function "Delay" declared implicitly
+  			Delay(50000);
+ssi_handler_tw.c: 3 warnings, 0 errors
+compiling system_TM4C123.c...
 linking...
-Program Size: Code=4316 RO-data=1900 RW-data=32 ZI-data=656  
-".\Objects\citire_pin2.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=4380 RO-data=1900 RW-data=32 ZI-data=608  
+".\Objects\citire_pin2.axf" - 0 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -51,7 +78,7 @@ Package Vendor: Keil
    * Component: Startup Version: 1.0.1
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\Andrei.Man\Documents\superSecretHomeAutomationProject\Tiva\Reghinuta\ReceiveSPI_Slave\RTE\_Target_1
+  C:\Users\reghinuta.catarig\Desktop\superSecretHomeAutomationProject\Tiva\Reghinuta\ReceiveSPI_Slave\RTE\_Target_1
   C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include
   C:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123
 
@@ -67,7 +94,7 @@ Package Vendor: Keil
       Include file:  Device\Include\TM4C123\TM4C123.h
       Source file:   Device\Source\ARM\startup_TM4C123.s
       Source file:   Device\Source\system_TM4C123.c
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

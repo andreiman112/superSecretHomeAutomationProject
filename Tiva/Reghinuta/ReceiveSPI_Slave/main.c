@@ -29,6 +29,7 @@
 #define WTIMER0_PRIO (0x01)
 #define TIMER1_PRIO (0x00)
 #define TIMER2_PRIO (0x00)
+
 #ifdef __TI_COMPILER_VERSION__
 	//Code Composer Studio Code
 	void Delay(uint32_t ulCount){
@@ -142,7 +143,7 @@ int main(void)
 	SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN); //80 Mhz
 	ui32SysClock = SysCtlClockGet();
 	
-	SetGPIOOutput(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+	//SetGPIOOutput(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
 	
 	Display_Init();
 	Display_String("Slave:");
@@ -158,21 +159,16 @@ int main(void)
 		//Display_NewLine();
 		//Display_String("Receive:");
 		//Display_NewLine();
-		 SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
+		 //SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
    
-
-	 
-		ulDataTx0[0] = 'o'; //TX for SLAVE
-		ulDataTx0[1] = 'o';
-		ulDataTx0[2] = 'k';
 		
 	while(1)
 	{
-			Send_ok();
+			//Send_ok();
 		 
 		Delay(10000000);
-		SetGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
-		Delay(50000);
-		ClearGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
+		//SetGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
+		//Delay(50000);
+		//ClearGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
 	}
 }
