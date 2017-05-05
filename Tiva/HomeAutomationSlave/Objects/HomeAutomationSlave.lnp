@@ -5,6 +5,7 @@
 ".\objects\adc_handler.o"
 ".\objects\timer_handler.o"
 ".\objects\i2c_handler.o"
+".\objects\pwm_handler.o"
 ".\objects\spi_handler.o"
 ".\objects\main.o"
 "..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk\driverlib.lib"

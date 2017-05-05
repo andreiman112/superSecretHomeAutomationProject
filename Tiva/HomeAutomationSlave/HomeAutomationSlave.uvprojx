@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>rvmdk PART_TM4C123GH6PM TARGET_IS_TM4C123_RA1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk;..\TivaWare_C_Series-2.1.1.71;.\drivers\adc_handler;.\drivers\gpio_handler;.\drivers\i2c_handler;.\drivers\timer_handler;.\application\cyclic_container;.\application\startup_container;..\HomeAutomationSlave</IncludePath>
+              <IncludePath>..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk;..\TivaWare_C_Series-2.1.1.71;.\drivers\adc_handler;.\drivers\gpio_handler;.\drivers\i2c_handler;.\drivers\timer_handler;.\application\cyclic_container;.\application\startup_container;..\HomeAutomationSlave;.\drivers\pwm_handler;.\drivers\spi_handler</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -413,6 +413,11 @@
               <FileName>i2c_handler.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\drivers\i2c_handler\i2c_handler.c</FilePath>
+            </File>
+            <File>
+              <FileName>pwm_handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\pwm_handler\pwm_handler.c</FilePath>
             </File>
           </Files>
         </Group>
