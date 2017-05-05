@@ -419,6 +419,11 @@
               <FileType>1</FileType>
               <FilePath>.\drivers\pwm_handler\pwm_handler.c</FilePath>
             </File>
+            <File>
+              <FileName>spi_handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\spi_handler\spi_handler.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
