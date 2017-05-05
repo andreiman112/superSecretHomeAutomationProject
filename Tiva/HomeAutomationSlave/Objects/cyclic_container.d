@@ -10,3 +10,4 @@
 .\objects\cyclic_container.o: .\drivers\adc_handler\adc_handler.h
 .\objects\cyclic_container.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/adc.h
 .\objects\cyclic_container.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/gpio.h
+.\objects\cyclic_container.o: .\drivers\spi_handler\spi_handler.h

@@ -14,7 +14,7 @@
 #include "driverlib/gpio.h" 
 #include "driverlib/timer.h"
 #include "display.h"
- 
+  
 void Init_Drivers(void)
 {
 	I2C_Init(I2C0_BASE,1);

@@ -13,9 +13,9 @@
 #include "driverlib/interrupt.h"
 #include "driverlib/pin_map.h"
 #include "driverlib/i2c.h"
-
 #include "inc/hw_i2c.h"
 #include "display.h"
+#include "spi_handler.h"
 #define SLAVE_ADDRESS_EXT 0x4E
 #define NUM_OF_I2CBYTES 255
 
@@ -29,6 +29,7 @@ void I2C_Master_Wait(void)
 {
      while (I2CMasterBusy(I2C0_BASE))
         ;
+		  
 }
 unsigned long I2C_Read(unsigned long I2C_Base, unsigned char Slave_Address, unsigned long Register)
 {
@@ -145,6 +146,7 @@ char Get_SDA_Pin(unsigned long I2C_BASE)
         return GPIO_PIN_1;
     }
     return 1;
+		
 }
 void I2C_Init_LuminositySensor(unsigned char Slave_Address)
 {

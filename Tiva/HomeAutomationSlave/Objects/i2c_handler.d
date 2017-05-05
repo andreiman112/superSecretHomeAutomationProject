@@ -13,3 +13,4 @@
 .\objects\i2c_handler.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/i2c.h
 .\objects\i2c_handler.o: ..\TivaWare_C_Series-2.1.1.71\inc/hw_i2c.h
 .\objects\i2c_handler.o: ..\HomeAutomationSlave\display.h
+.\objects\i2c_handler.o: .\drivers\spi_handler\spi_handler.h
