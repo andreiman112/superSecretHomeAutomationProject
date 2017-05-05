@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\citire_pin2.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\citire_pin2.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Thu May 04 16:34:38 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Fri May 05 14:12:24 2017
 <BR><P>
 <H3>Maximum Stack Usage =         84 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1283,8 +1283,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Char
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_DataOut
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER2A_Handler
 </UL>
@@ -1310,8 +1309,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Char
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_DataOut
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WTIMER1A_Handler
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER4A_Handler
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER2A_Handler
@@ -1386,12 +1384,10 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a8]"></a>SSI0_DataOut</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, ssi_handler_tw.o(i.SSI0_DataOut))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = SSI0_DataOut &rArr; Display_Decimal &rArr;  Display_Decimal (Cycle)
+<P><STRONG><a name="[a8]"></a>SSI0_DataOut</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, ssi_handler_tw.o(i.SSI0_DataOut))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SSI0_DataOut
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataPut
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
 </UL>
 <BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1582,7 +1578,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
-<P><STRONG><a name="[88]"></a>main</STRONG> (Thumb, 214 bytes, Stack size 24 bytes, main.o(i.main))
+<P><STRONG><a name="[88]"></a>main</STRONG> (Thumb, 220 bytes, Stack size 24 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = main &rArr; SSI0_InitMaster &rArr; GPIOPinTypeSSI &rArr; GPIOPadConfigSet
 </UL>
 <BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable

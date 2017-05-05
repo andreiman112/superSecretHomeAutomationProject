@@ -9,6 +9,8 @@
 .\objects\startup_container.o: .\drivers\adc_handler\adc_handler.h
 .\objects\startup_container.o: .\drivers\i2c_handler\i2c_handler.h
 .\objects\startup_container.o: .\drivers\gpio_handler\gpio_handler.h
+.\objects\startup_container.o: .\drivers\pwm_handler\pwm_handler.h
+.\objects\startup_container.o: .\drivers\spi_handler\spi_handler.h
 .\objects\startup_container.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/gpio.h
 .\objects\startup_container.o: ..\TivaWare_C_Series-2.1.1.71\driverlib/timer.h
 .\objects\startup_container.o: ..\HomeAutomationSlave\display.h

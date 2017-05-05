@@ -1,5 +1,5 @@
 Dependencies for Project 'citire_pin2', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x590B2DED)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk-IC:\Users\reghinuta.catarig\Desktop\superSecretHomeAutomationProject\Tiva\Reghinuta\SentSPI_Master_master_request\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x590C5E17)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk-IC:\Users\reghinuta.catarig\Desktop\superSecretHomeAutomationProject\Tiva\Reghinuta\SentSPI_Master_master_request\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/sysctl.h)(0x58E3A19E)
@@ -98,7 +98,7 @@ I (..\TivaWare_C_Series-2.1.1.71\driverlib/pin_map.h)(0x566AABD8)
 I (..\TivaWare_C_Series-2.1.1.71\driverlib/i2c.h)(0x5648E778)
 I (..\TivaWare_C_Series-2.1.1.71\inc/hw_i2c.h)(0x5648E7CD)
 I (display.h)(0x58EC9C13)
-F (.\ssi_handler_tw.c)(0x590B1FE7)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk-IC:\Users\reghinuta.catarig\Desktop\superSecretHomeAutomationProject\Tiva\Reghinuta\SentSPI_Master_master_request\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\ssi_handler_tw.o --omf_browse .\objects\ssi_handler_tw.crf --depend .\objects\ssi_handler_tw.d)
+F (.\ssi_handler_tw.c)(0x590C3A87)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\TivaWare_C_Series-2.1.1.71 -I ..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk-IC:\Users\reghinuta.catarig\Desktop\superSecretHomeAutomationProject\Tiva\Reghinuta\SentSPI_Master_master_request\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="522" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RA1-o .\objects\ssi_handler_tw.o --omf_browse .\objects\ssi_handler_tw.crf --depend .\objects\ssi_handler_tw.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F64D08)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F64D08)
 I (ssi_handler_tw.h)(0x590AE6F8)

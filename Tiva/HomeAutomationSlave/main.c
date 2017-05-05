@@ -20,7 +20,6 @@ int main(void)
 	Init_Drivers();
 	while(ui32SysClock)
 	{
-	
 	}
 	
 }

@@ -11,12 +11,15 @@
 #include "adc_handler.h"
 #include "i2c_handler.h"
 #include "gpio_handler.h"  
+#include "pwm_handler.h"  
+#include "spi_handler.h"
 #include "driverlib/gpio.h" 
 #include "driverlib/timer.h"
 #include "display.h"
   
 void Init_Drivers(void)
 {
+	
 	I2C_Init(I2C0_BASE,1);
   I2C_Init_LuminositySensor(0x39);
 	I2C_Init(I2C1_BASE,0);
@@ -48,9 +51,12 @@ void Init_Drivers(void)
 	Init_Timer(TIMER3_BASE, TIMER_A,1000);  
 	TimerEnable(TIMER3_BASE, TIMER_A); 
 	
- 
+	Init_PWM(GPIO_PORTF_BASE,GPIO_PIN_2, Clock_Ticks(20));
+	Duty_Cycle(GPIO_PORTF_BASE,GPIO_PIN_2, 925);
 	
-	 
+
+	SSI0_InitSlave(); //nu merge bine MISO daca I2C si Timerele se initializeaza
+	
 	Display_Init();
 	
 	Display_String("Hello");

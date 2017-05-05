@@ -132,15 +132,11 @@ int main(void)
 	
    // Initialize the data to send from MASTER TO SLAVE
    ulDataTx0[0] = 0x00;
-   ulDataTx0[1] = 0x02;//id
-	// ulDataTx0[0] = 115;
-  // ulDataTx0[1] = 112;
-   //ulDataTx0[2] = 105;
+   ulDataTx0[1] = 0x01;//id
+
 		
 		SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
-		
 		SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3);
-		//SSI0_IntInit(); //initializare intrerupere pe  SSI_TXFF | SSI_RXFF
 		 
 	while(1)
 	{
@@ -149,7 +145,8 @@ int main(void)
 		
 		SSIDataGetNonBlocking(SSI0_BASE, &val[0]);
 		SSIDataGetNonBlocking(SSI0_BASE, &val[1]); 
-		
+			
+			Display_Decimal(val[0]);
 			Display_NewLine();
 			Display_String("rez:");
 			Display_Decimal(val[1]);

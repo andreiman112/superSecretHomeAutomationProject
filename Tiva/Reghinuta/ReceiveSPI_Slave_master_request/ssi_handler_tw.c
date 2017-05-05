@@ -124,18 +124,18 @@ void SSI0_Handler(void){
 		
 		if(val[0] == 0x00 && val[1] == 0x01)
 		{
-			SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+			//SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
 			SSI0_DataOut(val[1]);
 			SSI0_DataOut(temp1);
-			ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+			//ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
 			state ^= 1;
 		}
 		if(val[0] == 0x00 && val[1] == 0x02)
 		{
-			SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+		//	SetGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
 			SSI0_DataOut(val[1]);
 			SSI0_DataOut(temp2);
-			ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+		//	ClearGPIOPin(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
 			state ^= 1;
 		}
 		SSIIntClear(SSI0_BASE,SSI_RXTO);

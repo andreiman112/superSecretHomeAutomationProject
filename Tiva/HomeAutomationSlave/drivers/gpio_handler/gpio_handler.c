@@ -67,6 +67,16 @@ void SetGPIOInput(unsigned long port, unsigned long pin, bool PUR)
     if (PUR)
         GPIOPadConfigSet(portAddr, pin, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU); //Configure PUR
 }
+
+void SetGPIOOutput(unsigned long port, unsigned long pin)
+{
+	SysCtlPeripheralEnable(getPortPeriphAddress(port)); //Enable clock on port
+	GPIOPinTypeGPIOOutput(port, pin);
+	GPIODirModeSet(port,pin, GPIO_DIR_MODE_OUT);
+	GPIOPadConfigSet(port, pin, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+	GPIOPinWrite(port,pin,0);
+}
+
 int ReadPinState(unsigned long port, unsigned long pin)
 {
 
@@ -88,4 +98,12 @@ void SetGPIOInterrupt(unsigned long port, unsigned long pin, unsigned long egde)
     GPIOIntEnable(portAddr, pin); //Enable GPIO pin interrupt
     IntPrioritySet(int_addr, (GPIOF_PRIO) << 5); //Priority 2 = "010"0.0000
     IntEnable(int_addr); //GPIO Port F enable of interrupts
+}
+void SetGPIOPin(unsigned long port, unsigned long pin)
+{	
+	GPIOPinWrite(port,pin,pin);
+}
+void ClearGPIOPin(unsigned long port,unsigned long pin)
+{
+	GPIOPinWrite(port,pin,0);
 }

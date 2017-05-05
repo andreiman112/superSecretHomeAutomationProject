@@ -138,7 +138,7 @@ unsigned long Get_Timer_Config(unsigned long timer)
 	return 0;
 	
 }
-void Init_Timer(unsigned long base, unsigned long timer, unsigned long period)
+void Init_Timer(unsigned long base, unsigned long timer, unsigned long period) //problems with TimerB
 {
     char intTimer = getINTTIMER_Address(base, timer);
     unsigned long periphAdr = getPeriphTimerAddress(base);

@@ -24,9 +24,9 @@ uint32_t ulDataTx1[NUM_SSI_DATA];
 
 void SSI0_DataOut(uint8_t data){ 
 	SSIDataPut(SSI0_BASE,data); //Puts a data element into the SSI transmit FIFO.
-	Display_NewLine();	
+	//Display_NewLine();	
 	//Display_String("temp: ");
-	Display_Decimal(data); 
+	//Display_Decimal(data); 
 }
 
 

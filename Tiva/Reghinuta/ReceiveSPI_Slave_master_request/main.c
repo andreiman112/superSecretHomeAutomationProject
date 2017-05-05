@@ -138,34 +138,35 @@ int main(void)
 	
 	unsigned long ui32SysClock; 
 	unsigned long ulindex;
+	
 	IntMasterEnable();
+	
 	SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_XTAL_16MHZ | SYSCTL_OSC_MAIN); //80 Mhz
 	ui32SysClock = SysCtlClockGet();
 	
-	SetGPIOOutput(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
+	//SetGPIOOutput(GPIO_PORTF_BASE,GPIO_INT_PIN_1);
 	
 	Display_Init();
 	Display_String("Slave:");
 	
 	
 	SSI0_InitSlave();
-  SetGPIOInterrupt(GPIO_PORTC_BASE, GPIO_INT_PIN_7, GPIO_RISING_EDGE); //enable interrupt for ssi PC7
+	//SetGPIOInterrupt(GPIO_PORTC_BASE, GPIO_INT_PIN_7, GPIO_RISING_EDGE); //enable interrupt for ssi PC7
 
-   // Initialize the data to send.
-   //ulDataTx0[0] = 's';
-   //ulDataTx0[1] = 'p';
-   //ulDataTx0[2] = 'i';
+    //Initialize the data to send.
+    //ulDataTx0[0] = 's';
+    //ulDataTx0[1] = 'p';
+    //ulDataTx0[2] = 'i';
 		//Display_NewLine();
 		//Display_String("Receive:");
 		//Display_NewLine();
-		 SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
+		//SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
    
 		
 	while(1)
 	{
-			//Send_ok();
-		 
-		Delay(10000000);
+		//Send_ok();
+		//Delay(10000000);
 		//SetGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
 		//Delay(50000);
 		//ClearGPIOPin(GPIO_PORTF_BASE, GPIO_PIN_2);
