@@ -143,9 +143,9 @@ int main(void)
 	SetGPIOOutput(GPIO_PORTF_BASE,GPIO_PIN_3); //pint for enable shift rg (oe)
 	ClearGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_2);
 	
-	SSI0_Init(); //shift rg
-	//SSI1_Init(); //rgb 
-	//SET_GREEN
+	//SSI0_Init(); //shift rg
+	SSI1_Init(); //rgb 
+	SET_GREEN
 	
 	while(ui32SysClock)  //Clock working
 	{
@@ -166,7 +166,7 @@ int main(void)
 			
 			while(SSIBusy(SSI0_BASE)){}
 				*/
-		
+		/*
 		SetGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_2); //latch rclk
 		if(number <= 0x80)
 		{
@@ -177,12 +177,12 @@ int main(void)
 			number = 0x01;
 		
 		ClearGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_2); //latch rclk
-	
+	*/
 		Delay(1000000);
 		
 		
-		//Set_Moving_Point(LedColor);
-		//Send_RGB_Data();
+		Set_Moving_Point(LedColor);
+		Send_RGB_Data();
 	 
 		 
 

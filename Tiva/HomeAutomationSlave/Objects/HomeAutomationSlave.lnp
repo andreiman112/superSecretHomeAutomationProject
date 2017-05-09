@@ -1,6 +1,7 @@
 --cpu=Cortex-M4.fp
 ".\objects\cyclic_container.o"
 ".\objects\startup_container.o"
+".\objects\light_app.o"
 ".\objects\gpio_handler.o"
 ".\objects\adc_handler.o"
 ".\objects\timer_handler.o"

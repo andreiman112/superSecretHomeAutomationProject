@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>rvmdk PART_TM4C123GH6PM TARGET_IS_TM4C123_RA1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk;..\TivaWare_C_Series-2.1.1.71;.\drivers\adc_handler;.\drivers\gpio_handler;.\drivers\i2c_handler;.\drivers\timer_handler;.\application\cyclic_container;.\application\startup_container;..\HomeAutomationSlave;.\drivers\pwm_handler;.\drivers\spi_handler</IncludePath>
+              <IncludePath>..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk;..\TivaWare_C_Series-2.1.1.71;.\drivers\adc_handler;.\drivers\gpio_handler;.\drivers\i2c_handler;.\drivers\timer_handler;.\application\cyclic_container;.\application\startup_container;..\HomeAutomationSlave;.\drivers\pwm_handler;.\drivers\spi_handler;.\application\lighting</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -389,6 +389,11 @@
               <FileType>1</FileType>
               <FilePath>.\application\startup_container\startup_container.c</FilePath>
             </File>
+            <File>
+              <FileName>light_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\application\lighting\light_app.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -433,6 +438,11 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>custom_types.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\custom_types.h</FilePath>
             </File>
           </Files>
         </Group>

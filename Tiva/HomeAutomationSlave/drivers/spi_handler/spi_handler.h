@@ -16,6 +16,8 @@ void SSI0_DataOut(uint8_t);
 void SSI0_InitSlave(void);
 void SSI0_Handler(void);
 void SSI0_Init_ShiftRg(void);
-void SSI1_Init_RGB(void);
-void Init_Commands(void);								
+void Init_Commands(void);	
+
+void SSI1_Init_RGB(void);							
+void SSI1_DataOut(uint8_t);									
 #endif

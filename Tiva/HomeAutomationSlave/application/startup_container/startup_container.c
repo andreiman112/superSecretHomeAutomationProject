@@ -19,13 +19,15 @@
   
 void Init_Drivers(void)
 { 
-	I2C_Init(I2C0_BASE,1);
-  I2C_Init_LuminositySensor(0x49);
+	Display_Init();
+	Display_String("UART0 Initialized");
+	//I2C_Init(I2C0_BASE,1);
+	//I2C_Init_LuminositySensor(0x49);
 	//I2C_Init(I2C1_BASE,0);
 	
-	Add_ADC_Channel(0);//channel 0
-	Add_ADC_Channel(1);//channel 0
-	ADC_Init();
+	//Add_ADC_Channel(0);//channel 0
+	//Add_ADC_Channel(1);//channel 0
+	//ADC_Init();
 	
 	
 	SetGPIOInterrupt(GPIO_PORTF_BASE,GPIO_PIN_4,GPIO_RISING_EDGE);
@@ -34,34 +36,35 @@ void Init_Drivers(void)
 	
 	SetGPIOInput(GPIO_PORTF_BASE,GPIO_PIN_0,1);
 	SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1);//proba pentru verificat ca merge spi commands
+
+	 
+	/*
+	Init_PWM(GPIO_PORTF_BASE,GPIO_PIN_2, Clock_Ticks(20));
+	Duty_Cycle(GPIO_PORTF_BASE,GPIO_PIN_2, 925);
+*/
+	SSI0_InitSlave();
+	Display_String("SPI0 Slave Initialized");
+	Init_Commands();
+	
 		//Cyclic 50 ms
   Init_Timer(TIMER0_BASE, TIMER_A,50); 
 	TimerEnable(TIMER0_BASE, TIMER_A);
+	Display_String("Timer cyclic 50ms initialized");
 	
 	//Cyclic 100 ms
   Init_Timer(TIMER1_BASE, TIMER_A,100);  
 	TimerEnable(TIMER1_BASE, TIMER_A); 	
-	
+	Display_String("Timer cyclic 100ms initialized");
 	//Cyclic 500 ms
   Init_Timer(TIMER2_BASE, TIMER_A,500);  
 	TimerEnable(TIMER2_BASE, TIMER_A); 
-	
+	Display_String("Timer cyclic 500ms initialized");
 	//Cyclic 1000 ms
 	Init_Timer(TIMER3_BASE, TIMER_A,1000);  
 	TimerEnable(TIMER3_BASE, TIMER_A); 
-	 
-	/*
-	
-	Init_PWM(GPIO_PORTF_BASE,GPIO_PIN_2, Clock_Ticks(20));
-	Duty_Cycle(GPIO_PORTF_BASE,GPIO_PIN_2, 925);
-	
-*/
-	SSI0_InitSlave(); //nu merge bine MISO daca I2C si Timerele se initializeaza
-	Init_Commands();
-	
-	Display_Init();
-	
-	Display_String("Hello");
-	
+	Display_String("Timer cyclic 1000ms initialized");
+
+	SSI1_Init_RGB();
+	Display_String("SPI1 Master Initialized for WS2812 LEDs");
 	IntMasterEnable();
 }

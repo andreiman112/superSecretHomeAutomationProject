@@ -26,22 +26,21 @@ void Cyclic_50ms()
 }
 void Cyclic_100ms()
 {
-	 ADCProcessorTrigger(ADC1_BASE, 0);  //Trigger Temperature sensor ADC
-//	Display_NewLine();
-//	Display_String("100 ms");
+	Display_NewLine();
+	Display_String("100 ms");
+	//ADCProcessorTrigger(ADC1_BASE, 0);  //Trigger Temperature sensor ADC
 }
 void Cyclic_500ms()
 {
-	//Display_NewLine();
-	//Display_String("500 ms: ");
- 
+	Display_NewLine();
+	Display_String("500 ms: ");
 }
 void Cyclic_1000ms()
 {
 	unsigned long h=0,luminositateI2C=0, l=0; 
   float	tmp_adc=0;
   Display_NewLine();
- 
+	/*
 	h=I2C_Read(I2C0_BASE,0x49,0xAD);
 	l=I2C_Read(I2C0_BASE,0x49,0xAC);
 	Display_Decimal(h*256+l);
@@ -70,4 +69,5 @@ void Cyclic_1000ms()
 	Display_Decimal(SensorValues[TemperatureI2C1]);
 	Display_String("; tmp adc =");
 	Display_Decimal(SensorValues[TemperatureADC]);
+	*/
 }

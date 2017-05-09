@@ -1,23 +1,32 @@
-#include "spi_handler.h"
+//spi_handler.c
+/*--------------------Type Includes------------------*/
 #include "stdbool.h"
-#include "stdint.h" 
+#include "stdint.h"
+#include "custom_types.h"
+
+/*--------------------Project Includes------------------*/
+#include "spi_handler.h"
 #include "gpio_handler.h"
 #include "timer_handler.h"
-/*-------------------Driver Includes-----------------*/
+#include "display.h"
+
+/*-------------------Driverlib Includes-----------------*/
 #include "driverlib/gpio.h"
 #include "driverlib/pin_map.h"
 #include "driverlib/ssi.h"
 #include "driverlib/sysctl.h"
+#include "driverlib/interrupt.h"
 #include "inc/hw_memmap.h"
 #include "inc/hw_ints.h"
-#include "driverlib/interrupt.h"
-#include "display.h"
 
 #define DIVISOR_rgb 12
 #define FREQ_SHIFT_RG 25000000 
 #define SSI0_SR_R (*((volatile unsigned long *)0x4000800C))
-uint32_t SensorValues[255];
-void (*Commands[255])(int) ;
+	
+extern uint8_t SlaveResults[255];
+extern void (*SlaveCommands[255])(uint8_t);
+//uint32_t SensorValues[255];
+
 void SetGpioPinSPI(int set)
 {
 	if(set)
@@ -25,23 +34,20 @@ void SetGpioPinSPI(int set)
 	else
 	{ClearGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_1); }
 }
-void Init_Commands()
-{
-	int i=1;
-		 Commands[i]=SetGpioPinSPI;
-		 i++;
-}
+
 void SSI0_InitSlave(void){ 
 	uint8_t delay = 0;
 	
-	SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI0);		//SSI 0 enable 
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI0);		//SSI 0 enable
+	for(delay=0; delay<100; delay=delay+1);// delay
+
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);	//Port A enable
+	for(delay=0; delay<100; delay=delay+1);// delay
 	
 	IntMasterDisable();
 	IntDisable(INT_SSI0);
 	SSIDisable(SSI0_BASE);												 //Disable SSI0
 	SSIIntDisable(SSI0_BASE, SSI_RXTO);
-	
 	
 	GPIOPinConfigure(GPIO_PA2_SSI0CLK);		//PA2 - Clock
 	GPIOPinConfigure(GPIO_PA5_SSI0TX);		//PA5 - TX
@@ -49,12 +55,10 @@ void SSI0_InitSlave(void){
 	GPIOPinConfigure(GPIO_PA3_SSI0FSS);		//PA3 - FSS
 	
 	GPIOPinTypeSSI(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_5 | GPIO_PIN_4);	// Configure PA2, PA5, PA4 as SSI
-	
 	SSIClockSourceSet(SSI0_BASE, SSI_CLOCK_SYSTEM);	// Set the SSI clock source
 
-	
 	//Peripherial base, Input clock, Frame format(freescale format), Mode, Bit Data Rate,	Data Width	
-	SSIConfigSetExpClk(SSI0_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_1, SSI_MODE_SLAVE, 4000000 /*SysCtlClockGet()/15*/, 8);
+	SSIConfigSetExpClk(SSI0_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_1, SSI_MODE_SLAVE, 6666666/*8000000 SysCtlClockGet()/12*/, 8);
 	SSIIntEnable(SSI0_BASE, SSI_RXTO);
 	SSIEnable(SSI0_BASE);				//Enable SSI
 	IntPrioritySet(INT_SSI0,(2)<<5);  //Priority 2 = "010"0.0000
@@ -65,46 +69,42 @@ void SSI0_InitSlave(void){
 }
 
 void SSI0_DataOut(uint8_t data){ 
-	SSIDataPut(SSI0_BASE,data); //Puts a data element into the SSI transmit FIFO.
+	SSIDataPut(SSI0_BASE,(uint32_t)data); //Puts a data element into the SSI transmit FIFO.
 	Display_NewLine();	
 	Display_Decimal(data); 
 	Display_NewLine();	
 }
 void SSI0_Handler(void){ //Time-out interrupt
-	uint32_t val1, val2,val3, junk=0;
+	uint32_t byte0, byte1, byteCrc, junk=0;
+	uint8_t b0, b1, bCrc=0;
+	uint8_t return_result = 0;
 	
 	if (SSIIntStatus(SSI0_BASE,true)==SSI_RXTO) {
 	
 		//Read SPI
-		SSIDataGet(SSI0_BASE, &val1);
-	
-		SSIDataGet(SSI0_BASE, &val2);
-	
-		SSIDataGet(SSI0_BASE, &val3);	
-		if(val1==0) //request
+		SSIDataGet(SSI0_BASE, &byte0);  //read 1st byte
+		b0 = (uint8_t)byte0;
+		SSIDataGet(SSI0_BASE, &byte1);  //read 2nd byte
+		b1 = (uint8_t)byte1;
+		SSIDataGet(SSI0_BASE, &byteCrc);	//read CRC
+		bCrc = (uint8_t)byteCrc;
+		if(b0 == 0)  //data request scenario
 		{			
-		/*	SSI0_DataOut(val2);
-			SSI0_DataOut(SensorValues[val2]);
-			SSI0_DataOut(val2^SensorValues[val2]);*/
-				SSI0_DataOut(1);
-			SSI0_DataOut(2);
-			SSI0_DataOut(3);
+			return_result = SlaveResults[b1];
+			SSI0_DataOut(b1);
+			SSI0_DataOut(return_result);
+			SSI0_DataOut(b1^return_result);
 		}	
-		else //command
+		else  //command scenario
 		{
-		/*Commands[val1](val2);
-			SSI0_DataOut(val1);
-			SSI0_DataOut(val2);
-			SSI0_DataOut(val1^val2); */
-			
-				SSI0_DataOut(4);
-			SSI0_DataOut(5);
-			SSI0_DataOut(6);
+			SSI0_DataOut(b0);
+			SSI0_DataOut(b1);
+			SSI0_DataOut(b0^b1);
+			SlaveCommands[byte0](b1);  //launch FP command
 		}	
 		while(SSI0_SR_R&4){
-			SSIDataGet(SSI0_BASE, &junk);
-		 
-		} 
+			SSIDataGet(SSI0_BASE, &junk);  //Discard everything else on SPI bus
+		}	
 		SSIIntClear(SSI0_BASE,SSI_RXTO);
 	}
 }
@@ -155,8 +155,12 @@ void SSI1_Init_RGB(void){ //for rgb strip
 
 	
 	//Peripherial base, Input clock, Frame format(freescale format), Mode, Bit Data Rate,	Data Width	
-	SSIConfigSetExpClk(SSI1_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, SysCtlClockGet()/DIVISOR_rgb, 8); //bit data rate for RGB 80MHz/12 = 6666666
+	SSIConfigSetExpClk(SSI1_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 6666666/*8000000SysCtlClockGet()/DIVISOR_rgb*/, 8); //bit data rate for RGB 80MHz/12 = 6666666
 	SSIEnable(SSI1_BASE);				//Enable SSI
 
   for(delay=0; delay<10; delay=delay+1);// delay minimum 100 ns
+}
+
+void SSI1_DataOut(uint8_t data){ 
+	SSIDataPutNonBlocking(SSI0_BASE,data); //Puts a data element into the SSI transmit FIFO.
 }

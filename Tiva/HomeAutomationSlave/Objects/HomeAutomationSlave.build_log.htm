@@ -27,26 +27,44 @@ Project File Date:  05/08/2017
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
-compiling startup_container.c...
+compiling light_app.c...
+application\lighting\light_app.h(26): warning:  #1-D: last line of file ends without a newline
+  //
+application\lighting\light_app.c(64): warning:  #1-D: last line of file ends without a newline
+  }
+application\lighting\light_app.c(13): warning:  #177-D: function "Send_RGB_Data"  was declared but never referenced
+  static void Send_RGB_Data(void) {
+application\lighting\light_app.c: 3 warnings, 0 errors
 compiling cyclic_container.c...
-application\cyclic_container\cyclic_container.c(41): warning:  #550-D: variable "luminositateI2C"  was set but never used
+application\cyclic_container\cyclic_container.c(40): warning:  #177-D: variable "h"  was declared but never referenced
   	unsigned long h=0,luminositateI2C=0, l=0; 
-application\cyclic_container\cyclic_container.c(42): warning:  #550-D: variable "tmp_adc"  was set but never used
+application\cyclic_container\cyclic_container.c(40): warning:  #177-D: variable "luminositateI2C"  was declared but never referenced
+  	unsigned long h=0,luminositateI2C=0, l=0; 
+application\cyclic_container\cyclic_container.c(40): warning:  #177-D: variable "l"  was declared but never referenced
+  	unsigned long h=0,luminositateI2C=0, l=0; 
+application\cyclic_container\cyclic_container.c(41): warning:  #177-D: variable "tmp_adc"  was declared but never referenced
     float	tmp_adc=0;
-application\cyclic_container\cyclic_container.c: 2 warnings, 0 errors
-compiling gpio_handler.c...
+application\cyclic_container\cyclic_container.c: 4 warnings, 0 errors
+compiling startup_container.c...
 compiling adc_handler.c...
+compiling gpio_handler.c...
 compiling timer_handler.c...
 compiling i2c_handler.c...
 compiling pwm_handler.c...
-compiling main.c...
-compiling display.c...
 compiling spi_handler.c...
+drivers\spi_handler\spi_handler.c(79): warning:  #550-D: variable "bCrc"  was set but never used
+  	uint8_t b0, b1, bCrc=0;
+drivers\spi_handler\spi_handler.c: 1 warning, 0 errors
+compiling main.c...
+.\application\lighting\light_app.h(26): warning:  #1-D: last line of file ends without a newline
+  //
+main.c: 1 warning, 0 errors
+compiling display.c...
 assembling startup_TM4C123.s...
 compiling system_TM4C123.c...
 linking...
-Program Size: Code=8232 RO-data=1900 RW-data=24 ZI-data=2752  
-".\Objects\HomeAutomationSlave.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=5520 RO-data=1900 RW-data=24 ZI-data=2000  
+".\Objects\HomeAutomationSlave.axf" - 0 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -80,7 +98,7 @@ Package Vendor: Keil
       Include file:  Device\Include\TM4C123\TM4C123.h
       Source file:   Device\Source\ARM\startup_TM4C123.s
       Source file:   Device\Source\system_TM4C123.c
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
