@@ -15,10 +15,22 @@
 
 #define DIVISOR_rgb 12
 #define FREQ_SHIFT_RG 25000000 
-
+#define SSI0_SR_R (*((volatile unsigned long *)0x4000800C))
 uint32_t SensorValues[255];
-uint32_t Commands[255];
-
+void (*Commands[255])(int) ;
+void SetGpioPinSPI(int set)
+{
+	if(set)
+	{SetGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_1); }
+	else
+	{ClearGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_1); }
+}
+void Init_Commands()
+{
+	int i=1;
+		 Commands[i]=SetGpioPinSPI;
+		 i++;
+}
 void SSI0_InitSlave(void){ 
 	uint8_t delay = 0;
 	
@@ -42,7 +54,7 @@ void SSI0_InitSlave(void){
 
 	
 	//Peripherial base, Input clock, Frame format(freescale format), Mode, Bit Data Rate,	Data Width	
-	SSIConfigSetExpClk(SSI0_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_SLAVE, 4000000 /*SysCtlClockGet()/15*/, 8);
+	SSIConfigSetExpClk(SSI0_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_1, SSI_MODE_SLAVE, 4000000 /*SysCtlClockGet()/15*/, 8);
 	SSIIntEnable(SSI0_BASE, SSI_RXTO);
 	SSIEnable(SSI0_BASE);				//Enable SSI
 	IntPrioritySet(INT_SSI0,(2)<<5);  //Priority 2 = "010"0.0000
@@ -59,30 +71,40 @@ void SSI0_DataOut(uint8_t data){
 	Display_NewLine();	
 }
 void SSI0_Handler(void){ //Time-out interrupt
-	uint32_t msg[2];
-	static uint8_t state = 1;	
-	
-	SensorValues[0]=20;
-	SensorValues[1]=30;
-	SensorValues[2]=40;
-	SensorValues[3]=50;
+	uint32_t val1, val2,val3, junk=0;
 	
 	if (SSIIntStatus(SSI0_BASE,true)==SSI_RXTO) {
 	
 		//Read SPI
-		SSIDataGet(SSI0_BASE, &msg[0]);
-		SSIDataGet(SSI0_BASE, &msg[1]);
-		
-		if(msg[0] == 0x00) //master request data
+		SSIDataGet(SSI0_BASE, &val1);
+	
+		SSIDataGet(SSI0_BASE, &val2);
+	
+		SSIDataGet(SSI0_BASE, &val3);	
+		if(val1==0) //request
+		{			
+		/*	SSI0_DataOut(val2);
+			SSI0_DataOut(SensorValues[val2]);
+			SSI0_DataOut(val2^SensorValues[val2]);*/
+				SSI0_DataOut(1);
+			SSI0_DataOut(2);
+			SSI0_DataOut(3);
+		}	
+		else //command
 		{
-			SSI0_DataOut(msg[1]);
-			SSI0_DataOut(SensorValues[msg[1]]);
-			state ^= 1;
-		}
-		else
-		{
-			//to do: comands, xor		
-		}
+		/*Commands[val1](val2);
+			SSI0_DataOut(val1);
+			SSI0_DataOut(val2);
+			SSI0_DataOut(val1^val2); */
+			
+				SSI0_DataOut(4);
+			SSI0_DataOut(5);
+			SSI0_DataOut(6);
+		}	
+		while(SSI0_SR_R&4){
+			SSIDataGet(SSI0_BASE, &junk);
+		 
+		} 
 		SSIIntClear(SSI0_BASE,SSI_RXTO);
 	}
 }

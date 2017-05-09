@@ -18,11 +18,10 @@
 #include "display.h"
   
 void Init_Drivers(void)
-{
-	
+{ 
 	I2C_Init(I2C0_BASE,1);
-  I2C_Init_LuminositySensor(0x39);
-	I2C_Init(I2C1_BASE,0);
+  I2C_Init_LuminositySensor(0x49);
+	//I2C_Init(I2C1_BASE,0);
 	
 	Add_ADC_Channel(0);//channel 0
 	Add_ADC_Channel(1);//channel 0
@@ -34,7 +33,7 @@ void Init_Drivers(void)
 	Init_Timer(TIMER4_BASE, TIMER_A,1000);
 	
 	SetGPIOInput(GPIO_PORTF_BASE,GPIO_PIN_0,1);
-	
+	SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1);//proba pentru verificat ca merge spi commands
 		//Cyclic 50 ms
   Init_Timer(TIMER0_BASE, TIMER_A,50); 
 	TimerEnable(TIMER0_BASE, TIMER_A);
@@ -50,12 +49,15 @@ void Init_Drivers(void)
 	//Cyclic 1000 ms
 	Init_Timer(TIMER3_BASE, TIMER_A,1000);  
 	TimerEnable(TIMER3_BASE, TIMER_A); 
+	 
+	/*
 	
 	Init_PWM(GPIO_PORTF_BASE,GPIO_PIN_2, Clock_Ticks(20));
 	Duty_Cycle(GPIO_PORTF_BASE,GPIO_PIN_2, 925);
 	
-
+*/
 	SSI0_InitSlave(); //nu merge bine MISO daca I2C si Timerele se initializeaza
+	Init_Commands();
 	
 	Display_Init();
 	

@@ -38,22 +38,36 @@ void Cyclic_500ms()
 }
 void Cyclic_1000ms()
 {
-	unsigned long h=0,l=0,tmp=0; 
+	unsigned long h=0,luminositateI2C=0, l=0; 
   float	tmp_adc=0;
   Display_NewLine();
- 	Display_String("1000 ms: lum senzor=");	
-	h=I2C_Read(I2C0_BASE,0x39,0xAD);
-	l=I2C_Read(I2C0_BASE,0x39,0xAC);
+ 
+	h=I2C_Read(I2C0_BASE,0x49,0xAD);
+	l=I2C_Read(I2C0_BASE,0x49,0xAC);
 	Display_Decimal(h*256+l);
-	
-	SensorValues[TemperatureI2C]=I2C_Read(I2C1_BASE,0x48,0x00);
-	
-	Display_String("; tmp= ");	
-  Display_Decimal(tmp);	
-	Display_String("; adc[0]= ");	 
-	Display_Decimal(Get_ADC_Value(0));
-	Display_String("; adc[1]-temp= ");	 
+	 
+	luminositateI2C=((h*256+l)*4*255.0)/65535 ;//!!!!!!!!*2
+  
 	tmp_adc=Get_ADC_Value(1)*5.0/4095*1000;
-	SensorValues[TemperatureADC]=tmp_adc;
-	Display_Decimal(tmp_adc);
+	
+	 	
+	SensorValues[LuminosityI2C1]=1;//luminositateI2C;
+	SensorValues[LuminosityI2C2]=2;
+	SensorValues[LuminosityADC]=3;//Get_ADC_Value(0)%255;//!!!!!!!!!!!!
+	
+	
+	SensorValues[TemperatureI2C1]=21;//I2C_Read(I2C0_BASE,0x48,0x00);
+  SensorValues[TemperatureI2C2]=22;
+	SensorValues[TemperatureADC]=23;//tmp_adc;
+
+	
+	Display_NewLine();
+	Display_String("1000 ms: lum i2c =");
+	Display_Decimal(SensorValues[LuminosityI2C1]);
+	Display_String("; lum adc =");
+	Display_Decimal(SensorValues[LuminosityADC]);
+	Display_String("tmp i2c =");
+	Display_Decimal(SensorValues[TemperatureI2C1]);
+	Display_String("; tmp adc =");
+	Display_Decimal(SensorValues[TemperatureADC]);
 }
