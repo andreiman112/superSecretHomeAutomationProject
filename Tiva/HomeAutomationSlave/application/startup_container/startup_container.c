@@ -22,8 +22,8 @@
 #include "inc/hw_memmap.h"
 #include "inc/hw_ints.h"
 
-extern CommandStruct SlaveCommands[255];
-
+extern CommandStruct SlaveCommands[256];
+extern uint8_t SlaveResults[256];
 
 void Init_Commands()
 {
@@ -33,6 +33,14 @@ void Init_Commands()
 	SlaveCommands[20].function=&GreenOff;
 	SlaveCommands[21].function=&BlueOn;
 	SlaveCommands[22].function=&BlueOff;
+}
+
+void Init_Results()
+{
+	uint16_t i = 0;
+	for (i = 0; i <=255; i++) {
+		SlaveResults[i] = i;  //Fill in global variable for slave results with dummy values
+	}
 }
 
 void Init_Drivers(void)
@@ -63,18 +71,19 @@ void Init_Drivers(void)
 	SSI0_InitSlave();
 	Display_String("SPI0 Slave Initialized");
 	Init_Commands();
+	Init_Results();
 	
-		//Cyclic 50 ms
-  Init_Timer(TIMER0_BASE, TIMER_A,50); 
+	//Cyclic 50 ms
+	Init_Timer(TIMER0_BASE, TIMER_A,50); 
 	TimerEnable(TIMER0_BASE, TIMER_A);
 	Display_String("Timer cyclic 50ms initialized");
 	
 	//Cyclic 100 ms
-  Init_Timer(TIMER1_BASE, TIMER_A,100);  
+	Init_Timer(TIMER1_BASE, TIMER_A,100);  
 	TimerEnable(TIMER1_BASE, TIMER_A); 	
 	Display_String("Timer cyclic 100ms initialized");
 	//Cyclic 500 ms
-  Init_Timer(TIMER2_BASE, TIMER_A,500);  
+	Init_Timer(TIMER2_BASE, TIMER_A,500);  
 	TimerEnable(TIMER2_BASE, TIMER_A); 
 	Display_String("Timer cyclic 500ms initialized");
 	//Cyclic 1000 ms

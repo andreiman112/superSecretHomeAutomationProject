@@ -25,8 +25,8 @@
 #define FREQ_SHIFT_RG 25000000 
 #define SSI0_SR_R (*((volatile unsigned long *)0x4000800C))
 	
-extern uint8_t SlaveResults[255];
-extern CommandStruct SlaveCommands[255];
+extern uint8_t SlaveResults[256];
+extern CommandStruct SlaveCommands[256];
 
 void SetGpioPinSPI(int set)
 {
