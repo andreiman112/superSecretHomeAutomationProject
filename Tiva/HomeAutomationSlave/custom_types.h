@@ -12,3 +12,14 @@ enum EnResults{
 //typedef enum EnResults Results;
 
 //Results ResultID;
+typedef void(*fp)(unsigned char);
+
+struct cmd_st{
+	unsigned char set; 
+	unsigned char value;
+  fp function;
+};
+
+typedef struct cmd_st CommandStruct;
+
+//EOF

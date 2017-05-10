@@ -1,32 +1,30 @@
+//cyclic_container.c
+/*--------------------Type Includes------------------*/
 #include "stdbool.h"
 #include "stdint.h"
-
-#include "inc/hw_memmap.h"
-#include "inc/hw_ints.h"
 #include "custom_types.h"
- 
+
+/*--------------------Project Includes------------------*/
 #include "cyclic_container.h"
 #include "display.h"
 #include "i2c_handler.h"
 #include "gpio_handler.h"
 #include "adc_handler.h"
-#include "driverlib/adc.h" 
-#include "driverlib/gpio.h" 
 #include "spi_handler.h"
 
-extern uint8_t SlaveResults[255];
-extern void (*SlaveCommands[255])(uint8_t);
+/*-------------------Driverlib Includes-----------------*/
+#include "driverlib/adc.h" 
+#include "driverlib/gpio.h" 
+
+/*-------------------HW define Includes--------------*/
+#include "inc/hw_memmap.h"
+#include "inc/hw_ints.h"
+
+extern CommandStruct SlaveCommands[256];
+extern uint8_t SlaveResults[256];
 
 void Cyclic_50ms()
 {
-	
-  //Display_NewLine();
-	//Display_String("50 ms");
-		if(!ReadPinState(GPIO_PORTF_BASE,GPIO_PIN_0))
-	{
-		Display_NewLine();
-	  Display_String("pf0 pressed");
-	}
 
 }
 void Cyclic_100ms()
@@ -37,8 +35,19 @@ void Cyclic_100ms()
 }
 void Cyclic_500ms()
 {
+	uint16_t cmd_index = 0;
+	uint8_t cmd_value = 0;
+	
 	Display_NewLine();
 	Display_String("500 ms: ");
+	
+	for(cmd_index=0;cmd_index<=255;cmd_index++) {
+		if(SlaveCommands[cmd_index].set == 1) {
+			SlaveCommands[cmd_index].set = 0;  //Reset function call
+			cmd_value = SlaveCommands[cmd_index].value;  //get function call argument value
+			SlaveCommands[cmd_index].function(cmd_value);  //call function
+		}
+	}
 }
 void Cyclic_1000ms()
 {

@@ -16,6 +16,8 @@
 #include "driverlib/ssi.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/interrupt.h"
+
+/*-------------------HW define Includes--------------*/
 #include "inc/hw_memmap.h"
 #include "inc/hw_ints.h"
 
@@ -23,9 +25,8 @@
 #define FREQ_SHIFT_RG 25000000 
 #define SSI0_SR_R (*((volatile unsigned long *)0x4000800C))
 	
-extern uint8_t SlaveResults[255];
-extern void (*SlaveCommands[255])(uint8_t);
-//uint32_t SensorValues[255];
+extern uint8_t SlaveResults[256];
+extern CommandStruct SlaveCommands[256];
 
 void SetGpioPinSPI(int set)
 {
@@ -100,7 +101,8 @@ void SSI0_Handler(void){ //Time-out interrupt
 			SSI0_DataOut(b0);
 			SSI0_DataOut(b1);
 			SSI0_DataOut(b0^b1);
-			//SlaveCommands[byte0](b1);  //launch FP command
+			SlaveCommands[b0].set = 1;
+			SlaveCommands[b0].value = b1;
 		}	
 		while(SSI0_SR_R&4){
 			SSIDataGet(SSI0_BASE, &junk);  //Discard everything else on SPI bus

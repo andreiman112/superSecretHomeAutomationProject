@@ -1,7 +1,9 @@
 //light_app.h
+/*--------------------Type Includes------------------*/
 #include "stdbool.h"
 #include "stdint.h"
 
+/*-------------------Macro Definitions----------------*/
 #define NR_OF_LEDS (5)
 #define HighBit (0xF8)
 #define LowBit (0xE0)
@@ -23,4 +25,4 @@ void SetL1Red(uint8_t red);
 void SetL1Green(uint8_t green);
 void SetL1Blue(uint8_t blue);
 
-//
+//EOF

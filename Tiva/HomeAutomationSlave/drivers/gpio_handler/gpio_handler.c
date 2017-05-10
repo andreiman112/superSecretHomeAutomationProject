@@ -1,15 +1,17 @@
-
 /*-------------------HW define Includes--------------*/
 #include "inc/hw_memmap.h"
 #include "inc/hw_ints.h"
 
+/*--------------------Project Includes------------------*/
 #include "gpio_handler.h"
+
+/*-------------------Driverlib Includes-----------------*/
 #include "driverlib/sysctl.h"
 #include "driverlib/timer.h"
 #include "driverlib/gpio.h"
 #include "driverlib/interrupt.h"
 #include "driverlib/pin_map.h"
-#include "gpio_handler.h"
+
 #define WTIMER0_PRIO (0x01)
 #define TIMER1_PRIO (0x00)
 #define TIMER2_PRIO (0x00)
@@ -107,3 +109,14 @@ void ClearGPIOPin(unsigned long port,unsigned long pin)
 {
 	GPIOPinWrite(port,pin,0);
 }
+
+void RedOn(uint8_t i){ SetGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_1); }
+void RedOff(uint8_t i){ ClearGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_1); }
+
+void BlueOn(uint8_t i){ SetGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_2); }
+void BlueOff(uint8_t i){ ClearGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_2); }
+
+void GreenOn(uint8_t i){ SetGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_3); }
+void GreenOff(uint8_t i){ ClearGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_3); }
+
+//EOF

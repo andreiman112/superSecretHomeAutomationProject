@@ -1,6 +1,5 @@
 //light_app.c
 
-
 #include "stdbool.h"
 #include "stdint.h"
 #include "light_app.h"
@@ -50,7 +49,7 @@ void SetL1Green(uint8_t green){
 }
 void SetL1Blue(uint8_t blue){
 	LightData[0].Blue = blue;
-	//Send_RGB_Data();
+	Send_RGB_Data();
 }
 
 
@@ -62,3 +61,5 @@ void L2_LightHandler(){
 
 void L3_LightHandler(){
 }
+
+//EOF
