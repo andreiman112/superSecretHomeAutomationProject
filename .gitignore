@@ -3,3 +3,14 @@ Tiva/TivaWare_C_Series-2.1.1.71
 Tiva/Reghinuta/TivaWare_C_Series-2.1.1.71
 
 *.TMP
+*.o
+*.lst
+*.d
+*.crf
+*.uvprojx
+*.uvoptx
+*.map
+*.axf
+*.lnp
+*.htm
+*.dep
