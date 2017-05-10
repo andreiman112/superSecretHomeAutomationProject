@@ -21,13 +21,14 @@ void Init_Drivers(void)
 { 
 	Display_Init();
 	Display_String("UART0 Initialized");
-	//I2C_Init(I2C0_BASE,1);
-	//I2C_Init_LuminositySensor(0x49);
+	I2C_Init(I2C0_BASE,1);
+	I2C_Init_LuminositySensor(0x49);
+	I2C_Init_LuminositySensor(0x39);
 	//I2C_Init(I2C1_BASE,0);
 	
-	//Add_ADC_Channel(0);//channel 0
-	//Add_ADC_Channel(1);//channel 0
-	//ADC_Init();
+	Add_ADC_Channel(0);//channel 0
+	Add_ADC_Channel(1);//channel 1
+	ADC_Init();
 	
 	
 	SetGPIOInterrupt(GPIO_PORTF_BASE,GPIO_PIN_4,GPIO_RISING_EDGE);

@@ -100,7 +100,7 @@ void SSI0_Handler(void){ //Time-out interrupt
 			SSI0_DataOut(b0);
 			SSI0_DataOut(b1);
 			SSI0_DataOut(b0^b1);
-			SlaveCommands[byte0](b1);  //launch FP command
+			//SlaveCommands[byte0](b1);  //launch FP command
 		}	
 		while(SSI0_SR_R&4){
 			SSIDataGet(SSI0_BASE, &junk);  //Discard everything else on SPI bus

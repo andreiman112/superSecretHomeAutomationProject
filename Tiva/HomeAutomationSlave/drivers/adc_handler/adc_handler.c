@@ -37,7 +37,6 @@ void ADC_Init(void)
     ADCIntClear(ADC1_BASE, sampleSeq);
     ADCIntDisable(ADC1_BASE, sampleSeq);
     ADCSequenceDisable(ADC1_BASE, sampleSeq);
-
     ADCSequenceConfigure(ADC1_BASE, sampleSeq, /*ADC_TRIGGER_ALWAYS*/ ADC_TRIGGER_PROCESSOR, 0);
 	
     for (i = 1; i < adcChannels[0]; i++)
