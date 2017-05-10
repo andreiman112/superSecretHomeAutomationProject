@@ -3,27 +3,20 @@
 #include "stdint.h"
 #include "custom_types.h"
 
+/*-------------------Driverlib Includes-----------------*/
 #include "driverlib/sysctl.h"
 
+/*--------------------Project Includes------------------*/
+#include "startup_container.h"
 #include "adc_handler.h"
 #include "i2c_handler.h"
 #include "spi_handler.h"
-
 #include "timer_handler.h"
-#include "adc_handler.h"
 #include "display.h"
-#include "startup_container.h"
 #include "light_app.h"
 
 uint8_t SlaveResults[256];
-void (*SlaveCommands[255])(uint8_t) ;
-
-void Init_Commands()
-{
-	SlaveCommands[20]=SetL1Red;
-	SlaveCommands[21]=SetL1Green;
-	SlaveCommands[22]=SetL1Blue;
-}
+CommandStruct SlaveCommands[255];
 
 int main(void)
 {

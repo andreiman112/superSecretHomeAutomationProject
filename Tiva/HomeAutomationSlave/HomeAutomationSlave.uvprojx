@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>rvmdk PART_TM4C123GH6PM TARGET_IS_TM4C123_RA1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk;..\TivaWare_C_Series-2.1.1.71;.\drivers\adc_handler;.\drivers\gpio_handler;.\drivers\i2c_handler;.\drivers\timer_handler;.\application\cyclic_container;.\application\startup_container;..\HomeAutomationSlave;.\drivers\pwm_handler;.\drivers\spi_handler;.\application\lighting</IncludePath>
+              <IncludePath>..\..\..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk;..\..\..\TivaWare_C_Series-2.1.1.71;.\drivers\adc_handler;.\drivers\gpio_handler;.\drivers\i2c_handler;.\drivers\timer_handler;.\application\cyclic_container;.\application\startup_container;..\HomeAutomationSlave;.\drivers\pwm_handler;.\drivers\spi_handler;.\application\lighting</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -452,7 +452,7 @@
             <File>
               <FileName>driverlib.lib</FileName>
               <FileType>4</FileType>
-              <FilePath>..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk\driverlib.lib</FilePath>
+              <FilePath>..\..\..\TivaWare_C_Series-2.1.1.71\driverlib\rvmdk\driverlib.lib</FilePath>
             </File>
           </Files>
         </Group>

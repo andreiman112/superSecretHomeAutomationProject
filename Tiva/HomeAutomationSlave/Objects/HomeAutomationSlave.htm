@@ -3,16 +3,16 @@
 <title>Static Call Graph - [.\Objects\HomeAutomationSlave.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\HomeAutomationSlave.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue May 09 16:39:06 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed May 10 10:10:32 2017
 <BR><P>
-<H3>Maximum Stack Usage =        112 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         92 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; Init_Drivers &rArr; SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
+__rt_entry_main &rArr; main &rArr; Init_Drivers &rArr; Init_Timer &rArr; TIMER_reload_calculator &rArr; SysCtlClockGet
 <P>
 <H3>
 Functions with no stack information
 </H3><UL>
- <LI><a href="#[7f]">__user_initial_stackheap</a>
+ <LI><a href="#[82]">__user_initial_stackheap</a>
 </UL>
 </UL>
 <P>
@@ -126,13 +126,13 @@ Mutually Recursive functions
  <LI><a href="#[75]">PWM1_2_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[75]">PWM1_2_Handler</a><BR>
  <LI><a href="#[76]">PWM1_3_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[76]">PWM1_3_Handler</a><BR>
  <LI><a href="#[77]">PWM1_FAULT_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[77]">PWM1_FAULT_Handler</a><BR>
- <LI><a href="#[d0]">SSIDataGet</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[d0]">SSIDataGet</a><BR>
- <LI><a href="#[ce]">SSIDataPut</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[ce]">SSIDataPut</a><BR>
- <LI><a href="#[9f]">UARTCharPut</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[9f]">UARTCharPut</a><BR>
- <LI><a href="#[a0]">Display_Decimal</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[a0]">Display_Decimal</a><BR>
- <LI><a href="#[91]">SysCtlDelay</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[91]">SysCtlDelay</a><BR>
- <LI><a href="#[a3]">UARTDisable</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[a3]">UARTDisable</a><BR>
- <LI><a href="#[a7]">UARTConfigSetExpClk</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[a7]">UARTConfigSetExpClk</a><BR>
+ <LI><a href="#[d3]">SSIDataGet</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[d3]">SSIDataGet</a><BR>
+ <LI><a href="#[d1]">SSIDataPut</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[d1]">SSIDataPut</a><BR>
+ <LI><a href="#[a5]">UARTCharPut</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[a5]">UARTCharPut</a><BR>
+ <LI><a href="#[a6]">Display_Decimal</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[a6]">Display_Decimal</a><BR>
+ <LI><a href="#[94]">SysCtlDelay</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[94]">SysCtlDelay</a><BR>
+ <LI><a href="#[a9]">UARTDisable</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[a9]">UARTDisable</a><BR>
+ <LI><a href="#[ad]">UARTConfigSetExpClk</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[ad]">UARTConfigSetExpClk</a><BR>
 </UL>
 <P>
 <H3>
@@ -146,6 +146,8 @@ Function Pointers
  <LI><a href="#[3c]">ADC1SS1_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[3d]">ADC1SS2_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[3e]">ADC1SS3_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
+ <LI><a href="#[7f]">BlueOff</a> from gpio_handler.o(i.BlueOff) referenced from startup_container.o(i.Init_Commands)
+ <LI><a href="#[7e]">BlueOn</a> from gpio_handler.o(i.BlueOn) referenced from startup_container.o(i.Init_Commands)
  <LI><a href="#[6]">BusFault_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[33]">CAN0_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[34]">CAN1_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
@@ -187,6 +189,8 @@ Function Pointers
  <LI><a href="#[70]">GPIOQ7_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[71]">GPIOR_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[72]">GPIOS_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
+ <LI><a href="#[7d]">GreenOff</a> from gpio_handler.o(i.GreenOff) referenced from startup_container.o(i.Init_Commands)
+ <LI><a href="#[7c]">GreenOn</a> from gpio_handler.o(i.GreenOn) referenced from startup_container.o(i.Init_Commands)
  <LI><a href="#[36]">HIB_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[4]">HardFault_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[14]">I2C0_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
@@ -211,16 +215,15 @@ Function Pointers
  <LI><a href="#[19]">QEI0_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[32]">QEI1_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[60]">QEI2_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
- <LI><a href="#[7d]">Reset_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
+ <LI><a href="#[7b]">RedOff</a> from gpio_handler.o(i.RedOff) referenced from startup_container.o(i.Init_Commands)
+ <LI><a href="#[7a]">RedOn</a> from gpio_handler.o(i.RedOn) referenced from startup_container.o(i.Init_Commands)
+ <LI><a href="#[80]">Reset_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[13]">SSI0_Handler</a> from spi_handler.o(i.SSI0_Handler) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[2e]">SSI1_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[42]">SSI2_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[43]">SSI3_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[8]">SVC_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[28]">SYSCTL_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
- <LI><a href="#[7c]">SetL1Blue</a> from light_app.o(i.SetL1Blue) referenced from main.o(i.Init_Commands)
- <LI><a href="#[7b]">SetL1Green</a> from light_app.o(i.SetL1Green) referenced from main.o(i.Init_Commands)
- <LI><a href="#[7a]">SetL1Red</a> from light_app.o(i.SetL1Red) referenced from main.o(i.Init_Commands)
  <LI><a href="#[b]">SysTick_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[78]">SystemInit</a> from system_tm4c123.o(i.SystemInit) referenced from startup_tm4c123.o(.text)
  <LI><a href="#[1f]">TIMER0A_Handler</a> from timer_handler.o(i.TIMER0A_Handler) referenced from startup_tm4c123.o(RESET)
@@ -260,43 +263,43 @@ Function Pointers
  <LI><a href="#[58]">WTIMER4B_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[59]">WTIMER5A_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
  <LI><a href="#[5a]">WTIMER5B_Handler</a> from startup_tm4c123.o(.text) referenced from startup_tm4c123.o(RESET)
- <LI><a href="#[7e]">__main</a> from __main.o(!!!main) referenced from startup_tm4c123.o(.text)
+ <LI><a href="#[81]">__main</a> from __main.o(!!!main) referenced from startup_tm4c123.o(.text)
 </UL>
 <P>
 <H3>
 Global Symbols
 </H3>
-<P><STRONG><a name="[7e]"></a>__main</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, __main.o(!!!main))
-<BR><BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+<P><STRONG><a name="[81]"></a>__main</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, __main.o(!!!main))
+<BR><BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[80]"></a>__scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter))
-<BR><BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+<P><STRONG><a name="[83]"></a>__scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter))
+<BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
 </UL>
 
-<P><STRONG><a name="[82]"></a>__scatterload_rt2</STRONG> (Thumb, 44 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+<P><STRONG><a name="[85]"></a>__scatterload_rt2</STRONG> (Thumb, 44 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
 </UL>
 
 <P><STRONG><a name="[e2]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
 <P><STRONG><a name="[e3]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
-<P><STRONG><a name="[83]"></a>__scatterload_copy</STRONG> (Thumb, 26 bytes, Stack size unknown bytes, __scatter_copy.o(!!handler_copy), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_copy
+<P><STRONG><a name="[86]"></a>__scatterload_copy</STRONG> (Thumb, 26 bytes, Stack size unknown bytes, __scatter_copy.o(!!handler_copy), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_copy
 </UL>
-<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_copy
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_copy
 </UL>
 
 <P><STRONG><a name="[e4]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
 
-<P><STRONG><a name="[89]"></a>__rt_lib_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit.o(.ARM.Collect$$libinit$$00000000))
-<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_li
+<P><STRONG><a name="[8c]"></a>__rt_lib_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit.o(.ARM.Collect$$libinit$$00000000))
+<BR><BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_li
 </UL>
 
-<P><STRONG><a name="[84]"></a>__rt_lib_init_fp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000001))
-<BR><BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_init
+<P><STRONG><a name="[87]"></a>__rt_lib_init_fp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000001))
+<BR><BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_init
 </UL>
 
 <P><STRONG><a name="[e5]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
@@ -339,8 +342,8 @@ Global Symbols
 
 <P><STRONG><a name="[f8]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
 
-<P><STRONG><a name="[8e]"></a>__rt_lib_shutdown</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown.o(.ARM.Collect$$libshutdown$$00000000))
-<BR><BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_ls
+<P><STRONG><a name="[91]"></a>__rt_lib_shutdown</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown.o(.ARM.Collect$$libshutdown$$00000000))
+<BR><BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_ls
 </UL>
 
 <P><STRONG><a name="[f9]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
@@ -357,65 +360,65 @@ Global Symbols
 
 <P><STRONG><a name="[ff]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
 
-<P><STRONG><a name="[81]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
-<BR><BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
+<P><STRONG><a name="[84]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
+<BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
 </UL>
 
 <P><STRONG><a name="[100]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
 
-<P><STRONG><a name="[86]"></a>__rt_entry_sh</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry4.o(.ARM.Collect$$rtentry$$00000004))
+<P><STRONG><a name="[89]"></a>__rt_entry_sh</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry4.o(.ARM.Collect$$rtentry$$00000004))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_sh &rArr; __user_setup_stackheap
 </UL>
-<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[88]"></a>__rt_entry_li</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000A))
-<BR><BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init
+<P><STRONG><a name="[8b]"></a>__rt_entry_li</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000A))
+<BR><BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init
 </UL>
 
 <P><STRONG><a name="[101]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
-<P><STRONG><a name="[8a]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; Init_Drivers &rArr; SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
+<P><STRONG><a name="[8d]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
+<BR><BR>[Stack]<UL><LI>Max Depth = 92 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; Init_Drivers &rArr; Init_Timer &rArr; TIMER_reload_calculator &rArr; SysCtlClockGet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
+<BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 </UL>
 
 <P><STRONG><a name="[102]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
 
-<P><STRONG><a name="[93]"></a>__rt_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit.o(.ARM.Collect$$rtexit$$00000000))
-<BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
+<P><STRONG><a name="[96]"></a>__rt_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit.o(.ARM.Collect$$rtexit$$00000000))
+<BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 </UL>
 
-<P><STRONG><a name="[8d]"></a>__rt_exit_ls</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000003))
-<BR><BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_shutdown
+<P><STRONG><a name="[90]"></a>__rt_exit_ls</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000003))
+<BR><BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_shutdown
 </UL>
 
 <P><STRONG><a name="[103]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
 
-<P><STRONG><a name="[8f]"></a>__rt_exit_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000004))
-<BR><BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
+<P><STRONG><a name="[92]"></a>__rt_exit_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000004))
+<BR><BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
 </UL>
 
-<P><STRONG><a name="[91]"></a>SysCtlDelay</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, sysctl.o(.emb_text))
-<BR><BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+<P><STRONG><a name="[94]"></a>SysCtlDelay</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, sysctl.o(.emb_text))
+<BR><BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockSet
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+<BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockSet
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
 </UL>
 
-<P><STRONG><a name="[ca]"></a>CPUcpsid</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, cpu.o(.emb_text))
-<BR><BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntMasterDisable
+<P><STRONG><a name="[cd]"></a>CPUcpsid</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, cpu.o(.emb_text))
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntMasterDisable
 </UL>
 
 <P><STRONG><a name="[104]"></a>CPUprimask</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, cpu.o(.emb_text), UNUSED)
 
-<P><STRONG><a name="[cb]"></a>CPUcpsie</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, cpu.o(.emb_text))
-<BR><BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntMasterEnable
+<P><STRONG><a name="[ce]"></a>CPUcpsie</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, cpu.o(.emb_text))
+<BR><BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntMasterEnable
 </UL>
 
 <P><STRONG><a name="[105]"></a>CPUwfi</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, cpu.o(.emb_text), UNUSED)
@@ -424,7 +427,7 @@ Global Symbols
 
 <P><STRONG><a name="[107]"></a>CPUbasepriGet</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, cpu.o(.emb_text), UNUSED)
 
-<P><STRONG><a name="[7d]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_tm4c123.o(.text))
+<P><STRONG><a name="[80]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_tm4c123.o(.text))
 
 <P><STRONG><a name="[3]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, startup_tm4c123.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NMI_Handler
@@ -1182,8 +1185,8 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
-<P><STRONG><a name="[7f]"></a>__user_initial_stackheap</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup_tm4c123.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
+<P><STRONG><a name="[82]"></a>__user_initial_stackheap</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup_tm4c123.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
 <P><STRONG><a name="[108]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
@@ -1192,35 +1195,35 @@ Global Symbols
 
 <P><STRONG><a name="[10a]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[87]"></a>__user_setup_stackheap</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, sys_stackheap_outer.o(.text))
+<P><STRONG><a name="[8a]"></a>__user_setup_stackheap</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, sys_stackheap_outer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
 <LI>Call Chain = __user_setup_stackheap
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_initial_stackheap
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_perproc_libspace
+<BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_initial_stackheap
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_perproc_libspace
 </UL>
-<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_sh
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_sh
 </UL>
 
-<P><STRONG><a name="[8c]"></a>exit</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, exit.o(.text))
+<P><STRONG><a name="[8f]"></a>exit</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, exit.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
 <LI>Call Chain = exit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit
+<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
+<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
 <P><STRONG><a name="[10b]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
-<P><STRONG><a name="[92]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
+<P><STRONG><a name="[95]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
 <P><STRONG><a name="[10c]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
-<P><STRONG><a name="[90]"></a>_sys_exit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, sys_exit.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
+<P><STRONG><a name="[93]"></a>_sys_exit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, sys_exit.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
 </UL>
 
 <P><STRONG><a name="[10d]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
@@ -1232,17 +1235,17 @@ Global Symbols
 <P><STRONG><a name="[3b]"></a>ADC1SS0_Handler</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, adc_handler.o(i.ADC1SS0_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ADC1SS0_Handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADCSequenceDataGet
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADCIntStatus
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADCIntClear
+<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADCSequenceDataGet
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADCIntStatus
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADCIntClear
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
-<P><STRONG><a name="[95]"></a>ADCIntClear</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, adc.o(i.ADCIntClear))
+<P><STRONG><a name="[98]"></a>ADCIntClear</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, adc.o(i.ADCIntClear))
 <BR><BR>[Called By]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1SS0_Handler
 </UL>
 
-<P><STRONG><a name="[94]"></a>ADCIntStatus</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, adc.o(i.ADCIntStatus))
+<P><STRONG><a name="[97]"></a>ADCIntStatus</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, adc.o(i.ADCIntStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1SS0_Handler
 </UL>
 
@@ -1250,476 +1253,478 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WTIMER0A_Handler
 </UL>
 
-<P><STRONG><a name="[96]"></a>ADCSequenceDataGet</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, adc.o(i.ADCSequenceDataGet))
+<P><STRONG><a name="[99]"></a>ADCSequenceDataGet</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, adc.o(i.ADCSequenceDataGet))
 <BR><BR>[Called By]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1SS0_Handler
 </UL>
 
-<P><STRONG><a name="[97]"></a>Cyclic_1000ms</STRONG> (Thumb, 30 bytes, Stack size 24 bytes, cyclic_container.o(i.Cyclic_1000ms))
+<P><STRONG><a name="[7f]"></a>BlueOff</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, gpio_handler.o(i.BlueOff))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = BlueOff &rArr; ClearGPIOPin
+</UL>
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearGPIOPin
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_container.o(i.Init_Commands)
+</UL>
+<P><STRONG><a name="[7e]"></a>BlueOn</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, gpio_handler.o(i.BlueOn))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = BlueOn &rArr; SetGPIOPin
+</UL>
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOPin
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_container.o(i.Init_Commands)
+</UL>
+<P><STRONG><a name="[9a]"></a>ClearGPIOPin</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, gpio_handler.o(i.ClearGPIOPin))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ClearGPIOPin
+</UL>
+<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinWrite
+</UL>
+<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RedOff
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GreenOff
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BlueOff
+</UL>
+
+<P><STRONG><a name="[9d]"></a>Cyclic_1000ms</STRONG> (Thumb, 30 bytes, Stack size 24 bytes, cyclic_container.o(i.Cyclic_1000ms))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Cyclic_1000ms &rArr; Display_NewLine &rArr; Display_Char
 </UL>
-<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
+<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER3A_Handler
 </UL>
 
-<P><STRONG><a name="[99]"></a>Cyclic_100ms</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, cyclic_container.o(i.Cyclic_100ms))
+<P><STRONG><a name="[9f]"></a>Cyclic_100ms</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, cyclic_container.o(i.Cyclic_100ms))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Cyclic_100ms &rArr; Display_String &rArr; Display_Char
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_String
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
+<BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_String
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
 </UL>
 <BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER1A_Handler
 </UL>
 
-<P><STRONG><a name="[9b]"></a>Cyclic_500ms</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, cyclic_container.o(i.Cyclic_500ms))
+<P><STRONG><a name="[a1]"></a>Cyclic_500ms</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, cyclic_container.o(i.Cyclic_500ms))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Cyclic_500ms &rArr; Display_String &rArr; Display_Char
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_String
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
+<BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_String
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
 </UL>
 <BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER2A_Handler
 </UL>
 
-<P><STRONG><a name="[9c]"></a>Cyclic_50ms</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, cyclic_container.o(i.Cyclic_50ms))
+<P><STRONG><a name="[a2]"></a>Cyclic_50ms</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, cyclic_container.o(i.Cyclic_50ms))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Cyclic_50ms &rArr; ReadPinState
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadPinState
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_String
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
+<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadPinState
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_String
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER0A_Handler
 </UL>
 
-<P><STRONG><a name="[9e]"></a>Display_Char</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, display.o(i.Display_Char))
+<P><STRONG><a name="[a4]"></a>Display_Char</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, display.o(i.Display_Char))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Display_Char
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTCharPut
+<BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTCharPut
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_String
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
+<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_String
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
 </UL>
 
-<P><STRONG><a name="[a0]"></a>Display_Decimal</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, display.o(i.Display_Decimal))
+<P><STRONG><a name="[a6]"></a>Display_Decimal</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, display.o(i.Display_Decimal))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24 + In Cycle
 <LI>Call Chain = Display_Decimal &rArr;  Display_Decimal (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Char
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
+<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Char
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_DataOut
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_DataOut
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER4A_Handler
 </UL>
 
-<P><STRONG><a name="[a1]"></a>Display_Init</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, display.o(i.Display_Init))
+<P><STRONG><a name="[a7]"></a>Display_Init</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, display.o(i.Display_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Display_Init &rArr; GPIOPinTypeUART &rArr; GPIOPadConfigSet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTFIFOEnable
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTEnable
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTDisable
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigSetExpClk
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigGetExpClk
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTClockSourceSet
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeUART
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
+<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTFIFOEnable
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTEnable
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTDisable
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigSetExpClk
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigGetExpClk
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTClockSourceSet
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeUART
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
+<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
 </UL>
 
-<P><STRONG><a name="[98]"></a>Display_NewLine</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, display.o(i.Display_NewLine))
+<P><STRONG><a name="[9e]"></a>Display_NewLine</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, display.o(i.Display_NewLine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Display_NewLine &rArr; Display_Char
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Char
+<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Char
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_DataOut
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_DataOut
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER4A_Handler
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_50ms
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_500ms
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_100ms
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_1000ms
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_50ms
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_500ms
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_100ms
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_1000ms
 </UL>
 
-<P><STRONG><a name="[9a]"></a>Display_String</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, display.o(i.Display_String))
+<P><STRONG><a name="[a0]"></a>Display_String</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, display.o(i.Display_String))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Display_String &rArr; Display_Char
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Char
+<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Char
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER4A_Handler
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_50ms
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_500ms
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_100ms
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_50ms
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_500ms
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_100ms
 </UL>
 
-<P><STRONG><a name="[af]"></a>GPIODirModeSet</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, gpio.o(i.GPIODirModeSet))
-<BR><BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeUART
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeSSI
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOOutput
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOInput
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInput
+<P><STRONG><a name="[b6]"></a>GPIODirModeSet</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, gpio.o(i.GPIODirModeSet))
+<BR><BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeUART
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeSSI
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOOutput
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
 </UL>
 
 <P><STRONG><a name="[2a]"></a>GPIOF_Handler</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, gpio_handler.o(i.GPIOF_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GPIOF_Handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntDisable
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntClear
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntDisable
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntClear
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
-<P><STRONG><a name="[ab]"></a>GPIOIntClear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntClear))
+<P><STRONG><a name="[b1]"></a>GPIOIntClear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntClear))
 <BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOF_Handler
 </UL>
 
-<P><STRONG><a name="[ad]"></a>GPIOIntDisable</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntDisable))
+<P><STRONG><a name="[b3]"></a>GPIOIntDisable</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntDisable))
 <BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOF_Handler
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
 </UL>
 
-<P><STRONG><a name="[dc]"></a>GPIOIntEnable</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntEnable))
+<P><STRONG><a name="[e0]"></a>GPIOIntEnable</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntEnable))
 <BR><BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER4A_Handler
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
 </UL>
 
-<P><STRONG><a name="[db]"></a>GPIOIntTypeSet</STRONG> (Thumb, 80 bytes, Stack size 0 bytes, gpio.o(i.GPIOIntTypeSet))
-<BR><BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
-</UL>
-
-<P><STRONG><a name="[b0]"></a>GPIOPadConfigSet</STRONG> (Thumb, 314 bytes, Stack size 28 bytes, gpio.o(i.GPIOPadConfigSet))
+<P><STRONG><a name="[b5]"></a>GPIOPadConfigSet</STRONG> (Thumb, 314 bytes, Stack size 28 bytes, gpio.o(i.GPIOPadConfigSet))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = GPIOPadConfigSet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeUART
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeSSI
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOOutput
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOInput
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInput
+<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeUART
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeSSI
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOOutput
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
 </UL>
 
-<P><STRONG><a name="[d4]"></a>GPIOPinConfigure</STRONG> (Thumb, 64 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinConfigure))
-<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<P><STRONG><a name="[d7]"></a>GPIOPinConfigure</STRONG> (Thumb, 64 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinConfigure))
+<BR><BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
 </UL>
 
-<P><STRONG><a name="[cc]"></a>GPIOPinRead</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinRead))
-<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadPinState
+<P><STRONG><a name="[cf]"></a>GPIOPinRead</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinRead))
+<BR><BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadPinState
 </UL>
 
-<P><STRONG><a name="[ae]"></a>GPIOPinTypeGPIOInput</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeGPIOInput))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
-</UL>
-<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
-</UL>
-<BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInput
-</UL>
-
-<P><STRONG><a name="[b1]"></a>GPIOPinTypeGPIOOutput</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeGPIOOutput))
+<P><STRONG><a name="[b4]"></a>GPIOPinTypeGPIOOutput</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeGPIOOutput))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = GPIOPinTypeGPIOOutput &rArr; GPIOPadConfigSet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
+<BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
+<BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
 </UL>
 
-<P><STRONG><a name="[b2]"></a>GPIOPinTypeSSI</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeSSI))
+<P><STRONG><a name="[b7]"></a>GPIOPinTypeSSI</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeSSI))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = GPIOPinTypeSSI &rArr; GPIOPadConfigSet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
+<BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
 </UL>
 
-<P><STRONG><a name="[a4]"></a>GPIOPinTypeUART</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeUART))
+<P><STRONG><a name="[aa]"></a>GPIOPinTypeUART</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, gpio.o(i.GPIOPinTypeUART))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = GPIOPinTypeUART &rArr; GPIOPadConfigSet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
+<BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
-</UL>
-
-<P><STRONG><a name="[dd]"></a>GPIOPinWrite</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinWrite))
-<BR><BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
 </UL>
 
-<P><STRONG><a name="[b9]"></a>Init_Commands</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, main.o(i.Init_Commands))
-<BR><BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
+<P><STRONG><a name="[9c]"></a>GPIOPinWrite</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinWrite))
+<BR><BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOPin
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearGPIOPin
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
 </UL>
 
-<P><STRONG><a name="[b3]"></a>Init_Drivers</STRONG> (Thumb, 182 bytes, Stack size 8 bytes, startup_container.o(i.Init_Drivers))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Init_Drivers &rArr; SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
+<P><STRONG><a name="[7d]"></a>GreenOff</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, gpio_handler.o(i.GreenOff))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GreenOff &rArr; ClearGPIOPin
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInput
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntMasterEnable
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Commands
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_String
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearGPIOPin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Address Reference Count : 1]<UL><LI> startup_container.o(i.Init_Commands)
+</UL>
+<P><STRONG><a name="[7c]"></a>GreenOn</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, gpio_handler.o(i.GreenOn))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GreenOn &rArr; SetGPIOPin
+</UL>
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOPin
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_container.o(i.Init_Commands)
+</UL>
+<P><STRONG><a name="[bb]"></a>Init_Commands</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, startup_container.o(i.Init_Commands))
+<BR><BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
 </UL>
 
-<P><STRONG><a name="[b5]"></a>Init_Timer</STRONG> (Thumb, 176 bytes, Stack size 40 bytes, timer_handler.o(i.Init_Timer))
+<P><STRONG><a name="[b8]"></a>Init_Drivers</STRONG> (Thumb, 150 bytes, Stack size 8 bytes, startup_container.o(i.Init_Drivers))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = Init_Drivers &rArr; Init_Timer &rArr; TIMER_reload_calculator &rArr; SysCtlClockGet
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntMasterEnable
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Commands
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_String
+</UL>
+<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[bc]"></a>Init_Timer</STRONG> (Thumb, 176 bytes, Stack size 40 bytes, timer_handler.o(i.Init_Timer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = Init_Timer &rArr; TIMER_reload_calculator &rArr; SysCtlClockGet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerLoadSet
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntEnable
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntDisable
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerDisable
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerConfigure
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerClockSourceSet
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getPrioIndex
-<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getPeriphTimerAddress
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getINTTIMER_Address
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER_reload_calculator
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntPrioritySet
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntEnable
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntDisable
+<BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerLoadSet
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntEnable
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntDisable
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerDisable
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerConfigure
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerClockSourceSet
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getPrioIndex
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getPeriphTimerAddress
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getINTTIMER_Address
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER_reload_calculator
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntPrioritySet
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntEnable
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntDisable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
-</UL>
-
-<P><STRONG><a name="[be]"></a>IntDisable</STRONG> (Thumb, 92 bytes, Stack size 0 bytes, interrupt.o(i.IntDisable))
-<BR><BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
 </UL>
 
-<P><STRONG><a name="[c8]"></a>IntEnable</STRONG> (Thumb, 92 bytes, Stack size 0 bytes, interrupt.o(i.IntEnable))
-<BR><BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<P><STRONG><a name="[c1]"></a>IntDisable</STRONG> (Thumb, 92 bytes, Stack size 0 bytes, interrupt.o(i.IntDisable))
+<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[c9]"></a>IntMasterDisable</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, interrupt.o(i.IntMasterDisable))
+<P><STRONG><a name="[cb]"></a>IntEnable</STRONG> (Thumb, 92 bytes, Stack size 0 bytes, interrupt.o(i.IntEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+</UL>
+
+<P><STRONG><a name="[cc]"></a>IntMasterDisable</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, interrupt.o(i.IntMasterDisable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = IntMasterDisable
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPUcpsid
+<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPUcpsid
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
 </UL>
 
-<P><STRONG><a name="[bb]"></a>IntMasterEnable</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, interrupt.o(i.IntMasterEnable))
+<P><STRONG><a name="[be]"></a>IntMasterEnable</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, interrupt.o(i.IntMasterEnable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = IntMasterEnable
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPUcpsie
+<BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPUcpsie
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
-</UL>
-
-<P><STRONG><a name="[c7]"></a>IntPrioritySet</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, interrupt.o(i.IntPrioritySet))
-<BR><BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
 </UL>
 
-<P><STRONG><a name="[9d]"></a>ReadPinState</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, gpio_handler.o(i.ReadPinState))
+<P><STRONG><a name="[ca]"></a>IntPrioritySet</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, interrupt.o(i.IntPrioritySet))
+<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+</UL>
+
+<P><STRONG><a name="[a3]"></a>ReadPinState</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, gpio_handler.o(i.ReadPinState))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ReadPinState
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinRead
+<BR>[Calls]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinRead
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_50ms
+<BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_50ms
 </UL>
 
-<P><STRONG><a name="[cd]"></a>SSI0_DataOut</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, spi_handler.o(i.SSI0_DataOut))
+<P><STRONG><a name="[7b]"></a>RedOff</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, gpio_handler.o(i.RedOff))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = RedOff &rArr; ClearGPIOPin
+</UL>
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearGPIOPin
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_container.o(i.Init_Commands)
+</UL>
+<P><STRONG><a name="[7a]"></a>RedOn</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, gpio_handler.o(i.RedOn))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = RedOn &rArr; SetGPIOPin
+</UL>
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOPin
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_container.o(i.Init_Commands)
+</UL>
+<P><STRONG><a name="[d0]"></a>SSI0_DataOut</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, spi_handler.o(i.SSI0_DataOut))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = SSI0_DataOut &rArr; Display_Decimal &rArr;  Display_Decimal (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataPut
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
+<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataPut
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_Handler
 </UL>
 
-<P><STRONG><a name="[13]"></a>SSI0_Handler</STRONG> (Thumb, 154 bytes, Stack size 40 bytes, spi_handler.o(i.SSI0_Handler))
+<P><STRONG><a name="[13]"></a>SSI0_Handler</STRONG> (Thumb, 158 bytes, Stack size 40 bytes, spi_handler.o(i.SSI0_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = SSI0_Handler &rArr; SSI0_DataOut &rArr; Display_Decimal &rArr;  Display_Decimal (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIIntStatus
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIIntClear
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataGet
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_DataOut
+<BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIIntStatus
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIIntClear
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataGet
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_DataOut
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
-<P><STRONG><a name="[b8]"></a>SSI0_InitSlave</STRONG> (Thumb, 186 bytes, Stack size 24 bytes, spi_handler.o(i.SSI0_InitSlave))
+<P><STRONG><a name="[ba]"></a>SSI0_InitSlave</STRONG> (Thumb, 186 bytes, Stack size 24 bytes, spi_handler.o(i.SSI0_InitSlave))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = SSI0_InitSlave &rArr; GPIOPinTypeSSI &rArr; GPIOPadConfigSet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIIntEnable
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIIntDisable
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIEnable
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDisable
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIConfigSetExpClk
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIClockSourceSet
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeSSI
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinConfigure
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntMasterDisable
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntPrioritySet
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntEnable
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntDisable
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntMasterEnable
+<BR>[Calls]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIIntEnable
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIIntDisable
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIEnable
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDisable
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIConfigSetExpClk
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIClockSourceSet
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeSSI
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinConfigure
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntMasterDisable
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntPrioritySet
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntEnable
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntDisable
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntMasterEnable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
+<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
 </UL>
 
-<P><STRONG><a name="[ba]"></a>SSI1_Init_RGB</STRONG> (Thumb, 96 bytes, Stack size 24 bytes, spi_handler.o(i.SSI1_Init_RGB))
+<P><STRONG><a name="[bd]"></a>SSI1_Init_RGB</STRONG> (Thumb, 96 bytes, Stack size 24 bytes, spi_handler.o(i.SSI1_Init_RGB))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = SSI1_Init_RGB &rArr; GPIOPinTypeSSI &rArr; GPIOPadConfigSet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIEnable
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDisable
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIConfigSetExpClk
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIClockSourceSet
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeSSI
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinConfigure
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
+<BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIEnable
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDisable
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIConfigSetExpClk
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIClockSourceSet
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeSSI
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinConfigure
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
-</UL>
-
-<P><STRONG><a name="[d5]"></a>SSIClockSourceSet</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, ssi.o(i.SSIClockSourceSet))
-<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
 </UL>
 
-<P><STRONG><a name="[d6]"></a>SSIConfigSetExpClk</STRONG> (Thumb, 58 bytes, Stack size 4 bytes, ssi.o(i.SSIConfigSetExpClk))
+<P><STRONG><a name="[d8]"></a>SSIClockSourceSet</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, ssi.o(i.SSIClockSourceSet))
+<BR><BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+</UL>
+
+<P><STRONG><a name="[d9]"></a>SSIConfigSetExpClk</STRONG> (Thumb, 58 bytes, Stack size 4 bytes, ssi.o(i.SSIConfigSetExpClk))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = SSIConfigSetExpClk
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
 </UL>
 
-<P><STRONG><a name="[d0]"></a>SSIDataGet</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, ssi.o(i.SSIDataGet))
-<BR><BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataGet
+<P><STRONG><a name="[d3]"></a>SSIDataGet</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, ssi.o(i.SSIDataGet))
+<BR><BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataGet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataGet
+<BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataGet
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_Handler
 </UL>
 
-<P><STRONG><a name="[ce]"></a>SSIDataPut</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, ssi.o(i.SSIDataPut))
-<BR><BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataPut
+<P><STRONG><a name="[d1]"></a>SSIDataPut</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, ssi.o(i.SSIDataPut))
+<BR><BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataPut
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataPut
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_DataOut
-</UL>
-
-<P><STRONG><a name="[d2]"></a>SSIDisable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ssi.o(i.SSIDisable))
-<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSIDataPut
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_DataOut
 </UL>
 
-<P><STRONG><a name="[d8]"></a>SSIEnable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ssi.o(i.SSIEnable))
-<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<P><STRONG><a name="[d5]"></a>SSIDisable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ssi.o(i.SSIDisable))
+<BR><BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
 </UL>
 
-<P><STRONG><a name="[d1]"></a>SSIIntClear</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, ssi.o(i.SSIIntClear))
+<P><STRONG><a name="[db]"></a>SSIEnable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ssi.o(i.SSIEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+</UL>
+
+<P><STRONG><a name="[d4]"></a>SSIIntClear</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, ssi.o(i.SSIIntClear))
 <BR><BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_Handler
 </UL>
 
-<P><STRONG><a name="[d3]"></a>SSIIntDisable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ssi.o(i.SSIIntDisable))
-<BR><BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<P><STRONG><a name="[d6]"></a>SSIIntDisable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ssi.o(i.SSIIntDisable))
+<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
 </UL>
 
-<P><STRONG><a name="[d7]"></a>SSIIntEnable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, ssi.o(i.SSIIntEnable))
-<BR><BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<P><STRONG><a name="[da]"></a>SSIIntEnable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, ssi.o(i.SSIIntEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
 </UL>
 
-<P><STRONG><a name="[cf]"></a>SSIIntStatus</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ssi.o(i.SSIIntStatus))
+<P><STRONG><a name="[d2]"></a>SSIIntStatus</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ssi.o(i.SSIIntStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_Handler
 </UL>
 
-<P><STRONG><a name="[b6]"></a>SetGPIOInput</STRONG> (Thumb, 76 bytes, Stack size 24 bytes, gpio_handler.o(i.SetGPIOInput))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
-</UL>
-<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOInput
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getPortPeriphAddress
-</UL>
-<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
-</UL>
-
-<P><STRONG><a name="[b4]"></a>SetGPIOInterrupt</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, gpio_handler.o(i.SetGPIOInterrupt))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
-</UL>
-<BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntPrioritySet
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntEnable
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntDisable
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntTypeSet
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntEnable
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntDisable
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getINTGPIO_Adrress
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInput
-</UL>
-<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
-</UL>
-
-<P><STRONG><a name="[b7]"></a>SetGPIOOutput</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, gpio_handler.o(i.SetGPIOOutput))
+<P><STRONG><a name="[b9]"></a>SetGPIOOutput</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, gpio_handler.o(i.SetGPIOOutput))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = SetGPIOOutput &rArr; GPIOPinTypeGPIOOutput &rArr; GPIOPadConfigSet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
-<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinWrite
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOOutput
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getPortPeriphAddress
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlPeripheralEnable
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinWrite
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOOutput
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPadConfigSet
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIODirModeSet
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getPortPeriphAddress
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
+<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
 </UL>
 
-<P><STRONG><a name="[7c]"></a>SetL1Blue</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, light_app.o(i.SetL1Blue))
-<BR>[Address Reference Count : 1]<UL><LI> main.o(i.Init_Commands)
+<P><STRONG><a name="[9b]"></a>SetGPIOPin</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, gpio_handler.o(i.SetGPIOPin))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SetGPIOPin
 </UL>
-<P><STRONG><a name="[7b]"></a>SetL1Green</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, light_app.o(i.SetL1Green))
-<BR>[Address Reference Count : 1]<UL><LI> main.o(i.Init_Commands)
+<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinWrite
 </UL>
-<P><STRONG><a name="[7a]"></a>SetL1Red</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, light_app.o(i.SetL1Red))
-<BR>[Address Reference Count : 1]<UL><LI> main.o(i.Init_Commands)
+<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RedOn
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GreenOn
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BlueOn
 </UL>
-<P><STRONG><a name="[a6]"></a>SysCtlClockGet</STRONG> (Thumb, 304 bytes, Stack size 12 bytes, sysctl.o(i.SysCtlClockGet))
+
+<P><STRONG><a name="[ac]"></a>SysCtlClockGet</STRONG> (Thumb, 304 bytes, Stack size 12 bytes, sysctl.o(i.SysCtlClockGet))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SysCtlClockGet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER_reload_calculator
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
+<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER_reload_calculator
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
 </UL>
 
-<P><STRONG><a name="[de]"></a>SysCtlClockSet</STRONG> (Thumb, 270 bytes, Stack size 8 bytes, sysctl.o(i.SysCtlClockSet))
+<P><STRONG><a name="[dd]"></a>SysCtlClockSet</STRONG> (Thumb, 270 bytes, Stack size 8 bytes, sysctl.o(i.SysCtlClockSet))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SysCtlClockSet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a2]"></a>SysCtlPeripheralEnable</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, sysctl.o(i.SysCtlPeripheralEnable))
-<BR><BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInput
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
+<P><STRONG><a name="[a8]"></a>SysCtlPeripheralEnable</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, sysctl.o(i.SysCtlPeripheralEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI1_Init_RGB
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SSI0_InitSlave
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
 </UL>
 
 <P><STRONG><a name="[78]"></a>SystemInit</STRONG> (Thumb, 112 bytes, Stack size 0 bytes, system_tm4c123.o(i.SystemInit))
@@ -1728,86 +1733,86 @@ Global Symbols
 <P><STRONG><a name="[1f]"></a>TIMER0A_Handler</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, timer_handler.o(i.TIMER0A_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = TIMER0A_Handler &rArr; Cyclic_50ms &rArr; ReadPinState
 </UL>
-<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntClear
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_50ms
+<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntClear
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_50ms
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
 <P><STRONG><a name="[21]"></a>TIMER1A_Handler</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, timer_handler.o(i.TIMER1A_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = TIMER1A_Handler &rArr; Cyclic_100ms &rArr; Display_String &rArr; Display_Char
 </UL>
-<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntClear
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_100ms
+<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntClear
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_100ms
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
 <P><STRONG><a name="[23]"></a>TIMER2A_Handler</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, timer_handler.o(i.TIMER2A_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = TIMER2A_Handler &rArr; Cyclic_500ms &rArr; Display_String &rArr; Display_Char
 </UL>
-<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntClear
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_500ms
+<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntClear
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_500ms
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
 <P><STRONG><a name="[2f]"></a>TIMER3A_Handler</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, timer_handler.o(i.TIMER3A_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = TIMER3A_Handler &rArr; Cyclic_1000ms &rArr; Display_NewLine &rArr; Display_Char
 </UL>
-<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntClear
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_1000ms
+<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntClear
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cyclic_1000ms
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
 <P><STRONG><a name="[4b]"></a>TIMER4A_Handler</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, timer_handler.o(i.TIMER4A_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = TIMER4A_Handler &rArr; Display_Decimal &rArr;  Display_Decimal (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntStatus
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntClear
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerDisable
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntEnable
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_String
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
+<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntStatus
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntClear
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerDisable
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Decimal
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOIntEnable
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_String
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_NewLine
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
-<P><STRONG><a name="[c3]"></a>TIMER_reload_calculator</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, timer_handler.o(i.TIMER_reload_calculator))
+<P><STRONG><a name="[c6]"></a>TIMER_reload_calculator</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, timer_handler.o(i.TIMER_reload_calculator))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = TIMER_reload_calculator &rArr; SysCtlClockGet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
+<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
-</UL>
-
-<P><STRONG><a name="[c1]"></a>TimerClockSourceSet</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, timer.o(i.TimerClockSourceSet))
-<BR><BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[c2]"></a>TimerConfigure</STRONG> (Thumb, 88 bytes, Stack size 4 bytes, timer.o(i.TimerConfigure))
+<P><STRONG><a name="[c4]"></a>TimerClockSourceSet</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, timer.o(i.TimerClockSourceSet))
+<BR><BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+</UL>
+
+<P><STRONG><a name="[c5]"></a>TimerConfigure</STRONG> (Thumb, 88 bytes, Stack size 4 bytes, timer.o(i.TimerConfigure))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = TimerConfigure
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[c0]"></a>TimerDisable</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, timer.o(i.TimerDisable))
+<P><STRONG><a name="[c3]"></a>TimerDisable</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, timer.o(i.TimerDisable))
 <BR><BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER4A_Handler
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[ac]"></a>TimerEnable</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, timer.o(i.TimerEnable))
+<P><STRONG><a name="[b2]"></a>TimerEnable</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, timer.o(i.TimerEnable))
 <BR><BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WTIMER0A_Handler
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER3A_Handler
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER2A_Handler
 <LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER1A_Handler
 <LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER0A_Handler
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOF_Handler
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
 </UL>
 
-<P><STRONG><a name="[df]"></a>TimerIntClear</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, timer.o(i.TimerIntClear))
+<P><STRONG><a name="[de]"></a>TimerIntClear</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, timer.o(i.TimerIntClear))
 <BR><BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WTIMER0A_Handler
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER4A_Handler
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER3A_Handler
@@ -1816,109 +1821,104 @@ Global Symbols
 <LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER0A_Handler
 </UL>
 
-<P><STRONG><a name="[bf]"></a>TimerIntDisable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, timer.o(i.TimerIntDisable))
-<BR><BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<P><STRONG><a name="[c2]"></a>TimerIntDisable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, timer.o(i.TimerIntDisable))
+<BR><BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[c5]"></a>TimerIntEnable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, timer.o(i.TimerIntEnable))
-<BR><BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<P><STRONG><a name="[c8]"></a>TimerIntEnable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, timer.o(i.TimerIntEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[e0]"></a>TimerIntStatus</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, timer.o(i.TimerIntStatus))
+<P><STRONG><a name="[df]"></a>TimerIntStatus</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, timer.o(i.TimerIntStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WTIMER0A_Handler
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER4A_Handler
 </UL>
 
-<P><STRONG><a name="[c4]"></a>TimerLoadSet</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, timer.o(i.TimerLoadSet))
-<BR><BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<P><STRONG><a name="[c7]"></a>TimerLoadSet</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, timer.o(i.TimerLoadSet))
+<BR><BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[9f]"></a>UARTCharPut</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, uart.o(i.UARTCharPut))
-<BR><BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTCharPut
+<P><STRONG><a name="[a5]"></a>UARTCharPut</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, uart.o(i.UARTCharPut))
+<BR><BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTCharPut
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTCharPut
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Char
-</UL>
-
-<P><STRONG><a name="[a5]"></a>UARTClockSourceSet</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, uart.o(i.UARTClockSourceSet))
-<BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
+<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTCharPut
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Char
 </UL>
 
-<P><STRONG><a name="[aa]"></a>UARTConfigGetExpClk</STRONG> (Thumb, 46 bytes, Stack size 4 bytes, uart.o(i.UARTConfigGetExpClk))
+<P><STRONG><a name="[ab]"></a>UARTClockSourceSet</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, uart.o(i.UARTClockSourceSet))
+<BR><BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
+</UL>
+
+<P><STRONG><a name="[b0]"></a>UARTConfigGetExpClk</STRONG> (Thumb, 46 bytes, Stack size 4 bytes, uart.o(i.UARTConfigGetExpClk))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = UARTConfigGetExpClk
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
 </UL>
 
-<P><STRONG><a name="[a7]"></a>UARTConfigSetExpClk</STRONG> (Thumb, 110 bytes, Stack size 0 bytes, uart.o(i.UARTConfigSetExpClk))
-<BR><BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigSetExpClk
+<P><STRONG><a name="[ad]"></a>UARTConfigSetExpClk</STRONG> (Thumb, 110 bytes, Stack size 0 bytes, uart.o(i.UARTConfigSetExpClk))
+<BR><BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigSetExpClk
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigSetExpClk
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
-</UL>
-
-<P><STRONG><a name="[a3]"></a>UARTDisable</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, uart.o(i.UARTDisable))
-<BR><BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTDisable
-</UL>
-<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTDisable
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
+<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigSetExpClk
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
 </UL>
 
-<P><STRONG><a name="[a9]"></a>UARTEnable</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, uart.o(i.UARTEnable))
-<BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
+<P><STRONG><a name="[a9]"></a>UARTDisable</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, uart.o(i.UARTDisable))
+<BR><BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTDisable
+</UL>
+<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTDisable
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
 </UL>
 
-<P><STRONG><a name="[a8]"></a>UARTFIFOEnable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, uart.o(i.UARTFIFOEnable))
-<BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
+<P><STRONG><a name="[af]"></a>UARTEnable</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, uart.o(i.UARTEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
+</UL>
+
+<P><STRONG><a name="[ae]"></a>UARTFIFOEnable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, uart.o(i.UARTFIFOEnable))
+<BR><BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Init
 </UL>
 
 <P><STRONG><a name="[4f]"></a>WTIMER0A_Handler</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, timer_handler.o(i.WTIMER0A_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = WTIMER0A_Handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntStatus
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntClear
+<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntStatus
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerIntClear
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADCProcessorTrigger
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerEnable
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
-<P><STRONG><a name="[da]"></a>getINTGPIO_Adrress</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, gpio_handler.o(i.getINTGPIO_Adrress))
-<BR><BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInterrupt
-</UL>
-
-<P><STRONG><a name="[bc]"></a>getINTTIMER_Address</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, timer_handler.o(i.getINTTIMER_Address))
+<P><STRONG><a name="[bf]"></a>getINTTIMER_Address</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, timer_handler.o(i.getINTTIMER_Address))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = getINTTIMER_Address
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[bd]"></a>getPeriphTimerAddress</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, timer_handler.o(i.getPeriphTimerAddress))
+<P><STRONG><a name="[c0]"></a>getPeriphTimerAddress</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, timer_handler.o(i.getPeriphTimerAddress))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = getPeriphTimerAddress
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[d9]"></a>getPortPeriphAddress</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, gpio_handler.o(i.getPortPeriphAddress))
-<BR><BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOInput
+<P><STRONG><a name="[dc]"></a>getPortPeriphAddress</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, gpio_handler.o(i.getPortPeriphAddress))
+<BR><BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGPIOOutput
 </UL>
 
-<P><STRONG><a name="[c6]"></a>getPrioIndex</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, timer_handler.o(i.getPrioIndex))
-<BR><BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<P><STRONG><a name="[c9]"></a>getPrioIndex</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, timer_handler.o(i.getPrioIndex))
+<BR><BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[8b]"></a>main</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = main &rArr; Init_Drivers &rArr; SetGPIOInterrupt &rArr; SetGPIOInput &rArr; GPIOPinTypeGPIOInput &rArr; GPIOPadConfigSet
+<P><STRONG><a name="[8e]"></a>main</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = main &rArr; Init_Drivers &rArr; Init_Timer &rArr; TIMER_reload_calculator &rArr; SysCtlClockGet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockSet
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
+<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockSet
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Drivers
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
+<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[85]"></a>_fp_init</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, fpinit.o(x$fpl$fpinit))
-<BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_fp_1
+<P><STRONG><a name="[88]"></a>_fp_init</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, fpinit.o(x$fpl$fpinit))
+<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_fp_1
 </UL>
 
 <P><STRONG><a name="[110]"></a>__fplib_config_fpu_vfp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
