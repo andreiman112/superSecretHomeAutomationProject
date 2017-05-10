@@ -16,5 +16,6 @@ unsigned long PWM_Base(unsigned long,unsigned long);
 void GPIO_Configure_PWM(unsigned long,unsigned long);
 unsigned long Clock_Ticks(unsigned long );
 unsigned long Periph_PWM(unsigned long, unsigned long);
-
+void Vent1(uint8_t i);
+void Vent2(uint8_t i);
 #endif

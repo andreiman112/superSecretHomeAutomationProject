@@ -443,6 +443,7 @@ unsigned long Clock_Ticks(unsigned long period)
 	unsigned long ui32SysClock = SysCtlClockGet();
 	return (((ui32SysClock / (1000 * PWM_DIV_for32)) * period) - 1);
 }
+
 unsigned long Periph_PWM(unsigned long port, unsigned long pin)
 {
 	unsigned long periph_pwm = 0;
@@ -460,3 +461,6 @@ unsigned long Periph_PWM(unsigned long port, unsigned long pin)
 	}
 		return periph_pwm;
 }
+void Vent1(uint8_t i){ Duty_Cycle(GPIO_PORTB_BASE,GPIO_PIN_6, i*10); }
+void Vent2(uint8_t i){ Duty_Cycle(GPIO_PORTB_BASE,GPIO_PIN_7, i*10); }
+

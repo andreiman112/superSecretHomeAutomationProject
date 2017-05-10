@@ -25,10 +25,9 @@
 #define Master_Tx_Slave_Rx (0) //Configures master to send data to the slave
 #define I2C_Rate_100kbps (0) //Configure I2C transfer rate to normal mode 100 kbps
 
-void I2C_Master_Wait(void)
+void I2C_Master_Wait(unsigned long I2C_BASE)
 {
-     while (I2CMasterBusy(I2C0_BASE))
-        ;
+     while (I2CMasterBusy(I2C_BASE));
 		  
 }
 unsigned long I2C_Read(unsigned long I2C_Base, unsigned char Slave_Address, unsigned long Register)
@@ -45,16 +44,15 @@ unsigned long I2C_Read(unsigned long I2C_Base, unsigned char Slave_Address, unsi
     }
 
     I2CMasterControl(I2C_Base, 7);
-    I2C_Master_Wait();
+    I2C_Master_Wait(I2C_Base);
 
     //Step 1.1. Set Slave adress and Write mode (R/W bit = 0)
     I2CMasterSlaveAddrSet(I2C_Base, Slave_Address, 1); //Set slave address and send mode
-    while (I2CMasterBusBusy(I2C_Base)) {
-    }
+    while (I2CMasterBusBusy(I2C_Base)) {}
     error_nr = I2CMasterErr(I2C_Base);
 		if(error_nr){}
     I2CMasterControl(I2C_Base, I2C_MASTER_CMD_SINGLE_RECEIVE);
-    I2C_Master_Wait();
+    I2C_Master_Wait(I2C_Base);
     
     Register_Read_Value = I2CMasterDataGet(I2C_Base);
 
@@ -160,10 +158,10 @@ void I2C_Init_LuminositySensor(unsigned char Slave_Address)
 
     while (I2CMasterBusBusy(I2C0_BASE)) {    }
 
-    I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_START); I2C_Master_Wait();
+    I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_START); I2C_Master_Wait(I2C0_BASE);
 
     I2CMasterDataPut(I2C0_BASE, Register_Value); //Send the register adress to the Slave device
-    I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_FINISH); I2C_Master_Wait();
+    I2CMasterControl(I2C0_BASE, I2C_MASTER_CMD_BURST_SEND_FINISH); I2C_Master_Wait(I2C0_BASE);
  
     error_nr = I2CMasterErr(I2C0_BASE);
 		if(error_nr){

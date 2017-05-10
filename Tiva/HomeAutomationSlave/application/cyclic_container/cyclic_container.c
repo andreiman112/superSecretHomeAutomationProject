@@ -10,6 +10,7 @@
 #include "i2c_handler.h"
 #include "gpio_handler.h"
 #include "adc_handler.h"
+#include "light_app.h"
 #include "spi_handler.h"
 
 /*-------------------Driverlib Includes-----------------*/
@@ -33,6 +34,7 @@ void Cyclic_100ms()
 	//Display_String("100 ms");
 	ADCProcessorTrigger(ADC1_BASE, 0);  //Trigger Temperature sensor ADC
 }
+
 void Cyclic_500ms()
 {
 	uint16_t cmd_index = 0;
@@ -88,5 +90,5 @@ void Cyclic_1000ms()
 	Display_Decimal(SlaveResults[T2Result]);
 	Display_String("; tmp adc =");
 	Display_Decimal(SlaveResults[T3Result]);
-	 
+	LightHandler();
 }

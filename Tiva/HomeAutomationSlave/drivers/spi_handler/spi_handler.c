@@ -144,10 +144,10 @@ void SSI0_Init_ShiftRg(void){ //for shift register
 void SSI1_Init_RGB(void){ //for rgb strip
 	uint8_t delay = 0;
 	
-	SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI1);		//SSI 1 enable 
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_SSI1);  //SSI 1 enable 
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);	//Port D enable
 	
-	SSIDisable(SSI1_BASE);												 //Disable SSI1
+	SSIDisable(SSI1_BASE);  //Disable SSI1
 
 	GPIOPinConfigure(GPIO_PD0_SSI1CLK);		//PD0 - Clock
 	GPIOPinConfigure(GPIO_PD3_SSI1TX);		//PD3 - TX
@@ -157,12 +157,13 @@ void SSI1_Init_RGB(void){ //for rgb strip
 
 	
 	//Peripherial base, Input clock, Frame format(freescale format), Mode, Bit Data Rate,	Data Width	
-	SSIConfigSetExpClk(SSI1_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, 6666666/*8000000SysCtlClockGet()/DIVISOR_rgb*/, 8); //bit data rate for RGB 80MHz/12 = 6666666
+	SSIConfigSetExpClk(SSI1_BASE, SysCtlClockGet(), SSI_FRF_MOTO_MODE_0, SSI_MODE_MASTER, SysCtlClockGet()/DIVISOR_rgb, 8); //bit data rate for RGB 80MHz/12 = 6666666
 	SSIEnable(SSI1_BASE);				//Enable SSI
 
   for(delay=0; delay<10; delay=delay+1);// delay minimum 100 ns
 }
 
 void SSI1_DataOut(uint8_t data){ 
-	SSIDataPutNonBlocking(SSI0_BASE,data); //Puts a data element into the SSI transmit FIFO.
+	SSIDataPut(SSI1_BASE,(uint32_t)data); //Puts a data element into the SSI transmit FIFO.
+	//SSIDataPutNonBlocking(SSI1_BASE,data); //Puts a data element into the SSI transmit FIFO.
 }

@@ -75,7 +75,7 @@ void SetGPIOOutput(unsigned long port, unsigned long pin)
 	SysCtlPeripheralEnable(getPortPeriphAddress(port)); //Enable clock on port
 	GPIOPinTypeGPIOOutput(port, pin);
 	GPIODirModeSet(port,pin, GPIO_DIR_MODE_OUT);
-	GPIOPadConfigSet(port, pin, GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD);
+	GPIOPadConfigSet(port, pin, GPIO_STRENGTH_12MA,GPIO_PIN_TYPE_STD);
 	GPIOPinWrite(port,pin,0);
 }
 
@@ -118,5 +118,6 @@ void BlueOff(uint8_t i){ ClearGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_2); }
 
 void GreenOn(uint8_t i){ SetGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_3); }
 void GreenOff(uint8_t i){ ClearGPIOPin(GPIO_PORTF_BASE,GPIO_PIN_3); }
+
 
 //EOF
