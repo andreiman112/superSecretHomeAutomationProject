@@ -6,7 +6,9 @@ enum EnResults{
 	T3Result,
 	L1Result = 20,
 	L2Result,
-	L3Result
+	L3Result,
+	SecurityDanger=29,
+	FloodDanger=30
 };
 
 //typedef enum EnResults Results;

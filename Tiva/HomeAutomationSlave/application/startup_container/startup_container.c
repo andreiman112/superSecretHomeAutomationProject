@@ -10,6 +10,7 @@
 #include "i2c_handler.h"
 #include "gpio_handler.h"  
 #include "light_app.h"
+#include "heat_app.h"
 #include "pwm_handler.h"  
 #include "spi_handler.h"
 #include "display.h"
@@ -18,6 +19,7 @@
 #include "driverlib/interrupt.h"
 #include "driverlib/gpio.h" 
 #include "driverlib/timer.h"
+#include "driverlib/sysctl.h"
 
 /*-------------------HW define Includes--------------*/
 #include "inc/hw_memmap.h"
@@ -28,25 +30,28 @@ extern uint8_t SlaveResults[256];
 
 void Init_Commands()
 {
-	
-	//SlaveCommands[10].function=&RedOn;
-	//SlaveCommands[11].function=&GreenOn;
-	//SlaveCommands[12].function=&BlueOn;
-	//SlaveCommands[20].function=&RedOff;
-	//SlaveCommands[21].function=&GreenOff;
-	//SlaveCommands[22].function=&BlueOff;
-		SlaveCommands[20].function=&SetL1Red;
-		SlaveCommands[21].function=&SetL1Green;
-		SlaveCommands[22].function=&SetL1Blue;
-		SlaveCommands[23].function=&SetL2Red;
-		SlaveCommands[24].function=&SetL2Green;
-		SlaveCommands[25].function=&SetL2Blue;
-		SlaveCommands[26].function=&SetL3Red;
-		SlaveCommands[27].function=&SetL3Green;
-		SlaveCommands[28].function=&SetL3Blue;
-	
-		SlaveCommands[15].function=&Vent1;
-		SlaveCommands[16].function=&Vent2;
+	uint16_t i = 0;
+	for (i = 0; i<= 255; i++){
+		SlaveCommands[i].set=0;
+		SlaveCommands[i].value = 0;
+		SlaveCommands[i].function=0;   //Init all function pointers to 0
+	}
+	SlaveCommands[10].function=&SetT1;
+	SlaveCommands[11].function=&SetT2;
+	SlaveCommands[12].function=&SetT3;
+
+	SlaveCommands[15].function=&Vent1;
+	SlaveCommands[16].function=&Vent2;
+
+	SlaveCommands[20].function=&SetL1Red;
+	SlaveCommands[21].function=&SetL1Green;
+	SlaveCommands[22].function=&SetL1Blue;
+	SlaveCommands[23].function=&SetL2Red;
+	SlaveCommands[24].function=&SetL2Green;
+	SlaveCommands[25].function=&SetL2Blue;
+	SlaveCommands[26].function=&SetL3Red;
+	SlaveCommands[27].function=&SetL3Green;
+	SlaveCommands[28].function=&SetL3Blue;
 }
 
 void Init_Results()
@@ -59,8 +64,10 @@ void Init_Results()
 
 void Init_Drivers(void)
 { 
-	uint8_t period;
-	uint8_t calc;
+	uint8_t period_vent = 0;
+	uint32_t clock = 0;
+	uint32_t period_rgb = 0;
+	uint32_t calc = 0;
 	Display_Init();
 	Display_String("UART0 Initialized");
 	I2C_Init(I2C0_BASE,1);
@@ -68,8 +75,9 @@ void Init_Drivers(void)
 	I2C_Init_LuminositySensor(0x39);
 	I2C_Init(I2C1_BASE,0);
 	
-	Add_ADC_Channel(0);//channel 0
-	Add_ADC_Channel(1);//channel 1
+	Add_ADC_Channel(0);//channel 0 temperature
+	Add_ADC_Channel(1);//channel 1 luminosity
+	Add_ADC_Channel(2);//channel 2 flood
 	ADC_Init();
 	
 	
@@ -79,15 +87,35 @@ void Init_Drivers(void)
 	
 	//SetGPIOInput(GPIO_PORTF_BASE,GPIO_PIN_0,1);
 	//SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1);//proba pentru verificat ca merge spi commands
-	SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
-	 
+	SetGPIOInput(GPIO_PORTC_BASE, GPIO_PIN_5,0);//pir sensor
+	
+	SetGPIOOutput(GPIO_PORTE_BASE,GPIO_PIN_0);//buzzer
+	SetGPIOInput(GPIO_PORTC_BASE, GPIO_PIN_7,1);//buton prezenta
+	
+	//ventilator_PWM
 	SetGPIOOutput(GPIO_PORTB_BASE,GPIO_PIN_6);
 	SetGPIOOutput(GPIO_PORTB_BASE,GPIO_PIN_7);
-	period = 20; //ventilator
-	calc = SysCtlClockGet()/ (1000 * period) - 1;
+	period_vent = 5; //ventilator: 5ms /period
+	clock = SysCtlClockGet();
+	calc = ((clock / 1000) * period_vent) - 1;
 	Init_PWM(GPIO_PORTB_BASE,GPIO_PIN_6, calc);
-		Init_PWM(GPIO_PORTB_BASE,GPIO_PIN_7, calc);
-
+	Init_PWM(GPIO_PORTB_BASE,GPIO_PIN_7, calc);
+	
+//	led temp  PWM 
+	SetGPIOOutput(GPIO_PORTF_BASE,GPIO_PIN_1);// set T1
+	SetGPIOOutput(GPIO_PORTF_BASE,GPIO_PIN_2);// set T2
+	SetGPIOOutput(GPIO_PORTF_BASE,GPIO_PIN_3);// set T3
+	period_rgb = 1000; 
+	Init_PWM(GPIO_PORTF_BASE,GPIO_PIN_1, period_rgb);
+	Init_PWM(GPIO_PORTF_BASE,GPIO_PIN_2, period_rgb);
+	Init_PWM(GPIO_PORTF_BASE,GPIO_PIN_3, period_rgb);
+	Init_RGB_Temp();
+	
+	
+	
+	//led temp set T2
+	//SetGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
+	
 
 	SSI0_InitSlave();
 	Display_String("SPI0 Slave Initialized");

@@ -461,6 +461,5 @@ unsigned long Periph_PWM(unsigned long port, unsigned long pin)
 	}
 		return periph_pwm;
 }
-void Vent1(uint8_t i){ Duty_Cycle(GPIO_PORTB_BASE,GPIO_PIN_6, i*10); }
-void Vent2(uint8_t i){ Duty_Cycle(GPIO_PORTB_BASE,GPIO_PIN_7, i*10); }
+
 

@@ -9,7 +9,7 @@ typedef struct stRGB {
 	uint8_t Blue;
 } tstRGB;
 
-void LightHandler();
+void LightHandler(void);
 
 void SetL1Red(uint8_t red);
 void SetL1Green(uint8_t green);

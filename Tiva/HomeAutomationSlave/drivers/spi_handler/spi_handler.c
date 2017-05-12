@@ -71,9 +71,9 @@ void SSI0_InitSlave(void){
 
 void SSI0_DataOut(uint8_t data){ 
 	SSIDataPut(SSI0_BASE,(uint32_t)data); //Puts a data element into the SSI transmit FIFO.
-	Display_NewLine();	
-	Display_Decimal(data); 
-	Display_NewLine();	
+	//Display_NewLine();	
+	//Display_Decimal(data); 
+	//Display_NewLine();	
 }
 void SSI0_Handler(void){ //Time-out interrupt
 	uint32_t byte0, byte1, byteCrc, junk=0;

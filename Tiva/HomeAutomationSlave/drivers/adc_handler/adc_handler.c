@@ -23,7 +23,7 @@ uint32_t adcValues[12];
 
 void Add_ADC_Channel(unsigned long channel)
 {
-    adcChannels[0]++;
+    adcChannels[0]++;//contor elemente
     adcChannels[adcChannels[0]] = channel;
 }
 void ADC_Init(void)

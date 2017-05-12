@@ -8,17 +8,17 @@
 #include "driverlib/sysctl.h"
 
 /*-------------------Macro Definitions----------------*/
-#define NR_OF_LEDS (5)
+#define NR_OF_LEDS (15)
 #define HighBit (0xF8)
 #define LowBit (0xE0)
 #define FullPower (0x80)
 #define BitMask (0x80)
 #define L1_Start (0)
-#define L1_End (0)
-#define L2_Start (1)
-#define L2_End (3)
-#define L3_Start (4)
-#define L3_End (4)
+#define L1_End (4)
+#define L2_Start (5)
+#define L2_End (9)
+#define L3_Start (10)
+#define L3_End (14)
 #define RedIndex (0)
 #define GreenIndex (1)
 #define BlueIndex (2)
@@ -123,6 +123,8 @@ void SetL3Blue(uint8_t blue){
 		LedSet[led_index][BlueIndex] = 1;
 	}
 }
+
+	
 void LightHandler(){  //Cyclic function to check if something changed
 	uint8_t led_index = 0;
 	uint8_t color_index = 0;
@@ -139,5 +141,4 @@ void LightHandler(){  //Cyclic function to check if something changed
 		Send_RGB_Data();
 	}
 }
-
 //EOF

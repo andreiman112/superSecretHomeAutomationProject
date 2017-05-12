@@ -27,7 +27,7 @@
 char prioTimerArray[12] = { /*T0=*/1, /*T1=*/6, /*T2=*/4, /*T3=*/1, /*T4=*/1, /*T5=*/4, /*WT0=*/1, /*WT1=*/3, /*WT2=*/4, /*WT3=*/1, /*WT4=*/3, /*WT1=*/ };
 
 signed char PWM_DutyCycle = 50;
-void TIMER4A_Handler(void)  //  Cyclic_1000ms
+void TIMER4A_Handler(void)  //  debouncing la pf0
 { 
 	 
 		static int intCounter=0;	
